@@ -1,25 +1,25 @@
-# Sae301 — theme enfant Storefront
+# Sae301 — mon thème enfant Storefront
 
-Theme prepare pour la SAE 3.01, iteration 1. Version : 1.0.0.
+Je réalise ce thème enfant pour ma SAÉ 3.01, itération 1. J'utilise la version 1.0.0 et je m'appuie sur Storefront comme parent.
 
-## Installation locale
+## Comment j'installe mon thème
 
-Storefront doit etre installe. Installer le ZIP dans Apparence > Themes > Ajouter un theme > Televerser un theme, puis activer Sae301.
+Je vérifie la présence de Storefront. J'installe mon ZIP dans **Apparence > Thèmes > Ajouter un thème > Téléverser un thème**, puis j'active **Sae301**.
 
-Le dossier attendu est `/home/benjamin/projets/Sae301/web/wp-content/themes/sae301`.
+En local, je retrouve mes fichiers dans `/home/benjamin/projets/Sae301/web/wp-content/themes/sae301`.
 
-## Comprendre les fichiers
+## Comment j'organise mes fichiers
 
-- `style.css` declare le nom, la version et le parent (`Template: storefront`). Ajouter les personnalisations CSS ici.
-- `functions.php` ajoute les fonctions du projet et initialise les traductions du theme enfant. Il est charge en complement du fichier du parent.
-- Storefront charge automatiquement sa feuille CSS et celle du theme enfant. Il est inutile de les charger une deuxieme fois.
-- `.gitignore` exclut les fichiers temporaires, dependances, secrets et sauvegardes usuels. Il ne remplace pas une verification des fichiers avant chaque commit.
+- Dans `style.css`, je déclare le nom, la version et le parent avec `Template: storefront`. Je pourrai y ajouter mes styles.
+- Dans `functions.php`, je prépare mes fonctions et j'initialise les traductions du thème enfant. Je complète les fonctions du parent sans les recopier.
+- Je laisse Storefront charger automatiquement ses styles et mon `style.css`, sans chargement en double.
+- Dans `.gitignore`, je définis mes exclusions usuelles. Je vérifie néanmoins mes fichiers avant chaque commit.
 
-L'apparence reste celle de Storefront tant qu'aucune personnalisation n'est ajoutee.
+Je conserve l'apparence de Storefront tant que je n'ajoute pas de personnalisation. Je n'ai pas ajouté de `screenshot.png` : je peux voir une vignette vide dans l'administration sans que cela gêne le site.
 
-## Verification dans le terminal Linux
+## Comment je vérifie mon thème
 
-Depuis `/home/benjamin/projets/Sae301` :
+Depuis `/home/benjamin/projets/Sae301`, je lance :
 
 ```bash
 ddev wp theme list
@@ -28,10 +28,18 @@ ddev wp option get template
 ddev exec php -l web/wp-content/themes/sae301/functions.php
 ```
 
-Les deux options doivent afficher respectivement `sae301` et `storefront`. Le controle PHP doit reussir. Verifier egalement la page publique, la boutique et le tableau de bord dans le navigateur.
+Je vérifie les valeurs `sae301` et `storefront` et l'absence d'erreur PHP. Je contrôle aussi le site, la boutique et l'administration dans le navigateur.
 
-## Git
+## Comment je gère Git
 
-Initialiser le depot uniquement dans le dossier du theme enfant. Ne pas inclure WordPress, la base, les fichiers televerses ou les configurations locales.
+J'ai initialisé mon dépôt uniquement dans le dossier du thème enfant. Je n'y inclus ni WordPress, ni base SQL, ni médias, ni configurations privées.
 
-Aucun depot distant ni deploiement en production n'a ete effectue. Une autorisation explicite est necessaire avant publication sur GitHub ou intervention sur mmi.unilim.fr.
+Pour mes prochains commits, je décris les changements réalisés, par exemple : `Je documente mon installation WordPress`.
+
+Je garde mes mots de passe, exports et clés privées hors de Git. Je vérifie la visibilité de mon dépôt GitHub avant de partager son adresse.
+
+## Comment je déploie mon thème
+
+J'ai activé Sae301 en local et sur mon site hébergé par mmi.unilim.fr. Je vérifie la présence de Storefront dans chaque environnement. Je conserve ma procédure complète de migration dans un document local distinct.
+
+Je ne place aucune information privée dans ce README : si je le publie dans GitHub ou un dossier web, je vérifie son accessibilité.
