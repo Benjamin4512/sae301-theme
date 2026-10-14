@@ -1,0 +1,24 @@
+# Fichiers des editeurs et du systeme
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# Dependances et fichiers temporaires
+node_modules/
+vendor/
+*.log
+
+# Secrets et sauvegardes : ne jamais les mettre dans le theme
+.env
+.env.*
+!.env.example
+wp-config*.php
+*.sql
+*.sql.gz
+*.pem
+*.key
+*.zip
+backups/
