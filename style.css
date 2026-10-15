@@ -1,11 +1,232 @@
 /*
 Theme Name: Sae301
-Description: Theme enfant de Storefront pour la SAE 3.01, iteration 1.
+Description: Je personnalise Storefront avec mon Design System pour la SAE 3.01.
 Template: storefront
-Version: 1.0.0
+Version: 1.1.0
 Text Domain: sae301
 License: GNU General Public License v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 */
 
-/* Ajouter ici les styles du projet. Storefront charge cette feuille automatiquement. */
+
+body.sae301 {
+    margin: 0;
+    background: var(--background-default);
+    color: var(--text-body);
+    font-family: var(--font-primary);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-wrap: break-word;
+}
+
+.sae301 *,
+.sae301 *::before,
+.sae301 *::after {
+    box-sizing: border-box;
+}
+
+.sae301 .col-full {
+    width: min(calc(100% - 40px), 1200px);
+    max-width: 1200px;
+    margin-inline: auto;
+    padding-inline: 0;
+}
+
+.sae301 :where(h1, h2, h3, h4, h5, h6),
+.sae301 .site-branding .site-title {
+    color: var(--text-brand);
+    font-family: var(--font-title);
+    font-weight: 400;
+    line-height: 1.35;
+    letter-spacing: normal;
+}
+
+.sae301 h1 { font-size: clamp(28px, 3.5vw, 40px); }
+.sae301 h2 { font-size: clamp(24px, 2.5vw, 32px); }
+.sae301 h3 { font-size: 24px; }
+.sae301 :where(h4, h5, h6) { font-size: 20px; }
+
+.sae301 a {
+    color: var(--text-brand);
+    text-underline-offset: 0.2em;
+}
+
+.sae301 a:hover {
+    text-decoration: underline;
+}
+
+.sae301 :where(a, button, input, select, textarea, [tabindex]):focus-visible {
+    outline: 3px solid var(--text-brand);
+    outline-offset: 4px;
+}
+
+.sae301 ::selection {
+    color: var(--text-brand);
+    background: var(--surface-brand);
+}
+
+/* Je personnalise l'en-tete existant en conservant ses liens et son menu mobile. */
+.sae301 .site-header {
+    margin-bottom: 0;
+    background: var(--background-default);
+    border-bottom: 1px solid var(--surface-brand);
+    color: var(--text-body);
+}
+
+.sae301 .site-branding .site-title a,
+.sae301 .site-header :where(.site-description, .main-navigation a) {
+    color: var(--text-brand);
+}
+
+.sae301 .site-branding .site-title a {
+    font-family: var(--font-title);
+    font-weight: 400;
+}
+
+.sae301 .main-navigation a {
+    font-family: var(--font-primary);
+    font-weight: 500;
+}
+
+.sae301 .main-navigation ul li :where(a:hover, a:focus-visible),
+.sae301 .main-navigation ul li.current-menu-item > a,
+.sae301 .main-navigation ul li.current-menu-ancestor > a {
+    color: var(--text-brand);
+    text-decoration: underline;
+    text-decoration-color: var(--action-primary);
+    text-decoration-thickness: 3px;
+    text-underline-offset: 0.45em;
+}
+
+.sae301 .main-navigation ul ul,
+.sae301 .site-header-cart .widget_shopping_cart {
+    background: var(--surface-soft);
+    color: var(--text-body);
+}
+
+.sae301 .site-header-cart :where(.cart-contents, .widget_shopping_cart a) {
+    color: var(--text-brand);
+}
+
+.sae301 button.menu-toggle {
+    color: var(--text-brand);
+    background: var(--surface-soft);
+    border: 1px solid var(--text-brand);
+    border-radius: 10px;
+}
+
+.sae301 button.menu-toggle::before,
+.sae301 button.menu-toggle::after,
+.sae301 button.menu-toggle span::before {
+    background: var(--text-brand);
+}
+
+.sae301 .site-content { padding-top: 32px; }
+.sae301 .site-main { margin-bottom: 40px; }
+.sae301 .entry-header { margin-bottom: 24px; }
+.sae301 .entry-title { color: var(--text-brand); }
+
+
+.sae301 button,
+.sae301 input[type="button"],
+.sae301 input[type="reset"],
+.sae301 input[type="submit"],
+.sae301 .button,
+.sae301 .wp-element-button,
+.sae301 .wp-block-button__link {
+    max-width: 100%;
+    padding: 14px 20px;
+    color: var(--text-on-brand);
+    background: var(--surface-brand-strong);
+    border: 1px solid var(--surface-brand-strong);
+    border-radius: 10px;
+    font-family: var(--font-primary);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.4;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 150ms ease, color 150ms ease;
+}
+
+.sae301 .button.alt,
+.sae301 button.alt,
+.sae301 input[type="submit"].alt {
+    color: var(--text-on-brand);
+    background: var(--surface-brand-strong);
+    border-color: var(--surface-brand-strong);
+}
+
+.sae301 button:hover,
+.sae301 .button:hover,
+.sae301 input[type="submit"]:hover,
+.sae301 .wp-element-button:hover,
+.sae301 .wp-block-button__link:hover,
+.sae301 .button.alt:hover,
+.sae301 button.alt:hover,
+.sae301 input[type="submit"].alt:hover {
+    color: var(--text-strong);
+    background: var(--action-primary);
+    border-color: var(--action-primary);
+    text-decoration: none;
+}
+
+.sae301 :where(button:disabled, input:disabled, .button.disabled, .button[aria-disabled="true"]) {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+
+.sae301 .site :where(input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not([type="button"]):not([type="reset"]):not([type="hidden"]):not([type="range"]):not([type="color"]), select, textarea) {
+    max-width: 100%;
+    padding: 12px 14px;
+    color: var(--text-body);
+    background: var(--background-default);
+    border: 1px solid var(--text-muted);
+    border-radius: 10px;
+    box-shadow: none;
+    font: inherit;
+}
+
+.sae301 :where(input, textarea)::placeholder { color: var(--text-muted); }
+.sae301 :where(input[type="checkbox"], input[type="radio"]) { accent-color: var(--text-brand); }
+.sae301 :where(label, legend) { color: var(--text-brand); }
+.sae301 .site-search { font-family: var(--font-primary); }
+
+.sae301 :where(.widget-title, .widgettitle) {
+    padding-bottom: 12px;
+    border-color: var(--surface-brand);
+    color: var(--text-brand);
+    font-family: var(--font-title);
+    font-weight: 400;
+}
+
+.sae301 :where(table th, table thead th) {
+    color: var(--text-brand);
+    background: var(--surface-soft);
+}
+
+.sae301 :where(table tbody td, table tbody th) {
+    background: var(--background-default);
+}
+
+.sae301 .site-footer {
+    padding-block: 40px;
+    color: var(--text-brand);
+    background: var(--surface-soft);
+    border-top: 1px solid var(--surface-brand);
+}
+
+.sae301 .site-footer :where(a:not(.button), h1, h2, h3, h4, .widget-title) { color: var(--text-brand); }
+.sae301 .storefront-handheld-footer-bar ul li > a { background: var(--surface-soft); color: var(--text-brand); }
+
+@media (max-width: 767px) {
+    .sae301 .col-full { width: calc(100% - 30px); }
+    .sae301 .site-content { padding-top: 24px; }
+    .sae301 .site-branding .site-title { font-size: 28px; }
+    .sae301 .site-search { width: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .sae301 :where(button, .button, input[type="submit"], .wp-element-button, .wp-block-button__link) { transition: none; }
+}
