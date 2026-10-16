@@ -18,8 +18,7 @@ function sae301_body_classes( $classes ) {
 }
 add_filter( 'body_class', 'sae301_body_classes' );
 
-function sae301_enqueue_design_system() {
-    // Je remplace la police du parent par celles de mon Design System.
+function sae301_enqueue_styles() {
     wp_dequeue_style( 'storefront-fonts' );
     wp_enqueue_style(
         'sae301-fonts',
@@ -27,17 +26,20 @@ function sae301_enqueue_design_system() {
         array(),
         null
     );
-
-    $stylesheet = '/assets/css/design-system.css';
+    // Je charge mon unique feuille de style apres Storefront.
+    wp_dequeue_style( 'storefront-child-style' );
+    wp_deregister_style( 'storefront-child-style' );
     wp_enqueue_style(
-        'sae301-design-system',
-        get_stylesheet_directory_uri() . $stylesheet,
+        'sae301-style',
+        get_stylesheet_uri(),
         array( 'storefront-style', 'sae301-fonts' ),
-        (string) filemtime( get_stylesheet_directory() . $stylesheet )
+        (string) filemtime( get_stylesheet_directory() . '/style.css' )
     );
-    // Je laisse Storefront charger mon style.css a sa priorite habituelle (30).
 }
-add_action( 'wp_enqueue_scripts', 'sae301_enqueue_design_system', 20 );
+add_action( 'wp_enqueue_scripts', 'sae301_enqueue_styles', 50 );
 
 // Je charge les cartes et la grille de mon catalogue.
 require_once get_stylesheet_directory() . '/inc/catalogue.php';
+
+// Je charge la presentation de mes fiches produit.
+require_once get_stylesheet_directory() . '/inc/produit.php';

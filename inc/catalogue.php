@@ -15,16 +15,15 @@ add_action( 'wp', 'sae301_catalogue_layout', 20 );
 
 function sae301_catalogue_classes( $classes ) {
     $classes = array_diff( $classes, array( 'right-sidebar', 'left-sidebar' ) );
-    $classes[] = 'sae301-full-width';
+    $classes[] = 'sae301--full-width';
     if ( sae301_catalogue_page() ) {
-        $classes[] = 'sae301-catalogue-page';
+        $classes[] = 'sae301--catalogue';
     }
     return $classes;
 }
 add_filter( 'body_class', 'sae301_catalogue_classes', 30 );
 
 function sae301_catalogue_assets() {
-    wp_enqueue_style( 'sae301-catalogue', get_stylesheet_directory_uri() . '/assets/css/catalogue.css', array( 'storefront-style', 'sae301-design-system' ), (string) filemtime( __DIR__ . '/../assets/css/catalogue.css' ) );
     if ( ! sae301_catalogue_page() ) {
         return;
     }

@@ -26,8 +26,10 @@
         const card = button.closest('[data-product-id]');
         busy = true;
         card.setAttribute('aria-busy', 'true');
+        card.querySelector('.sae-quantity').classList.add('sae-quantity--loading');
         refreshControls();
         feedback.textContent = '';
+        feedback.classList.remove('sae-catalogue__feedback--visible');
         try {
             const response = await fetch(sae301Catalogue.endpoint, {
                 method: 'POST', credentials: 'same-origin',
@@ -48,10 +50,12 @@
             feedback.classList.add('screen-reader-text');
         } catch (error) {
             feedback.classList.remove('screen-reader-text');
+            feedback.classList.add('sae-catalogue__feedback--visible');
             feedback.textContent = error.message || sae301Catalogue.error;
         } finally {
             busy = false;
             card.removeAttribute('aria-busy');
+            card.querySelector('.sae-quantity').classList.remove('sae-quantity--loading');
             refreshControls();
         }
     });

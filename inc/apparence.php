@@ -32,10 +32,6 @@ function sae301_brand_layout() {
 }
 add_action( 'wp', 'sae301_brand_layout', 25 );
 
-function sae301_brand_assets() {
-    wp_enqueue_style( 'sae301-apparence', get_stylesheet_directory_uri() . '/assets/css/apparence.css', array( 'sae301-catalogue' ), (string) filemtime( __DIR__ . '/../assets/css/apparence.css' ) );
-}
-add_action( 'wp_enqueue_scripts', 'sae301_brand_assets', 50 );
 
 function sae301_brand_header() {
     require __DIR__ . '/../templates/brand-header.php';
@@ -53,7 +49,7 @@ function sae301_brand_cart() {
     ?>
     <a class="sae-cart-link" href="<?php echo esc_url( wc_get_cart_url() ); ?>" aria-label="<?php echo esc_attr( 'Mon panier : ' . $count . ' article(s)' ); ?>">
         <span>Mon Panier</span>
-        <span class="sae-cart-link__badge"><span class="sae-cart-link__count"><?php echo esc_html( $count ); ?></span><img src="<?php echo esc_url( get_stylesheet_directory_uri() . '/assets/icons/bag.svg' ); ?>" width="18" height="24" alt=""></span>
+        <span class="sae-cart-link__badge"><span class="sae-cart-link__count"><?php echo esc_html( $count ); ?></span><img class="sae-cart-link__icon" src="<?php echo esc_url( get_stylesheet_directory_uri() . '/assets/icons/bag.svg' ); ?>" width="18" height="24" alt=""></span>
     </a>
     <?php
 }
