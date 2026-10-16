@@ -1,5 +1,5 @@
 <?php
-/** Je personnalise mes fiches sans remplacer les variations WooCommerce. */
+
 defined( 'ABSPATH' ) || exit;
 
 function sae301_product_layout() {
@@ -15,6 +15,9 @@ function sae301_product_layout() {
     remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );
     remove_action( 'woocommerce_after_single_product_summary', 'storefront_single_product_pagination', 30 );
     add_action( 'woocommerce_single_product_summary', 'sae301_product_category', 4 );
+    remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20 );
+    add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 8 );
+    add_action( 'woocommerce_single_product_summary', 'sae301_product_information', 9 );
     add_action( 'woocommerce_before_add_to_cart_form', 'sae301_product_options_intro' );
     add_action( 'woocommerce_before_quantity_input_field', 'sae301_product_quantity_start' );
     add_action( 'woocommerce_after_quantity_input_field', 'sae301_product_quantity_end' );
@@ -85,3 +88,43 @@ function sae301_product_assets() {
     }
 }
 add_action( 'wp_enqueue_scripts', 'sae301_product_assets', 45 );
+
+function sae301_product_information() {
+    if ( ! function_exists( 'get_field' ) ) {
+        return;
+    }
+    $id = get_the_ID();
+    $composition = get_field( 'composition', $id );
+    $nutrition = get_field( 'valeurs_nutrionelles', $id );
+    $allergenes = get_field( 'allergenes', $id );
+    if ( is_array( $allergenes ) ) {
+        $allergenes = implode( ' • ', $allergenes );
+    }
+    if ( ! $composition && ! $nutrition && ! $allergenes ) {
+        return;
+    }
+    ?>
+    <div class="sae-product__details">
+        <div class="sae-product-info">
+            <?php if ( $composition ) : ?>
+                <section class="sae-product-info__group">
+                    <h2 class="sae-product-info__title">Composition</h2>
+                    <p class="sae-product-info__text"><?php echo nl2br( esc_html( $composition ) ); ?></p>
+                </section>
+            <?php endif; ?>
+            <?php if ( $nutrition ) : ?>
+                <section class="sae-product-info__group">
+                    <h2 class="sae-product-info__title">Valeurs nutritionnelles</h2>
+                    <p class="sae-product-info__text"><?php echo nl2br( esc_html( str_replace( '|', "\n", $nutrition ) ) ); ?></p>
+                </section>
+            <?php endif; ?>
+            <?php if ( $allergenes ) : ?>
+                <section class="sae-product-info__group sae-product-info__group--last">
+                    <h2 class="sae-product-info__title">Allergènes</h2>
+                    <p class="sae-product-info__text"><?php echo esc_html( $allergenes ); ?></p>
+                </section>
+            <?php endif; ?>
+        </div>
+    </div>
+    <?php
+}

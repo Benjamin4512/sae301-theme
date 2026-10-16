@@ -1558,3 +1558,83 @@ body.sae301 {
 .sae301 div.sae-product {
     margin: 0;
 }
+
+.sae301 .sae-product .sae-product__summary {
+    .sae-product__details {
+        margin: 0 0 var(--space-24);
+        padding: var(--space-24) 0;
+        border-top: var(--border-thin) solid var(--surface-brand);
+        border-bottom: var(--border-thin) solid var(--surface-brand);
+    }
+
+    .sae-product-info {
+        padding: var(--space-16);
+        border: var(--border-thin) solid var(--surface-brand);
+        border-radius: var(--radius-small);
+        background: var(--surface-soft);
+        color: var(--text-brand);
+
+        .sae-product-info__group {
+            margin: 0 0 var(--space-20);
+        }
+
+        .sae-product-info__group--last {
+            margin-bottom: 0;
+        }
+
+        .sae-product-info__title {
+            margin: 0 0 var(--space-4);
+            color: var(--text-brand);
+            font-family: var(--font-primary);
+            font-size: var(--font-size-24);
+            font-weight: 400;
+            line-height: 1.4;
+        }
+
+        .sae-product-info__text {
+            margin: 0;
+            color: var(--text-brand);
+            font-size: 1rem;
+            line-height: 1.4;
+        }
+    }
+}
+
+@media (max-width: 43.75rem) {
+    .sae301 .sae-product .sae-product__summary {
+        display: flex;
+        flex-direction: column;
+
+        .price {
+            order: 1;
+        }
+
+        .woocommerce-product-details__short-description {
+            order: 2;
+        }
+
+        .sae-product__options-intro {
+            order: 3;
+        }
+
+        form.cart {
+            order: 4;
+        }
+
+        .sae-product__details {
+            padding: 0;
+            border: 0;
+            margin-bottom: var(--space-12);
+        }
+
+        .sae-product-info {
+            .sae-product-info__title {
+                font-size: var(--font-size-20);
+            }
+
+            .sae-product-info__text {
+                font-size: var(--font-size-14);
+            }
+        }
+    }
+}
