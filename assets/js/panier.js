@@ -5,19 +5,35 @@
 
     function Coupon() {
         const [code, setCode] = wp.element.useState('');
-        const busy = wp.data.useSelect(function (select) {
-            return select(store).isApplyingCoupon();
+        const [message, setMessage] = wp.element.useState('');
+        const [hasError, setHasError] = wp.element.useState(false);
+        const cart = wp.data.useSelect(function (select) {
+            return {
+                busy: select(store).isApplyingCoupon(),
+                coupons: select(store).getCartData().coupons || []
+            };
         }, []);
+        const appliedCodes = cart.coupons.map(function (coupon) { return coupon.code; }).join(', ');
+
+        wp.element.useEffect(function () {
+            setHasError(false);
+            setMessage(appliedCodes ? 'Code promo activé : ' + appliedCodes + '.' : '');
+        }, [appliedCodes]);
 
         function apply(event) {
             event.preventDefault();
-            wp.data.dispatch(store).applyCoupon(code.trim()).then(function () {
+            const coupon = code.trim();
+            if (!coupon || cart.busy) {
+                return;
+            }
+            setMessage('');
+            setHasError(false);
+            wp.data.dispatch(store).applyCoupon(coupon).then(function () {
+                setMessage('Le code promo « ' + coupon + ' » est activé.');
                 setCode('');
             }).catch(function (error) {
-                wp.data.dispatch('core/notices').createErrorNotice(error.message, {
-                    context: 'wc/cart',
-                    isDismissible: true
-                });
+                setHasError(true);
+                setMessage(decode(error.message || 'Impossible d’appliquer ce code promo. Veuillez réessayer.'));
             });
         }
 
@@ -26,14 +42,20 @@
             element('form', {className: 'sae-cart-coupon__form', onSubmit: apply},
                 element('input', {
                     className: 'sae-cart-coupon__input', id: 'sae-coupon',
-                    type: 'text', value: code, placeholder: 'Code promo',
+                    type: 'text', value: code, placeholder: 'Code promo', disabled: cart.busy,
+                    'aria-describedby': 'sae-coupon-message', 'aria-invalid': hasError,
                     onChange: function (event) { setCode(event.target.value); }
                 }),
                 element('button', {
                     className: 'sae-cart-coupon__button', type: 'submit',
-                    disabled: busy || !code.trim()
-                }, busy ? 'Application…' : 'Appliquer le code promo')
+                    disabled: cart.busy || !code.trim()
+                }, cart.busy ? 'Application…' : 'Appliquer le code promo')
             ),
+            element('p', {
+                className: 'sae-cart-coupon__message' + (hasError ? ' sae-cart-coupon__message--error' : ''),
+                id: 'sae-coupon-message', role: hasError ? 'alert' : 'status',
+                'aria-live': 'polite', 'aria-atomic': true, hidden: !message
+            }, message),
             element('a', {className: 'sae-flow__back', href: sae301Cart.shopUrl}, '← Continuer mes achats')
         );
     }
@@ -47,7 +69,7 @@
                 totals: select(store).getCartTotals()
             };
         }, []);
-        if (!data.needsShipping) {
+        if (!data.needsShipping || !data.totals.currency_code) {
             return null;
         }
 
