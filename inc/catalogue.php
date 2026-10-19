@@ -3,7 +3,7 @@
 defined( 'ABSPATH' ) || exit;
 
 function sae301_catalogue_page() {
-    return function_exists( 'is_shop' ) && ( is_front_page() || is_shop() || is_product_taxonomy() );
+    return function_exists( 'is_shop' ) && ( is_front_page() || is_shop() || is_product_taxonomy() || is_tax( 'gamme' ) );
 }
 
 function sae301_catalogue_layout() {
@@ -37,6 +37,9 @@ function sae301_catalogue_assets() {
 add_action( 'wp_enqueue_scripts', 'sae301_catalogue_assets', 40 );
 
 function sae301_catalogue_template( $template ) {
+    if ( is_tax( 'gamme' ) ) {
+        return get_stylesheet_directory() . '/taxonomy-gamme.php';
+    }
     if ( sae301_catalogue_page() ) {
         return __DIR__ . '/../templates/catalogue.php';
     }

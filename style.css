@@ -263,7 +263,13 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
         .sae-quantity__value { min-width: 1rem; color: var(--white); text-align: center; font: 400 1.25rem/1.4 var(--font-primary); }
         .sae-quantity--loading { opacity: .75; }
         .sae-card__availability { margin: 0.5rem 0 0; color: var(--text-brand); font-size: 0.875rem; text-align: center; }
-        .sae-card__options { margin-top: 1.5625rem; }
+        .button.sae-card__options {
+            margin-top: 1.5625rem;
+            border-color: var(--action-primary);
+            background: var(--action-primary);
+            color: var(--white);
+            &:hover { border-color: var(--action-primary); background: var(--white); color: var(--black); }
+        }
         .sae-catalogue__feedback { margin: 0; color: var(--text-brand); }
         .sae-catalogue__feedback--visible { margin-bottom: 1.5rem; padding: 0.75rem; border: 0.0625rem solid var(--surface-brand); }
         .sae-catalogue .woocommerce-pagination { margin-top: 2rem; }
@@ -2077,5 +2083,25 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
             .sae-member__description { font-size: 1rem; }
             .sae-member__actions { flex-direction: column; align-items: start; }
         }
+    }
+}
+
+@layer components {
+    .sae301 {
+        .sae-gammes { margin: 0 0 2.5rem; }
+        .sae-gammes__title { margin: 0 0 0.75rem; color: var(--text-brand); font-size: 1.25rem; }
+        .sae-gammes__links { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+        .sae-gammes__link {
+            padding: 0.625rem 1rem;
+            border: 0.0625rem solid var(--text-brand);
+            border-radius: 0.625rem;
+            background: var(--surface-soft);
+            color: var(--text-brand);
+            text-decoration: none;
+            &[aria-current="page"], &:hover { border-color: var(--action-primary); background: var(--action-primary); color: var(--white); }
+        }
+    }
+    @media (max-width: 43.75rem) {
+        .sae301.tax-gamme .sae-catalogue__grid { display: grid; grid-template-columns: 1fr; }
     }
 }

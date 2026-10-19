@@ -22,7 +22,7 @@ foreach ( $catalogue_items as $catalogue_product ) {
     }
     $terms = get_the_terms( $catalogue_product->get_id(), 'product_cat' );
     $term  = ( $terms && ! is_wp_error( $terms ) ) ? reset( $terms ) : null;
-    if ( is_product_category() ) {
+    if ( is_product_category() || is_tax( 'gamme' ) ) {
         $term = get_queried_object();
     }
     $group_id = $term ? $term->term_id : 0;
@@ -39,9 +39,10 @@ uasort( $groups, static function ( $left, $right ) use ( $ranks ) {
 ?>
 <div class="sae-catalogue">
     <div class="sae-catalogue__intro">
-        <h1 class="sae-catalogue__title"><?php echo is_front_page() || is_shop() ? 'Nos Plats à Emporter' : esc_html( woocommerce_page_title( false ) ); ?></h1>
+        <h1 class="sae-catalogue__title"><?php echo is_front_page() || is_shop() ? 'Nos Plats à Emporter' : esc_html( is_tax( 'gamme' ) ? 'Gamme ' . single_term_title( '', false ) : woocommerce_page_title( false ) ); ?></h1>
         <?php sae301_brand_cart(); ?>
     </div>
+    <?php get_template_part( 'templates/gammes' ); ?>
     <?php woocommerce_output_all_notices(); ?>
     <p class="sae-catalogue__feedback" role="status" aria-live="polite" aria-atomic="true"></p>
     <?php if ( ! $groups ) : ?>
@@ -61,14 +62,14 @@ uasort( $groups, static function ( $left, $right ) use ( $ranks ) {
         ++$section_index;
         ?>
         <section class="<?php echo esc_attr( $section_class ); ?>" aria-labelledby="sae-category-<?php echo esc_attr( $group_id ); ?>">
-            <h2 class="<?php echo esc_attr( $category_class ); ?>" id="sae-category-<?php echo esc_attr( $group_id ); ?>"><?php echo esc_html( 'Nos ' . $group['name'] ); ?></h2>
-            <ul class="sae-catalogue__grid" role="list" tabindex="0" aria-label="<?php echo esc_attr( 'Produits : ' . $group['name'] . '. Sur petit écran, faire défiler horizontalement pour voir les autres produits.' ); ?>">
+            <h2 class="<?php echo esc_attr( $category_class ); ?>" id="sae-category-<?php echo esc_attr( $group_id ); ?>"><?php echo esc_html( is_tax( 'gamme' ) ? 'Les produits de cette gamme' : 'Nos ' . $group['name'] ); ?></h2>
+            <ul class="sae-catalogue__grid" role="list" tabindex="0" aria-label="<?php echo esc_attr( is_tax( 'gamme' ) ? 'Produits de la gamme ' . $group['name'] : 'Produits : ' . $group['name'] . '. Sur petit écran, faire défiler horizontalement pour voir les autres produits.' ); ?>">
                 <?php foreach ( $group['items'] as $product_index => $catalogue_product ) :
                     $id       = $catalogue_product->get_id();
                     $name     = $catalogue_product->get_name();
                     $url      = $catalogue_product->get_permalink();
                     $quantity = $counts[ (string) $id ] ?? 0;
-                    $is_dish  = in_array( sanitize_title( $group['name'] ), array( 'plat', 'plats' ), true );
+                    $is_dish  = is_tax( 'gamme' ) ? has_term( array( 'plat', 'plats' ), 'product_cat', $id ) : in_array( sanitize_title( $group['name'] ), array( 'plat', 'plats' ), true );
                     $can_add  = $catalogue_product->is_type( 'simple' ) && $catalogue_product->is_purchasable() && $catalogue_product->is_in_stock();
                     ?>
                     <li class="sae-card<?php echo $is_dish ? ' sae-card--dish' : ''; ?>" data-product-id="<?php echo esc_attr( $id ); ?>">
