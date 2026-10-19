@@ -234,3 +234,11 @@ function sae301_receipt_layout() {
     remove_action( 'storefront_page', 'storefront_edit_post_link', 30 );
 }
 add_action( 'wp', 'sae301_receipt_layout', 40 );
+
+function sae301_annulation_commande( $statuts ) {
+    $statuts[] = 'on-hold';
+    $statuts[] = 'processing';
+
+    return $statuts;
+}
+add_filter( 'woocommerce_valid_order_statuses_for_cancel', 'sae301_annulation_commande' );
