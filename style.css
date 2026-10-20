@@ -2105,3 +2105,29 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
         .sae301.tax-gamme .sae-catalogue__grid { display: grid; grid-template-columns: 1fr; }
     }
 }
+
+@layer components {
+    .sae301 .sae-recommendations {
+        clear: both;
+        margin-top: 5.5rem;
+        .sae-recommendations__title { margin: 0 0 4rem; color: var(--text-brand); font-size: 2rem; line-height: 1.25; text-align: center; }
+        .sae-recommendations__grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 20.9375rem));
+            justify-content: center;
+            gap: 6.9375rem;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .sae-card__content { gap: 1.5rem; min-height: 10.75rem; padding: 0.625rem 0.5rem 0.875rem; }
+        .sae-card__options { align-self: center; width: 16.8125rem; min-height: 3.3125rem; margin: 0; padding: 0.625rem; font-size: 1.25rem; }
+    }
+    @media (max-width: 53rem) {
+        .sae301 .sae-recommendations {
+            margin-top: 2.5rem;
+            .sae-recommendations__title { margin-bottom: 2rem; }
+            .sae-recommendations__grid { grid-template-columns: minmax(0, 20.9375rem); gap: 2rem; }
+        }
+    }
+}

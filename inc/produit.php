@@ -13,6 +13,7 @@ function sae301_product_layout() {
     remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs', 10 );
     remove_action( 'woocommerce_after_single_product_summary', 'storefront_upsell_display', 15 );
     remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );
+    add_action( 'woocommerce_after_single_product_summary', 'sae301_product_recommendations', 20 );
     remove_action( 'woocommerce_after_single_product_summary', 'storefront_single_product_pagination', 30 );
     add_action( 'woocommerce_single_product_summary', 'sae301_product_category', 4 );
     remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20 );
@@ -127,4 +128,48 @@ function sae301_product_information() {
         </div>
     </div>
     <?php
+}
+
+
+function sae301_product_recommendations() {
+    global $product;
+    $suggestions = array();
+    $linked_ids = $product->get_cross_sell_ids();
+    foreach ( array( 'boissons', 'plats', 'desserts' ) as $category ) {
+        if ( has_term( $category, 'product_cat', $product->get_id() ) ) {
+            continue;
+        }
+        $candidates = wc_get_products( array(
+            'status'       => 'publish',
+            'limit'        => -1,
+            'category'     => array( $category ),
+            'stock_status' => 'instock',
+            'exclude'      => array( $product->get_id() ),
+            'orderby'      => 'ID',
+            'order'        => 'ASC',
+        ) );
+        $available = array();
+        foreach ( $candidates as $candidate ) {
+            if ( $candidate->is_visible() && $candidate->is_purchasable() ) {
+                $available[] = $candidate;
+            }
+        }
+        if ( ! $available ) {
+            continue;
+        }
+        $choice = $available[ $product->get_id() % count( $available ) ];
+        foreach ( $available as $candidate ) {
+            if ( in_array( $candidate->get_id(), $linked_ids, true ) ) {
+                $choice = $candidate;
+                break;
+            }
+        }
+        $suggestions[] = $choice;
+        if ( count( $suggestions ) === 2 ) {
+            break;
+        }
+    }
+    if ( $suggestions ) {
+        get_template_part( 'templates/recommandations', null, array( 'products' => $suggestions ) );
+    }
 }
