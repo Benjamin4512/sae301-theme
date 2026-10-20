@@ -2131,3 +2131,68 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
         }
     }
 }
+
+@layer components {
+    .sae301 .sae-reviews {
+        clear: both;
+        margin-top: 5.5rem;
+        padding: 1.5rem 0 2rem;
+        color: var(--text-brand);
+        font-size: 0.875rem;
+        line-height: 1.4;
+        .sae-reviews__header { margin-bottom: 1.5rem; text-align: center; }
+        .sae-reviews__header h2 { margin: 0 0 0.375rem; color: var(--text-brand); font-size: 2rem; }
+        .sae-reviews__header p { margin: 0; }
+        #reviews { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: center; gap: 2.5rem; margin: 0; }
+        #comments, #review_form_wrapper { min-width: 0; }
+        .woocommerce-Reviews-title, #reply-title { display: block; margin: 0 0 0.75rem; color: var(--text-brand); font-family: var(--font-title); font-size: 1.25rem; font-weight: 400; line-height: 1.4; }
+        #comments .commentlist { display: grid; gap: 0.75rem; margin: 0; padding: 0; list-style: none; }
+        #comments .commentlist > li { margin: 0; padding: 0.75rem; border: 0.0625rem solid var(--surface-brand); border-radius: 0.625rem; background: var(--surface-soft); }
+        #comments .comment_container { display: flex; align-items: center; min-height: 9.25rem; }
+        #comments .avatar { display: none; }
+        #comments .comment-text { position: relative; float: none; width: 100%; margin: 0; padding: 0; border: 0; color: var(--text-brand); }
+        .sae-review__meta { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 0.375rem; margin: 0 0 0.375rem; }
+        .sae-review__author { grid-column: 1 / 3; min-height: 1.75rem; padding-right: 7rem; font-size: 1rem; overflow-wrap: anywhere; }
+        .sae-review__verified { grid-column: 1; grid-row: 2; }
+        #comments .sae-review__date { grid-column: 2; grid-row: 2; color: var(--text-muted); font-size: 0.875rem; opacity: 1; }
+        #comments .description { margin: 0; font-size: 0.875rem; overflow-wrap: anywhere; }
+        #comments .description p { margin: 0 0 0.375rem; }
+        #comments .description p:last-child { margin-bottom: 0; }
+        #comments .star-rating { position: absolute; top: 0; right: 0; float: none; margin: 0; color: var(--action-primary); font-size: 1.25rem; }
+        #comments .star-rating::before { color: var(--surface-brand); }
+        #comments .star-rating span::before { color: var(--action-primary); }
+        #respond { margin: 0; padding: 0; background: transparent; }
+        .sae-reviews__help, .comment-notes, .comment-form-cookies-consent { color: var(--text-muted); }
+        .sae-reviews__help { margin: 0 0 0.75rem; }
+        .comment-notes { margin-bottom: 0.75rem; font-size: 0.75rem; }
+        #commentform { margin: 0; }
+        #commentform p { margin-bottom: 0.75rem; }
+        #commentform label { display: block; margin-bottom: 0.375rem; font-weight: 400; }
+        #commentform .required { color: var(--text-brand); }
+        #commentform .comment-form-rating { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem; }
+        #commentform .comment-form-rating label, #commentform p.stars { margin: 0; }
+        #commentform p.stars a { width: 1.75rem; height: 1.75rem; color: var(--action-primary); font-size: 1.5rem; }
+        #commentform p.stars a::before { content: "☆"; width: 100%; color: var(--action-primary); font-family: var(--font-primary); font-size: 1.5rem; font-weight: 400; opacity: 1; }
+        #commentform p.stars.selected a::before, #commentform p.stars:hover a::before { content: "★"; }
+        #commentform p.stars.selected a.active ~ a::before, #commentform p.stars a:hover ~ a::before { content: "☆"; }
+        #commentform textarea, #commentform input[type="text"], #commentform input[type="email"] { width: 100%; padding: 0.625rem 0.75rem; border-color: var(--surface-brand); background: var(--white); color: var(--text-brand); font-size: 0.875rem; box-shadow: none; }
+        #commentform textarea { display: block; height: 8.0625rem; min-height: 8.0625rem; resize: vertical; }
+        #commentform textarea::placeholder { color: var(--text-muted); }
+        #commentform .comment-form-cookies-consent { display: flex; clear: both; width: 100%; align-items: start; gap: 0.5rem; font-size: 0.75rem; }
+        #commentform .comment-form-cookies-consent input { flex: none; margin-top: 0.125rem; }
+        #commentform .form-submit { clear: both; margin: 0; }
+        #commentform #submit { width: 12.5rem; min-height: 2.75rem; padding: 0.625rem; border-color: var(--action-primary); background: var(--action-primary); color: var(--white); font-size: 1rem; font-weight: 400; }
+        #commentform #submit:hover { background: var(--white); color: var(--black); }
+        #reviews > .clear { display: none; }
+        .woocommerce-verification-required, .woocommerce-noreviews { margin: 0; padding: 0.75rem; border: 0.0625rem solid var(--surface-brand); border-radius: 0.625rem; background: var(--surface-soft); color: var(--text-brand); }
+    }
+    @media (max-width: 43.75rem) {
+        .sae301 .sae-reviews {
+            margin-top: 2.5rem;
+            .sae-reviews__header h2 { font-size: 1.5rem; }
+            #reviews { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
+            #commentform textarea { height: 4.5rem; min-height: 4.5rem; }
+            #commentform #submit { width: 100%; }
+        }
+    }
+}

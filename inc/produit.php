@@ -2,6 +2,12 @@
 
 defined( 'ABSPATH' ) || exit;
 
+// Réserver les avis aux clients connectés ayant acheté le produit concerné.
+add_filter( 'pre_option_woocommerce_review_rating_verification_required', function () {
+    return 'yes';
+} );
+
+
 function sae301_product_layout() {
     if ( ! is_product() ) {
         return;
@@ -11,6 +17,12 @@ function sae301_product_layout() {
     remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_sharing', 50 );
     remove_action( 'woocommerce_single_product_summary', 'storefront_edit_post_link', 60 );
     remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs', 10 );
+    add_action( 'woocommerce_after_single_product_summary', 'sae301_product_reviews', 10 );
+    add_filter( 'woocommerce_reviews_title', 'sae301_reviews_title' );
+    add_filter( 'woocommerce_product_review_comment_form_args', 'sae301_review_form' );
+    remove_action( 'woocommerce_review_before', 'woocommerce_review_display_gravatar', 10 );
+    remove_action( 'woocommerce_review_meta', 'woocommerce_review_display_meta', 10 );
+    add_action( 'woocommerce_review_meta', 'sae301_review_meta', 10 );
     remove_action( 'woocommerce_after_single_product_summary', 'storefront_upsell_display', 15 );
     remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );
     add_action( 'woocommerce_after_single_product_summary', 'sae301_product_recommendations', 20 );
@@ -172,4 +184,61 @@ function sae301_product_recommendations() {
     if ( $suggestions ) {
         get_template_part( 'templates/recommandations', null, array( 'products' => $suggestions ) );
     }
+}
+
+// Présentation des avis : les formulaires et contrôles restent gérés par WooCommerce.
+function sae301_product_reviews() {
+    global $product;
+    if ( ! comments_open() ) {
+        return;
+    }
+    $count = $product->get_review_count();
+    ?>
+    <section class="sae-reviews" aria-labelledby="sae-reviews-title">
+        <header class="sae-reviews__header">
+            <h2 id="sae-reviews-title">Avis clients</h2>
+            <p><?php
+                if ( $count && wc_review_ratings_enabled() && $product->get_rating_count() ) {
+                    echo esc_html( number_format_i18n( (float) $product->get_average_rating(), 1 ) . '/5 · ' );
+                }
+                echo esc_html( $count . ' avis' );
+            ?></p>
+        </header>
+        <?php comments_template(); ?>
+    </section>
+    <?php
+}
+
+function sae301_reviews_title( $title ) {
+    return 'Les derniers avis';
+}
+
+function sae301_review_form( $form ) {
+    $form['title_reply'] = 'Donnez votre avis';
+    $help = get_option( 'woocommerce_review_rating_verification_required' ) === 'yes'
+        ? 'Réservé aux acheteurs certifiés.' : 'Partagez votre expérience avec ce produit.';
+    $form['title_reply_after'] = '</span><p class="sae-reviews__help">' . esc_html( $help ) . '</p>';
+    $form['label_submit'] = 'Publier mon avis';
+    $form['comment_field'] = str_replace(
+        array( 'Your review', 'Votre avis', '<textarea id="comment"' ),
+        array( 'Votre commentaire', 'Votre commentaire', '<textarea placeholder="Partagez votre expérience…" id="comment"' ),
+        $form['comment_field']
+    );
+    return $form;
+}
+
+function sae301_review_meta( $comment ) {
+    if ( '0' === $comment->comment_approved ) {
+        echo '<p class="woocommerce-review__awaiting-approval">' . esc_html__( 'Your review is awaiting approval', 'woocommerce' ) . '</p>';
+        return;
+    }
+    ?>
+    <p class="sae-review__meta">
+        <span class="sae-review__author"><?php echo esc_html( get_comment_author( $comment ) ); ?></span>
+        <?php if ( get_option( 'woocommerce_review_rating_verification_label' ) === 'yes' && wc_review_is_from_verified_owner( $comment->comment_ID ) ) : ?>
+            <span class="sae-review__verified">Achat vérifié</span>
+        <?php endif; ?>
+        <time class="sae-review__date" datetime="<?php echo esc_attr( get_comment_date( 'c', $comment ) ); ?>"><?php echo esc_html( get_comment_date( 'd/m/Y', $comment ) ); ?></time>
+    </p>
+    <?php
 }
