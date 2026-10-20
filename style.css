@@ -45,7 +45,9 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 @layer reset {
     .sae301 {
-        * { box-sizing: border-box; }
+        * {
+            box-sizing: border-box;
+        }
     }
 }
 
@@ -58,49 +60,124 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
         font-size: 1rem;
         line-height: 1.6;
     }
+
     .sae301 {
-        h1, h2, h3, h4, h5, h6 {
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
             color: var(--text-brand);
             font-family: var(--font-title);
             font-weight: 400;
             line-height: 1.35;
             letter-spacing: normal;
         }
-        h1 { font-size: 2.5rem; }
-        h2 { font-size: 2rem; }
-        h3 { font-size: 1.5rem; }
-        h4, h5, h6 { font-size: 1.25rem; }
+
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+        }
+
+        h4,
+        h5,
+        h6 {
+            font-size: 1.25rem;
+        }
+
         a {
             color: var(--text-brand);
             text-underline-offset: 0.2rem;
-            &:hover { text-decoration: underline; }
+
+            &:hover {
+                text-decoration: underline;
+            }
         }
-        ::selection { background: var(--surface-brand); color: var(--text-brand); }
-        label, legend, th { color: var(--text-brand); }
-        th { background: var(--surface-soft); }
-        td { background: var(--background-default); }
+
+        ::selection {
+            background: var(--surface-brand);
+            color: var(--text-brand);
+        }
+
+        label,
+        legend,
+        th {
+            color: var(--text-brand);
+        }
+
+        th {
+            background: var(--surface-soft);
+        }
+
+        td {
+            background: var(--background-default);
+        }
     }
 }
 
 @layer utilities {
     .sae301 {
-        a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible,
-        textarea:focus-visible, summary:focus-visible, [tabindex]:focus-visible {
+
+        a:focus-visible,
+        button:focus-visible,
+        input:focus-visible,
+        select:focus-visible,
+        textarea:focus-visible,
+        summary:focus-visible,
+        [tabindex]:focus-visible {
             outline: 0.1875rem solid var(--text-brand);
             outline-offset: 0.25rem;
         }
-        .sae-quantity__button:focus-visible { outline: 0.125rem solid var(--white); outline-offset: 0.1875rem; }
-        .sae-hero__booking:focus-visible, .sae-hero__logo:focus-visible { outline-color: var(--white); }
-        .sae-menu__toggle:focus-visible, .sae-menu__link:focus-visible { outline-color: var(--white); }
+
+        .sae-quantity__button:focus-visible {
+            outline: 0.125rem solid var(--white);
+            outline-offset: 0.1875rem;
+        }
+
+        .sae-hero__booking:focus-visible,
+        .sae-hero__logo:focus-visible {
+            outline-color: var(--white);
+        }
+
+        .sae-menu__toggle:focus-visible,
+        .sae-menu__link:focus-visible {
+            outline-color: var(--white);
+        }
     }
 }
 
 @layer layout {
     .sae301 {
-        .col-full { width: auto; max-width: 75rem; margin: 0 1.25rem; padding: 0; }
-        .site-main { margin-bottom: 2.5rem; }
-        .entry-header { margin-bottom: 1.5rem; }
-        .sae-catalogue { max-width: 75rem; margin-left: auto; margin-right: auto; }
+        .col-full {
+            width: auto;
+            max-width: 75rem;
+            margin: 0 1.25rem;
+            padding: 0;
+        }
+
+        .site-main {
+            margin-bottom: 2.5rem;
+        }
+
+        .entry-header {
+            margin-bottom: 1.5rem;
+        }
+
+        .sae-catalogue {
+            max-width: 75rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
         .sae-catalogue__grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -115,8 +192,16 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 @layer components {
     .sae301 {
-        .entry-title { color: var(--text-brand); }
-        button, input[type="button"], input[type="reset"], input[type="submit"], .button, .wp-element-button,
+        .entry-title {
+            color: var(--text-brand);
+        }
+
+        button,
+        input[type="button"],
+        input[type="reset"],
+        input[type="submit"],
+        .button,
+        .wp-element-button,
         .wp-block-button__link {
             max-width: 100%;
             padding: 0.875rem 1.25rem;
@@ -131,21 +216,43 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
             text-align: center;
             cursor: pointer;
         }
-        .button.alt, button.alt {
+
+        .button.alt,
+        button.alt {
             border-color: var(--surface-brand-strong);
             background: var(--surface-brand-strong);
             color: var(--text-on-brand);
         }
-        button:hover, .button:hover, input[type="submit"]:hover, .wp-element-button:hover,
-        .wp-block-button__link:hover, .button.alt:hover, button.alt:hover {
+
+        button:hover,
+        .button:hover,
+        input[type="submit"]:hover,
+        .wp-element-button:hover,
+        .wp-block-button__link:hover,
+        .button.alt:hover,
+        button.alt:hover {
             border-color: var(--action-primary);
             background: var(--action-primary);
             color: var(--black);
             text-decoration: none;
         }
-        button:disabled, input:disabled, .button.disabled { opacity: 0.55; cursor: not-allowed; }
-        input[type="text"], input[type="email"], input[type="password"], input[type="search"],
-        input[type="tel"], input[type="url"], input[type="number"], select, textarea {
+
+        button:disabled,
+        input:disabled,
+        .button.disabled {
+            opacity: 0.55;
+            cursor: not-allowed;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="search"],
+        input[type="tel"],
+        input[type="url"],
+        input[type="number"],
+        select,
+        textarea {
             max-width: 100%;
             padding: 0.75rem 0.875rem;
             border: 0.0625rem solid var(--text-muted);
@@ -154,9 +261,21 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
             color: var(--text-body);
             font: inherit;
         }
-        input::placeholder, textarea::placeholder { color: var(--text-muted); }
-        input[type="checkbox"], input[type="radio"] { accent-color: var(--text-brand); }
-        .sae-catalogue__section--following { margin-top: 2.6875rem; }
+
+        input::placeholder,
+        textarea::placeholder {
+            color: var(--text-muted);
+        }
+
+        input[type="checkbox"],
+        input[type="radio"] {
+            accent-color: var(--text-brand);
+        }
+
+        .sae-catalogue__section--following {
+            margin-top: 2.6875rem;
+        }
+
         .sae-catalogue__category {
             margin: 0 0 1.8125rem;
             padding: 0;
@@ -164,6 +283,7 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
             font: 400 2rem/2.75rem var(--font-title);
             letter-spacing: normal;
         }
+
         .sae-card {
             display: flex;
             flex-direction: column;
@@ -175,8 +295,18 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
             color: var(--text-brand);
             text-align: left;
         }
-        .sae-card__image-link { flex: none; background: var(--white); }
-        .sae-card__image-link, .sae-card__image { display: block; border-radius: 1.5625rem 1.5625rem 0 0; }
+
+        .sae-card__image-link {
+            flex: none;
+            background: var(--white);
+        }
+
+        .sae-card__image-link,
+        .sae-card__image {
+            display: block;
+            border-radius: 1.5625rem 1.5625rem 0 0;
+        }
+
         .sae-card__image {
             width: 100%;
             height: 19.0625rem;
@@ -187,6 +317,7 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
             border: 0.1875rem solid var(--surface-brand);
             border-bottom: 0;
         }
+
         .sae-card__content {
             display: flex;
             flex: 1;
@@ -197,8 +328,18 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
             background: var(--surface-brand);
             border-radius: 0 0 1.25rem 1.25rem;
         }
-        .sae-card--dish .sae-card__content { min-height: 12.5625rem; }
-        .sae-card__heading { display: flex; justify-content: space-between; align-items: flex-start; gap: 0.3125rem; }
+
+        .sae-card--dish .sae-card__content {
+            min-height: 12.5625rem;
+        }
+
+        .sae-card__heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 0.3125rem;
+        }
+
         .sae-card__title {
             min-width: 0;
             margin: 0;
@@ -208,11 +349,16 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
             letter-spacing: normal;
             line-height: 1.875rem;
         }
+
         a.sae-card__link {
             color: inherit;
             text-decoration: none;
-            &:hover { text-decoration: underline; }
+
+            &:hover {
+                text-decoration: underline;
+            }
         }
+
         .sae-card__price {
             flex: none;
             margin: 0;
@@ -220,11 +366,30 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
             color: var(--text-brand);
             font: 400 1rem/1.6 var(--font-primary);
             white-space: nowrap;
-            .amount { font-weight: 400; }
-            del { display: block; opacity: .7; font-size: 0.75rem; }
-            ins { margin: 0; font-weight: 400; }
+
+            .amount {
+                font-weight: 400;
+            }
+
+            del {
+                display: block;
+                opacity: .7;
+                font-size: 0.75rem;
+            }
+
+            ins {
+                margin: 0;
+                font-weight: 400;
+            }
         }
-        .sae-card__description { margin: 0.3125rem 0 0; padding: 0; color: var(--text-brand); font: 400 0.875rem/1.5 var(--font-primary); }
+
+        .sae-card__description {
+            margin: 0.3125rem 0 0;
+            padding: 0;
+            color: var(--text-brand);
+            font: 400 0.875rem/1.5 var(--font-primary);
+        }
+
         .sae-quantity {
             display: flex;
             flex: none;
@@ -240,6 +405,7 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
             color: var(--white);
             margin-top: 0;
         }
+
         .sae-quantity__button {
             display: inline-flex;
             flex: none;
@@ -256,23 +422,69 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
             background: var(--action-primary);
             color: var(--white);
             font: 400 2rem/1 var(--font-primary);
-            &:hover { background: var(--orange-hover); color: var(--white); }
+
+            &:hover {
+                background: var(--orange-hover);
+                color: var(--white);
+            }
         }
-        .sae-quantity__symbol { display: block; line-height: 1; }
-        .sae-quantity__button:disabled { opacity: 1; cursor: default; }
-        .sae-quantity__value { min-width: 1rem; color: var(--white); text-align: center; font: 400 1.25rem/1.4 var(--font-primary); }
-        .sae-quantity--loading { opacity: .75; }
-        .sae-card__availability { margin: 0.5rem 0 0; color: var(--text-brand); font-size: 0.875rem; text-align: center; }
+
+        .sae-quantity__symbol {
+            display: block;
+            line-height: 1;
+        }
+
+        .sae-quantity__button:disabled {
+            opacity: 1;
+            cursor: default;
+        }
+
+        .sae-quantity__value {
+            min-width: 1rem;
+            color: var(--white);
+            text-align: center;
+            font: 400 1.25rem/1.4 var(--font-primary);
+        }
+
+        .sae-quantity--loading {
+            opacity: .75;
+        }
+
+        .sae-card__availability {
+            margin: 0.5rem 0 0;
+            color: var(--text-brand);
+            font-size: 0.875rem;
+            text-align: center;
+        }
+
         .button.sae-card__options {
             margin-top: 1.5625rem;
             border-color: var(--action-primary);
             background: var(--action-primary);
             color: var(--white);
-            &:hover { border-color: var(--action-primary); background: var(--white); color: var(--black); }
+
+            &:hover {
+                border-color: var(--action-primary);
+                background: var(--white);
+                color: var(--black);
+            }
         }
-        .sae-catalogue__feedback { margin: 0; color: var(--text-brand); }
-        .sae-catalogue__feedback--visible { margin-bottom: 1.5rem; padding: 0.75rem; border: 0.0625rem solid var(--surface-brand); }
-        .sae-catalogue .woocommerce-pagination { margin-top: 2rem; }
+
+        .sae-catalogue__feedback {
+            margin: 0;
+            color: var(--text-brand);
+        }
+
+        .sae-catalogue__feedback--visible {
+            margin-bottom: 1.5rem;
+            padding: 0.75rem;
+            border: 0.0625rem solid var(--surface-brand);
+        }
+
+        .sae-catalogue .woocommerce-pagination {
+            margin-top: 2rem;
+        }
+
         .site-header {
             padding: 0;
             margin: 0;
@@ -280,7 +492,13 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
             background: var(--neutral-900);
             color: var(--white);
         }
-        .sae-hero { position: relative; height: 20rem; background: url("assets/images/fondant-header.jpg") center 52% / cover no-repeat; }
+
+        .sae-hero {
+            position: relative;
+            height: 20rem;
+            background: url("assets/images/fondant-header.jpg") center 52% / cover no-repeat;
+        }
+
         .sae-hero__overlay {
             position: absolute;
             top: 0;
@@ -289,6 +507,7 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
             height: 100%;
             background: var(--hero-overlay);
         }
+
         .sae-hero__inner {
             position: relative;
             width: auto;
@@ -298,12 +517,48 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
             max-width: 75rem;
             margin: 0 1.25rem;
         }
-        .sae-hero__logo { position: absolute; top: 3.4375rem; left: 0.625rem; }
-        .sae-hero__logo, .sae-hero__image, .sae-footer__image { display: block; width: 11.875rem; height: 11.875rem; }
-        .sae-hero__image, .sae-footer__image { max-width: none; margin: 0; border-radius: 0; object-fit: contain; }
-        .sae-hero__navigation { position: absolute; top: 8.125rem; left: 13.125rem; z-index: 5; }
-        .sae-hero__links, .sae-hero__description--desktop { display: none; }
-        .sae-menu { position: relative; width: 8.625rem; color: var(--white); font: 400 1rem/1.4 var(--font-primary); }
+
+        .sae-hero__logo {
+            position: absolute;
+            top: 3.4375rem;
+            left: 0.625rem;
+        }
+
+        .sae-hero__logo,
+        .sae-hero__image,
+        .sae-footer__image {
+            display: block;
+            width: 11.875rem;
+            height: 11.875rem;
+        }
+
+        .sae-hero__image,
+        .sae-footer__image {
+            max-width: none;
+            margin: 0;
+            border-radius: 0;
+            object-fit: contain;
+        }
+
+        .sae-hero__navigation {
+            position: absolute;
+            top: 8.125rem;
+            left: 13.125rem;
+            z-index: 5;
+        }
+
+        .sae-hero__links,
+        .sae-hero__description--desktop {
+            display: none;
+        }
+
+        .sae-menu {
+            position: relative;
+            width: 8.625rem;
+            color: var(--white);
+            font: 400 1rem/1.4 var(--font-primary);
+        }
+
         .sae-menu__toggle {
             display: flex;
             align-items: center;
@@ -314,6 +569,7 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
             cursor: pointer;
             list-style: none;
         }
+
         .sae-menu__icon {
             display: block;
             width: 1.9375rem;
@@ -322,6 +578,7 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
             font-size: 1.5rem;
             line-height: 1.8125rem;
         }
+
         .sae-menu__links {
             position: absolute;
             top: 2.1875rem;
@@ -332,8 +589,17 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
             background: var(--text-brand);
             list-style: none;
         }
-        .sae-menu__item { margin: 0; }
-        .sae-menu__link { display: block; padding: 0.625rem 1rem; color: var(--white); }
+
+        .sae-menu__item {
+            margin: 0;
+        }
+
+        .sae-menu__link {
+            display: block;
+            padding: 0.625rem 1rem;
+            color: var(--white);
+        }
+
         .sae-hero__text {
             position: absolute;
             top: 4.5rem;
@@ -344,13 +610,20 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
             margin-right: auto;
             text-align: center;
         }
+
         .sae-hero__eyebrow {
             max-width: 19.375rem;
             margin: 0 auto 1rem;
             color: var(--surface-brand);
             font: 400 0.875rem/1.1875rem var(--font-primary);
         }
-        .sae-hero__description { margin: 0; color: var(--white); font: 400 1.5rem/1.5625rem var(--font-hero); }
+
+        .sae-hero__description {
+            margin: 0;
+            color: var(--white);
+            font: 400 1.5rem/1.5625rem var(--font-hero);
+        }
+
         .sae-hero__booking {
             position: absolute;
             top: 4.5rem;
@@ -366,9 +639,18 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
             color: var(--white);
             font: 400 1rem/1.375rem var(--font-primary);
             white-space: nowrap;
-            &:hover { color: var(--white); background: var(--orange-dark); }
+
+            &:hover {
+                color: var(--white);
+                background: var(--orange-dark);
+            }
         }
-        .site-content { padding-top: 2rem; background: var(--white); }
+
+        .site-content {
+            padding-top: 2rem;
+            background: var(--white);
+        }
+
         .sae-catalogue__intro {
             display: flex;
             align-items: center;
@@ -376,7 +658,13 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
             gap: 1.5rem;
             margin-bottom: 2.5rem;
         }
-        .sae-catalogue__title { margin: 0; color: var(--text-brand); font: 400 3rem/4rem var(--font-title); }
+
+        .sae-catalogue__title {
+            margin: 0;
+            color: var(--text-brand);
+            font: 400 3rem/4rem var(--font-title);
+        }
+
         .sae-cart-link {
             display: flex;
             flex: none;
@@ -390,8 +678,14 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
             color: var(--white);
             text-decoration: none;
             font: 400 1.5rem/2.0625rem var(--font-primary);
-            &:hover { color: var(--white); text-decoration: none; background: var(--brown-hover); }
+
+            &:hover {
+                color: var(--white);
+                text-decoration: none;
+                background: var(--brown-hover);
+            }
         }
+
         .sae-cart-link__badge {
             display: flex;
             align-items: center;
@@ -404,10 +698,26 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
             background: var(--action-primary);
             color: var(--white);
         }
-        .sae-cart-link__count { font-size: 1.25rem; }
-        .sae-cart-link__icon { width: 1.125rem; height: 1.5rem; margin: 0; border-radius: 0; }
-        .sae-card__title--compact { max-width: 14.25rem; }
-        .sae-card__description--compact { max-width: 18.75rem; }
+
+        .sae-cart-link__count {
+            font-size: 1.25rem;
+        }
+
+        .sae-cart-link__icon {
+            width: 1.125rem;
+            height: 1.5rem;
+            margin: 0;
+            border-radius: 0;
+        }
+
+        .sae-card__title--compact {
+            max-width: 14.25rem;
+        }
+
+        .sae-card__description--compact {
+            max-width: 18.75rem;
+        }
+
         .site-footer {
             margin: 0;
             padding: 0;
@@ -415,6 +725,7 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
             background: var(--surface-brand);
             color: var(--text-brand);
         }
+
         .sae-footer {
             display: flex;
             align-items: center;
@@ -423,6 +734,7 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
             text-align: center;
             font: 400 1rem/1.375rem var(--font-primary);
         }
+
         .sae-footer__logo {
             display: block;
             width: 11.875rem;
@@ -433,11 +745,35 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
             flex: none;
             margin-right: 5rem;
         }
-        .sae-footer__contact { flex: none; width: 13.75rem; margin-right: 5rem; }
-        .sae-footer__information { flex: none; width: 13.125rem; margin-right: 7.1875rem; }
-        .sae-footer__heading { margin: 0; color: var(--text-brand); font: 400 1.5rem/2.0625rem var(--font-primary); }
-        .sae-footer__address { margin: 1.25rem 0 0.75rem; font: inherit; }
-        .site-footer a.sae-footer__phone { color: var(--action-primary); text-decoration: none; }
+
+        .sae-footer__contact {
+            flex: none;
+            width: 13.75rem;
+            margin-right: 5rem;
+        }
+
+        .sae-footer__information {
+            flex: none;
+            width: 13.125rem;
+            margin-right: 7.1875rem;
+        }
+
+        .sae-footer__heading {
+            margin: 0;
+            color: var(--text-brand);
+            font: 400 1.5rem/2.0625rem var(--font-primary);
+        }
+
+        .sae-footer__address {
+            margin: 1.25rem 0 0.75rem;
+            font: inherit;
+        }
+
+        .site-footer a.sae-footer__phone {
+            color: var(--action-primary);
+            text-decoration: none;
+        }
+
         .sae-footer__links {
             display: grid;
             gap: 0.75rem;
@@ -445,13 +781,25 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
             padding: 0;
             list-style: none;
         }
-        .sae-footer__item { margin: 0; line-height: 1.5625rem; }
+
+        .sae-footer__item {
+            margin: 0;
+            line-height: 1.5625rem;
+        }
+
         .site-footer a.sae-footer__link {
             color: var(--text-brand);
             text-decoration: none;
-            &:hover { text-decoration: underline; }
+
+            &:hover {
+                text-decoration: underline;
+            }
         }
-        .site-footer a.sae-footer__phone:hover { text-decoration: underline; }
+
+        .site-footer a.sae-footer__phone:hover {
+            text-decoration: underline;
+        }
+
         .sae-footer__promise {
             display: flex;
             align-items: center;
@@ -459,6 +807,7 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
             gap: 1.5rem;
             width: 18.4375rem;
         }
+
         .sae-footer__icon {
             flex: none;
             width: 5.4375rem;
@@ -466,12 +815,35 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
             margin: 0;
             border-radius: 0;
         }
-        .sae-footer__tagline { margin: 0; color: var(--text-brand); font: 400 1.25rem/1.75rem var(--font-primary); }
+
+        .sae-footer__tagline {
+            margin: 0;
+            color: var(--text-brand);
+            font: 400 1.25rem/1.75rem var(--font-primary);
+        }
     }
-    .sae301--full-width .content-area { float: none; width: 100%; margin-right: 0; margin-left: 0; }
-    .sae301--catalogue .site-content { background: var(--white); padding-top: 3.5rem; }
-    .sae301--catalogue .site-main { padding-bottom: 4.5rem; margin: 0; }
-    .sae301--catalogue .content-area { margin-bottom: 0; }
+
+    .sae301--full-width .content-area {
+        float: none;
+        width: 100%;
+        margin-right: 0;
+        margin-left: 0;
+    }
+
+    .sae301--catalogue .site-content {
+        background: var(--white);
+        padding-top: 3.5rem;
+    }
+
+    .sae301--catalogue .site-main {
+        padding-bottom: 4.5rem;
+        margin: 0;
+    }
+
+    .sae301--catalogue .content-area {
+        margin-bottom: 0;
+    }
+
     @media (max-width: 43.75rem) {
         .sae301 {
             .sae-catalogue__grid {
@@ -484,6 +856,7 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
                 max-width: 20.9375rem;
                 margin: 0 auto;
             }
+
             .sae-catalogue__category {
                 max-width: none;
                 margin-left: auto;
@@ -493,14 +866,46 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
                 text-align: center;
                 line-height: 2.75rem;
             }
-            .sae-catalogue__section--following { margin-top: 4.25rem; }
-            .sae-hero { height: 34.5rem; background-position: center; }
-            .sae-hero__inner { width: 100%; margin: 0; }
-            .sae-hero__booking { top: 4.5rem; right: 1.25rem; }
-            .sae-hero__logo { top: 6.875rem; left: 0.5rem; }
-            .sae-hero__logo, .sae-hero__image { width: 11.875rem; }
-            .sae-hero__navigation { top: 11.375rem; right: 1.6875rem; left: auto; }
-            .sae-menu__toggle { background: var(--text-muted); }
+
+            .sae-catalogue__section--following {
+                margin-top: 4.25rem;
+            }
+
+            .sae-hero {
+                height: 34.5rem;
+                background-position: center;
+            }
+
+            .sae-hero__inner {
+                width: 100%;
+                margin: 0;
+            }
+
+            .sae-hero__booking {
+                top: 4.5rem;
+                right: 1.25rem;
+            }
+
+            .sae-hero__logo {
+                top: 6.875rem;
+                left: 0.5rem;
+            }
+
+            .sae-hero__logo,
+            .sae-hero__image {
+                width: 11.875rem;
+            }
+
+            .sae-hero__navigation {
+                top: 11.375rem;
+                right: 1.6875rem;
+                left: auto;
+            }
+
+            .sae-menu__toggle {
+                background: var(--text-muted);
+            }
+
             .sae-hero__text {
                 top: 17.9375rem;
                 width: auto;
@@ -510,9 +915,23 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
                 margin-left: auto;
                 margin-right: auto;
             }
-            .sae-hero__eyebrow { max-width: 19.375rem; margin-bottom: 1.875rem; }
-            .sae-hero__description { font-size: 1.5rem; line-height: 1.5625rem; }
-            .sae-catalogue__intro { flex-direction: column; gap: 4.25rem; margin-bottom: 3.75rem; }
+
+            .sae-hero__eyebrow {
+                max-width: 19.375rem;
+                margin-bottom: 1.875rem;
+            }
+
+            .sae-hero__description {
+                font-size: 1.5rem;
+                line-height: 1.5625rem;
+            }
+
+            .sae-catalogue__intro {
+                flex-direction: column;
+                gap: 4.25rem;
+                margin-bottom: 3.75rem;
+            }
+
             .sae-catalogue__title {
                 width: 100%;
                 max-width: 20.9375rem;
@@ -521,14 +940,39 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
                 font-size: 3rem;
                 line-height: 4rem;
             }
-            .sae-catalogue__section--spaced { margin-top: 6.375rem; }
-            .sae-catalogue__category--following { margin-bottom: 0.9375rem; }
-            .sae-catalogue__grid:focus-visible { outline-offset: 0.25rem; }
-            .sae-card { flex: 0 0 100%; }
-            .sae-card__description--compact { max-width: none; }
-            .sae-card__content { padding: 1rem 0.5rem 0.875rem; }
-            .sae-quantity { margin-top: 0; }
-            .site-footer { background: var(--surface-soft); }
+
+            .sae-catalogue__section--spaced {
+                margin-top: 6.375rem;
+            }
+
+            .sae-catalogue__category--following {
+                margin-bottom: 0.9375rem;
+            }
+
+            .sae-catalogue__grid:focus-visible {
+                outline-offset: 0.25rem;
+            }
+
+            .sae-card {
+                flex: 0 0 100%;
+            }
+
+            .sae-card__description--compact {
+                max-width: none;
+            }
+
+            .sae-card__content {
+                padding: 1rem 0.5rem 0.875rem;
+            }
+
+            .sae-quantity {
+                margin-top: 0;
+            }
+
+            .site-footer {
+                background: var(--surface-soft);
+            }
+
             .sae-footer {
                 display: flex;
                 flex-direction: column;
@@ -537,21 +981,64 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
                 min-height: 0;
                 padding: 3.5rem 0 4.0625rem;
             }
-            .sae-footer__logo { margin-left: 0; top: 0; margin-right: 0; }
-            .sae-footer__contact { margin-top: 1.75rem; margin-right: 0; }
-            .sae-footer__information { margin-top: 2.75rem; margin-right: 0; }
-            .sae-footer__promise { width: 100%; max-width: 20.9375rem; margin-top: 2.75rem; }
-            .sae-footer__tagline { font-size: 1.5rem; line-height: 2.0625rem; }
+
+            .sae-footer__logo {
+                margin-left: 0;
+                top: 0;
+                margin-right: 0;
+            }
+
+            .sae-footer__contact {
+                margin-top: 1.75rem;
+                margin-right: 0;
+            }
+
+            .sae-footer__information {
+                margin-top: 2.75rem;
+                margin-right: 0;
+            }
+
+            .sae-footer__promise {
+                width: 100%;
+                max-width: 20.9375rem;
+                margin-top: 2.75rem;
+            }
+
+            .sae-footer__tagline {
+                font-size: 1.5rem;
+                line-height: 2.0625rem;
+            }
         }
-        .sae301--catalogue .site-content { padding-top: 2rem; }
-        .sae301--catalogue .site-main { padding-bottom: 14.5rem; }
+
+        .sae301--catalogue .site-content {
+            padding-top: 2rem;
+        }
+
+        .sae301--catalogue .site-main {
+            padding-bottom: 14.5rem;
+        }
     }
+
     @media (max-width: 68.75rem) and (min-width: 43.8125rem) {
         .sae301 {
-            .sae-hero__logo { left: 0; width: 9.6875rem; }
-            .sae-hero__image { width: 9.6875rem; }
-            .sae-hero__navigation { left: 9.375rem; top: 14.375rem; }
-            .sae-hero__text { width: 18.75rem; }
+            .sae-hero__logo {
+                left: 0;
+                width: 9.6875rem;
+            }
+
+            .sae-hero__image {
+                width: 9.6875rem;
+            }
+
+            .sae-hero__navigation {
+                left: 9.375rem;
+                top: 14.375rem;
+            }
+
+            .sae-hero__text {
+                width: 18.75rem;
+            }
+
             .sae-hero__booking {
                 right: 0;
                 width: auto;
@@ -559,17 +1046,46 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
                 padding-right: 0.625rem;
                 font-size: 0.875rem;
             }
-            .sae-catalogue__title { font-size: 2.5rem; line-height: 3.375rem; }
-            .sae-catalogue__grid { gap: 2rem; }
-            .sae-catalogue__grid, .sae-footer { grid-template-columns: repeat(2, 1fr); }
-            .sae-footer { justify-items: center; gap: 2.5rem; display: grid; }
-            .sae-footer__logo { margin-left: 0; top: 0; }
-            .sae-footer__logo, .sae-footer__contact, .sae-footer__information { margin-right: 0; }
+
+            .sae-catalogue__title {
+                font-size: 2.5rem;
+                line-height: 3.375rem;
+            }
+
+            .sae-catalogue__grid {
+                gap: 2rem;
+            }
+
+            .sae-catalogue__grid,
+            .sae-footer {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .sae-footer {
+                justify-items: center;
+                gap: 2.5rem;
+                display: grid;
+            }
+
+            .sae-footer__logo {
+                margin-left: 0;
+                top: 0;
+            }
+
+            .sae-footer__logo,
+            .sae-footer__contact,
+            .sae-footer__information {
+                margin-right: 0;
+            }
         }
     }
+
     @media (min-width: 43.8125rem) {
         .sae301 {
-            .sae-hero { height: 34.5rem; }
+            .sae-hero {
+                height: 34.5rem;
+            }
+
             .sae-hero__inner {
                 display: grid;
                 grid-template-columns: 11.875rem 1fr;
@@ -579,6 +1095,7 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
                 margin: 0 auto;
                 padding-top: 2rem;
             }
+
             .sae-hero__booking {
                 position: static;
                 grid-column: 2;
@@ -587,12 +1104,36 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
                 width: 14.1875rem;
                 padding: 0;
                 font-size: 1rem;
-                &:hover { background: var(--white); color: var(--black); text-decoration: none; }
+
+                &:hover {
+                    background: var(--white);
+                    color: var(--black);
+                    text-decoration: none;
+                }
             }
-            .sae-hero__logo { position: static; grid-column: 1; grid-row: 2; width: 11.875rem; }
-            .sae-hero__image { width: 11.875rem; }
-            .sae-hero__navigation { position: static; grid-column: 2; grid-row: 2; padding-left: 1.25rem; }
-            .sae-menu { display: none; }
+
+            .sae-hero__logo {
+                position: static;
+                grid-column: 1;
+                grid-row: 2;
+                width: 11.875rem;
+            }
+
+            .sae-hero__image {
+                width: 11.875rem;
+            }
+
+            .sae-hero__navigation {
+                position: static;
+                grid-column: 2;
+                grid-row: 2;
+                padding-left: 1.25rem;
+            }
+
+            .sae-menu {
+                display: none;
+            }
+
             .sae-hero__links {
                 display: flex;
                 align-items: center;
@@ -602,7 +1143,11 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
                 padding: 0;
                 list-style: none;
             }
-            .sae-hero__item { margin: 0; }
+
+            .sae-hero__item {
+                margin: 0;
+            }
+
             .sae-hero__link {
                 display: block;
                 padding: 0.5rem 0;
@@ -612,8 +1157,12 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
                 font-weight: 400;
                 white-space: nowrap;
                 text-decoration: none;
-                &:hover { color: var(--action-primary); }
+
+                &:hover {
+                    color: var(--action-primary);
+                }
             }
+
             .sae-hero__text {
                 position: static;
                 grid-column: 1 / 3;
@@ -622,46 +1171,113 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
                 width: 21.25rem;
                 margin: 2rem auto 0;
             }
-            .sae-hero__eyebrow { max-width: 17.5rem; margin-bottom: 1rem; }
-            .sae-hero__description--mobile { display: none; }
-            .sae-hero__description--desktop { display: block; font-family: var(--font-title); line-height: 1.75rem; }
+
+            .sae-hero__eyebrow {
+                max-width: 17.5rem;
+                margin-bottom: 1rem;
+            }
+
+            .sae-hero__description--mobile {
+                display: none;
+            }
+
+            .sae-hero__description--desktop {
+                display: block;
+                font-family: var(--font-title);
+                line-height: 1.75rem;
+            }
         }
     }
+
     @media (min-width: 43.8125rem) and (max-width: 63.75rem) {
         .sae301 {
-            .sae-hero__inner { grid-template-columns: 9.6875rem 1fr; margin: 0 1.25rem; }
-            .sae-hero__logo, .sae-hero__image { width: 9.6875rem; }
-            .sae-hero__navigation { padding-left: 0; }
-            .sae-hero__links { gap: 0.75rem; }
-            .sae-hero__link { font-size: 0.875rem; }
+            .sae-hero__inner {
+                grid-template-columns: 9.6875rem 1fr;
+                margin: 0 1.25rem;
+            }
+
+            .sae-hero__logo,
+            .sae-hero__image {
+                width: 9.6875rem;
+            }
+
+            .sae-hero__navigation {
+                padding-left: 0;
+            }
+
+            .sae-hero__links {
+                gap: 0.75rem;
+            }
+
+            .sae-hero__link {
+                font-size: 0.875rem;
+            }
         }
     }
+
     @media (max-width: 22.5rem) {
         .sae301 {
-            .sae-hero__logo { left: 0; }
-            .sae-hero__navigation { right: 1rem; }
-            .sae-menu { width: 7.1875rem; }
-            .sae-catalogue__title { font-size: 2.625rem; line-height: 3.625rem; }
-            .sae-footer__promise { gap: 0.75rem; }
-            .sae-footer__tagline { font-size: 1.25rem; line-height: 1.8125rem; }
+            .sae-hero__logo {
+                left: 0;
+            }
+
+            .sae-hero__navigation {
+                right: 1rem;
+            }
+
+            .sae-menu {
+                width: 7.1875rem;
+            }
+
+            .sae-catalogue__title {
+                font-size: 2.625rem;
+                line-height: 3.625rem;
+            }
+
+            .sae-footer__promise {
+                gap: 0.75rem;
+            }
+
+            .sae-footer__tagline {
+                font-size: 1.25rem;
+                line-height: 1.8125rem;
+            }
         }
     }
+
     @media (min-width: 77.5rem) {
         .sae301 {
-            .col-full, .sae-hero__inner { margin-left: auto; margin-right: auto; }
+
+            .col-full,
+            .sae-hero__inner {
+                margin-left: auto;
+                margin-right: auto;
+            }
         }
     }
+
     .sae301--product {
-        .site-content { padding-top: 2rem; }
-        .site-main { margin: 0; padding-bottom: 3.75rem; }
-        .site-footer { background: var(--surface-brand); }
+        .site-content {
+            padding-top: 2rem;
+        }
+
+        .site-main {
+            margin: 0;
+            padding-bottom: 3.75rem;
+        }
+
+        .site-footer {
+            background: var(--surface-brand);
+        }
     }
+
     .sae301 .sae-product-toolbar {
         display: flex;
         align-items: center;
         justify-content: space-between;
         gap: 1.5rem;
         margin-bottom: 2rem;
+
         .sae-product-toolbar__breadcrumb {
             display: flex;
             align-items: center;
@@ -669,26 +1285,42 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
             gap: 0.75rem;
             color: var(--text-brand);
             font-size: 0.875rem;
+
             a {
                 text-decoration: none;
-                &:hover { text-decoration: underline; }
+
+                &:hover {
+                    text-decoration: underline;
+                }
             }
         }
     }
+
     .sae301 .sae-product .sae-product__layout {
         display: grid;
         grid-template-columns: 35rem 1fr;
         column-gap: 4rem;
         row-gap: 1.25rem;
         margin: 0;
+
         .sae-product__media {
             min-width: 0;
-            .woocommerce-product-gallery { float: none; width: 100%; margin: 0; }
-            .woocommerce-product-gallery__wrapper { margin: 0; }
+
+            .woocommerce-product-gallery {
+                float: none;
+                width: 100%;
+                margin: 0;
+            }
+
+            .woocommerce-product-gallery__wrapper {
+                margin: 0;
+            }
+
             .woocommerce-product-gallery__image {
                 border: 0.1875rem solid var(--surface-brand);
                 border-radius: 1.5625rem;
                 overflow: hidden;
+
                 img {
                     display: block;
                     width: 100%;
@@ -698,11 +1330,18 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
                     object-fit: cover;
                 }
             }
-            .woocommerce-product-gallery__trigger { display: none; }
+
+            .woocommerce-product-gallery__trigger {
+                display: none;
+            }
         }
+
         .sae-product__media--drink {
-            .woocommerce-product-gallery__image img { object-fit: contain; }
+            .woocommerce-product-gallery__image img {
+                object-fit: contain;
+            }
         }
+
         .sae-product__summary {
             grid-column: 2;
             grid-row: 1 / 3;
@@ -710,26 +1349,67 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
             width: 100%;
             min-width: 0;
             margin: 0;
-            .sae-product__category { margin: 0 0 0.625rem; color: var(--text-brand); font-size: 0.875rem; }
-            .product_title { margin: 0 0 1rem; line-height: 1.3; }
-            .product_title, .price { color: var(--text-brand); font-size: 2rem; }
-            .price { margin: 0 0 0.75rem; font-weight: 400; }
+
+            .sae-product__category {
+                margin: 0 0 0.625rem;
+                color: var(--text-brand);
+                font-size: 0.875rem;
+            }
+
+            .product_title {
+                margin: 0 0 1rem;
+                line-height: 1.3;
+            }
+
+            .product_title,
+            .price {
+                color: var(--text-brand);
+                font-size: 2rem;
+            }
+
+            .price {
+                margin: 0 0 0.75rem;
+                font-weight: 400;
+            }
+
             .woocommerce-product-details__short-description {
                 margin-bottom: 1.5rem;
                 color: var(--text-brand);
-                p { margin: 0; line-height: 1.4; }
+
+                p {
+                    margin: 0;
+                    line-height: 1.4;
+                }
             }
-            .sae-product__options-intro { padding-top: 1.25rem; border-top: 0.0625rem solid var(--surface-brand); }
-            .sae-product__options-title { margin: 0 0 0.5rem; font-size: 1.25rem; }
-            .sae-product__options-help { margin: 0 0 1.5rem; font-size: 0.875rem; }
+
+            .sae-product__options-intro {
+                padding-top: 1.25rem;
+                border-top: 0.0625rem solid var(--surface-brand);
+            }
+
+            .sae-product__options-title {
+                margin: 0 0 0.5rem;
+                font-size: 1.25rem;
+            }
+
+            .sae-product__options-help {
+                margin: 0 0 1.5rem;
+                font-size: 0.875rem;
+            }
+
             form.cart {
                 margin: 0;
                 padding: 0;
+
                 table.variations {
                     display: block;
                     margin: 0;
                     border: 0;
-                    tbody, tr, th, td {
+
+                    tbody,
+                    tr,
+                    th,
+                    td {
                         display: block;
                         width: 100%;
                         padding: 0;
@@ -737,9 +1417,18 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
                         background: var(--white);
                         text-align: left;
                     }
-                    tr { margin-bottom: 1.5rem; }
-                    label { display: block; margin-bottom: 0.625rem; font-weight: 400; }
+
+                    tr {
+                        margin-bottom: 1.5rem;
+                    }
+
+                    label {
+                        display: block;
+                        margin-bottom: 0.625rem;
+                        font-weight: 400;
+                    }
                 }
+
                 .sae-product__select {
                     width: 100%;
                     max-width: 20rem;
@@ -751,19 +1440,40 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
                     background: var(--white);
                     color: var(--text-brand);
                     font: inherit;
-                    option { background: var(--white); color: var(--text-brand); }
-                    &:hover { border-color: var(--action-primary); }
+
+                    option {
+                        background: var(--white);
+                        color: var(--text-brand);
+                    }
+
+                    &:hover {
+                        border-color: var(--action-primary);
+                    }
                 }
+
                 .sae-product__select--selected {
                     border-color: var(--action-primary);
                     background: var(--action-primary);
                     color: var(--white);
                 }
-                .reset_variations { display: inline-block; margin: 0.5rem 0 0 0.75rem; color: var(--text-brand); font-size: 0.875rem; }
+
+                .reset_variations {
+                    display: inline-block;
+                    margin: 0.5rem 0 0 0.75rem;
+                    color: var(--text-brand);
+                    font-size: 0.875rem;
+                }
+
                 .single_variation {
                     margin-bottom: 1rem;
-                    .price { display: block; margin-bottom: 0.5rem; font-size: 1.5rem; }
+
+                    .price {
+                        display: block;
+                        margin-bottom: 0.5rem;
+                        font-size: 1.5rem;
+                    }
                 }
+
                 .woocommerce-variation-add-to-cart {
                     display: flex;
                     align-items: flex-end;
@@ -772,14 +1482,26 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
                     padding-top: 1.5rem;
                     border-top: 0.0625rem solid var(--surface-brand);
                 }
-                .quantity { float: none; width: 7.5rem; margin: 0; }
-                .sae-product__quantity-label { display: block; margin-bottom: 0.625rem; color: var(--text-brand); }
+
+                .quantity {
+                    float: none;
+                    width: 7.5rem;
+                    margin: 0;
+                }
+
+                .sae-product__quantity-label {
+                    display: block;
+                    margin-bottom: 0.625rem;
+                    color: var(--text-brand);
+                }
+
                 .sae-product__quantity-control {
                     display: flex;
                     align-items: center;
                     height: 3.125rem;
                     border: 0.0625rem solid var(--surface-brand);
                     border-radius: 0.625rem;
+
                     input.qty {
                         width: 3rem;
                         min-width: 0;
@@ -792,6 +1514,7 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
                         font: inherit;
                     }
                 }
+
                 .sae-product__quantity-button {
                     flex: 1;
                     height: 100%;
@@ -800,8 +1523,12 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
                     background: var(--white);
                     color: var(--text-brand);
                     font: inherit;
-                    &:hover { background: var(--surface-soft); }
+
+                    &:hover {
+                        background: var(--surface-soft);
+                    }
                 }
+
                 .single_add_to_cart_button {
                     float: none;
                     flex: 1;
@@ -814,14 +1541,34 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
                     color: var(--white);
                     font: inherit;
                     text-align: center;
-                    &:hover { background: var(--white); color: var(--black); }
-                    &:disabled, &.disabled { opacity: 0.5; cursor: default; }
+
+                    &:hover {
+                        background: var(--white);
+                        color: var(--black);
+                    }
+
+                    &:disabled,
+                    &.disabled {
+                        opacity: 0.5;
+                        cursor: default;
+                    }
                 }
             }
-            .stock { margin: 0.75rem 0; font-size: 0.875rem; }
-            .in-stock { color: var(--stock-available); }
-            .out-of-stock { color: var(--stock-empty); }
+
+            .stock {
+                margin: 0.75rem 0;
+                font-size: 0.875rem;
+            }
+
+            .in-stock {
+                color: var(--stock-available);
+            }
+
+            .out-of-stock {
+                color: var(--stock-empty);
+            }
         }
+
         .sae-product__back {
             grid-column: 1;
             grid-row: 2;
@@ -829,33 +1576,76 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
             color: var(--text-brand);
             font-size: 0.875rem;
             text-decoration: none;
-            &:hover { text-decoration: underline; }
+
+            &:hover {
+                text-decoration: underline;
+            }
         }
     }
+
     @media (max-width: 68.75rem) and (min-width: 43.8125rem) {
-        .sae301 .sae-product .sae-product__layout { grid-template-columns: 1fr 1fr; column-gap: 2rem; }
+        .sae301 .sae-product .sae-product__layout {
+            grid-template-columns: 1fr 1fr;
+            column-gap: 2rem;
+        }
     }
+
     @media (max-width: 43.75rem) {
-        .sae301--product .site-main { padding-bottom: 2.5rem; }
-        .sae301 .sae-product-toolbar { flex-direction: column; align-items: flex-start; gap: 1.5rem; margin-bottom: 1.5rem; }
+        .sae301--product .site-main {
+            padding-bottom: 2.5rem;
+        }
+
+        .sae301 .sae-product-toolbar {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
         .sae301 .sae-product .sae-product__layout {
             grid-template-columns: 1fr;
             gap: 1.5rem;
-            .sae-product__media .woocommerce-product-gallery__image img { height: 18.75rem; }
+
+            .sae-product__media .woocommerce-product-gallery__image img {
+                height: 18.75rem;
+            }
+
             .sae-product__summary {
                 grid-column: auto;
                 grid-row: auto;
-                .product_title { margin-bottom: 1rem; }
+
+                .product_title {
+                    margin-bottom: 1rem;
+                }
+
                 form.cart {
-                    .sae-product__select { max-width: 100%; }
-                    .woocommerce-variation-add-to-cart { flex-direction: column; align-items: flex-start; }
-                    .single_add_to_cart_button { flex: none; width: 100%; }
+                    .sae-product__select {
+                        max-width: 100%;
+                    }
+
+                    .woocommerce-variation-add-to-cart {
+                        flex-direction: column;
+                        align-items: flex-start;
+                    }
+
+                    .single_add_to_cart_button {
+                        flex: none;
+                        width: 100%;
+                    }
                 }
             }
-            .sae-product__back { grid-column: auto; grid-row: auto; }
+
+            .sae-product__back {
+                grid-column: auto;
+                grid-row: auto;
+            }
         }
     }
-    .sae301 div.sae-product { margin: 0; }
+
+    .sae301 div.sae-product {
+        margin: 0;
+    }
+
     .sae301 .sae-product .sae-product__summary {
         .sae-product__details {
             margin: 0 0 1.5rem;
@@ -863,14 +1653,22 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
             border-top: 0.0625rem solid var(--surface-brand);
             border-bottom: 0.0625rem solid var(--surface-brand);
         }
+
         .sae-product-info {
             padding: 1rem;
             border: 0.0625rem solid var(--surface-brand);
             border-radius: 0.625rem;
             background: var(--surface-soft);
             color: var(--text-brand);
-            .sae-product-info__group { margin: 0 0 1.25rem; }
-            .sae-product-info__group--last { margin-bottom: 0; }
+
+            .sae-product-info__group {
+                margin: 0 0 1.25rem;
+            }
+
+            .sae-product-info__group--last {
+                margin-bottom: 0;
+            }
+
             .sae-product-info__title {
                 margin: 0 0 0.25rem;
                 color: var(--text-brand);
@@ -879,59 +1677,137 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
                 font-weight: 400;
                 line-height: 1.4;
             }
-            .sae-product-info__text { margin: 0; color: var(--text-brand); font-size: 1rem; line-height: 1.4; }
+
+            .sae-product-info__text {
+                margin: 0;
+                color: var(--text-brand);
+                font-size: 1rem;
+                line-height: 1.4;
+            }
         }
     }
+
     @media (max-width: 43.75rem) {
         .sae301 .sae-product .sae-product__summary {
             display: flex;
             flex-direction: column;
-            .price { order: 1; }
-            .woocommerce-product-details__short-description { order: 2; }
-            .sae-product__options-intro { order: 3; }
-            form.cart { order: 4; }
-            .sae-product__details { padding: 0; border: 0; margin-bottom: 0.75rem; }
+
+            .price {
+                order: 1;
+            }
+
+            .woocommerce-product-details__short-description {
+                order: 2;
+            }
+
+            .sae-product__options-intro {
+                order: 3;
+            }
+
+            form.cart {
+                order: 4;
+            }
+
+            .sae-product__details {
+                padding: 0;
+                border: 0;
+                margin-bottom: 0.75rem;
+            }
+
             .sae-product-info {
-                .sae-product-info__title { font-size: 1.25rem; }
-                .sae-product-info__text { font-size: 0.875rem; }
+                .sae-product-info__title {
+                    font-size: 1.25rem;
+                }
+
+                .sae-product-info__text {
+                    font-size: 0.875rem;
+                }
             }
         }
     }
+
     .sae301.woocommerce-account {
-        .woocommerce-form-login__submit, .woocommerce-form-register__submit {
+
+        .woocommerce-form-login__submit,
+        .woocommerce-form-register__submit {
             border-color: var(--action-primary);
             background: var(--action-primary);
             color: var(--white);
-            &:hover { border-color: var(--action-primary); background: var(--white); color: var(--black); }
+
+            &:hover {
+                border-color: var(--action-primary);
+                background: var(--white);
+                color: var(--black);
+            }
         }
     }
+
     .sae301.sae-flow {
-        .site-content { padding-top: 2rem; color: var(--text-brand); }
-        .site-main { margin: 0; padding-bottom: 4rem; }
-        .site-footer { background: var(--surface-brand); }
-        .entry-content { margin: 0; }
-        .sae-flow__header { margin-bottom: 2rem; }
+        .site-content {
+            padding-top: 2rem;
+            color: var(--text-brand);
+        }
+
+        .site-main {
+            margin: 0;
+            padding-bottom: 4rem;
+        }
+
+        .site-footer {
+            background: var(--surface-brand);
+        }
+
+        .entry-content {
+            margin: 0;
+        }
+
+        .sae-flow__header {
+            margin-bottom: 2rem;
+        }
+
         .sae-flow__breadcrumb {
             display: flex;
             flex-wrap: wrap;
             gap: 0.625rem;
             margin-bottom: 2rem;
             font-size: 0.875rem;
+
             a {
                 text-decoration: none;
-                &:hover { text-decoration: underline; }
+
+                &:hover {
+                    text-decoration: underline;
+                }
             }
         }
-        .sae-flow__intro { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
-        .sae-flow__title { margin: 0; color: var(--text-brand); font-size: 2rem; line-height: 1.25; }
+
+        .sae-flow__intro {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+        }
+
+        .sae-flow__title {
+            margin: 0;
+            color: var(--text-brand);
+            font-size: 2rem;
+            line-height: 1.25;
+        }
+
         .sae-flow__back {
             display: inline-block;
             margin-top: 1.5rem;
             font-size: 0.875rem;
             text-decoration: none;
-            &:hover { text-decoration: underline; }
+
+            &:hover {
+                text-decoration: underline;
+            }
         }
-        .wp-block-woocommerce-cart, .wp-block-woocommerce-checkout {
+
+        .wp-block-woocommerce-cart,
+        .wp-block-woocommerce-checkout {
             width: 100%;
             max-width: 100%;
             margin: 0;
@@ -939,8 +1815,11 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
             font-family: var(--font-primary);
             font-size: 1rem;
         }
-        .wc-block-components-button, .wc-block-components-panel__button,
-        .wc-block-components-address-card__edit, .wc-block-cart-item__remove-link {
+
+        .wc-block-components-button,
+        .wc-block-components-panel__button,
+        .wc-block-components-address-card__edit,
+        .wc-block-cart-item__remove-link {
             min-height: 3.125rem;
             padding: 0.75rem 1rem;
             border: 0.0625rem solid var(--action-primary);
@@ -950,63 +1829,125 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
             font: inherit;
             text-align: center;
             text-decoration: none;
-            &:hover { background: var(--white); color: var(--black); text-decoration: none; }
-            &:disabled { opacity: 0.5; }
+
+            &:hover {
+                background: var(--white);
+                color: var(--black);
+                text-decoration: none;
+            }
+
+            &:disabled {
+                opacity: 0.5;
+            }
         }
-        .wc-block-components-button__text { color: inherit; font: inherit; }
-        .wc-block-components-totals-wrapper { padding: 1.25rem 0; border-color: var(--surface-brand); }
-        .wc-block-components-totals-item { padding: 0; color: var(--text-brand); font-size: 1rem; }
+
+        .wc-block-components-button__text {
+            color: inherit;
+            font: inherit;
+        }
+
+        .wc-block-components-totals-wrapper {
+            padding: 1.25rem 0;
+            border-color: var(--surface-brand);
+        }
+
+        .wc-block-components-totals-item {
+            padding: 0;
+            color: var(--text-brand);
+            font-size: 1rem;
+        }
+
         .wc-block-components-totals-footer-item {
             align-items: center;
-            .wc-block-components-totals-item__label { font-size: 1.25rem; font-weight: 400; }
-            .wc-block-components-totals-item__value { font-size: 2rem; font-weight: 400; }
+
+            .wc-block-components-totals-item__label {
+                font-size: 1.25rem;
+                font-weight: 400;
+            }
+
+            .wc-block-components-totals-item__value {
+                font-size: 2rem;
+                font-weight: 400;
+            }
         }
-        .wc-block-components-totals-item__description { color: var(--text-brand); }
+
+        .wc-block-components-totals-item__description {
+            color: var(--text-brand);
+        }
+
         .wc-block-components-text-input input,
         .wc-block-components-combobox .wc-block-components-combobox-control input,
-        .wc-block-components-textarea, .wc-blocks-components-select .wc-blocks-components-select__select {
+        .wc-block-components-textarea,
+        .wc-blocks-components-select .wc-blocks-components-select__select {
             min-height: 3rem;
             border: 0.0625rem solid var(--surface-brand);
             border-radius: 0.625rem;
             background: var(--surface-soft);
             color: var(--text-brand);
             font-family: var(--font-primary);
-            &:focus { border-color: var(--action-primary); }
+
+            &:focus {
+                border-color: var(--action-primary);
+            }
         }
-        .wc-block-components-text-input label, .wc-block-components-combobox label,
+
+        .wc-block-components-text-input label,
+        .wc-block-components-combobox label,
         .wc-blocks-components-select__label {
             color: var(--text-brand);
             font-family: var(--font-primary);
         }
-        .wc-block-components-radio-control__option, .wc-block-components-radio-control-accordion-option {
+
+        .wc-block-components-radio-control__option,
+        .wc-block-components-radio-control-accordion-option {
             margin-bottom: 0.75rem;
             border: 0.0625rem solid var(--surface-brand);
             border-radius: 0.625rem;
             background: var(--white);
             color: var(--text-brand);
         }
+
         .wc-block-components-radio-control__option-checked,
         .wc-block-components-radio-control-accordion-option--checked-option-highlighted {
             border-color: var(--action-primary);
             background: var(--surface-soft);
         }
-        .wc-block-components-radio-control__input { accent-color: var(--action-primary); color: var(--action-primary); }
-        .wc-block-components-radio-control__label, .wc-block-components-radio-control__description,
+
+        .wc-block-components-radio-control__input {
+            accent-color: var(--action-primary);
+            color: var(--action-primary);
+        }
+
+        .wc-block-components-radio-control__label,
+        .wc-block-components-radio-control__description,
         .wc-block-components-radio-control__secondary-label,
         .wc-block-components-radio-control-accordion-content {
             color: var(--text-brand);
         }
+
         .wc-block-components-address-card {
             padding: 1rem;
             border: 0.0625rem solid var(--surface-brand);
             border-radius: 0.625rem;
             background: var(--surface-soft);
         }
+
         @media (max-width: 43.75rem) {
-            .site-content { padding-top: 1.5rem; }
-            .sae-flow__breadcrumb { margin-bottom: 1.5rem; }
-            .sae-flow__intro { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+            .site-content {
+                padding-top: 1.5rem;
+            }
+
+            .sae-flow__breadcrumb {
+                margin-bottom: 1.5rem;
+            }
+
+            .sae-flow__intro {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.75rem;
+            }
         }
+
         .wp-block-woocommerce-checkout-order-summary-discount-block,
         .wp-block-woocommerce-checkout-order-summary-fee-block,
         .wp-block-woocommerce-cart-order-summary-discount-block,
@@ -1015,14 +1956,25 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
             border: 0;
         }
     }
+
     .sae301.sae-flow--cart {
         table.wc-block-cart-items {
             display: block;
             width: 100%;
             margin: 0;
             border: 0;
-            thead { display: none; }
-            tbody { display: grid; grid-template-columns: repeat(3, 20.9375rem); align-items: start; gap: 2.5rem; }
+
+            thead {
+                display: none;
+            }
+
+            tbody {
+                display: grid;
+                grid-template-columns: repeat(3, 20.9375rem);
+                align-items: start;
+                gap: 2.5rem;
+            }
+
             .wc-block-cart-items__row {
                 display: flex;
                 flex-direction: column;
@@ -1030,12 +1982,18 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
                 padding: 0;
                 border: 0;
             }
+
             .wc-block-cart-item__image {
                 display: block;
                 width: 100%;
                 padding: 0;
                 background: var(--white);
-                a, img { display: block; }
+
+                a,
+                img {
+                    display: block;
+                }
+
                 img {
                     width: 100%;
                     max-width: 100%;
@@ -1047,11 +2005,20 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
                     object-fit: cover;
                 }
             }
-            .wc-block-cart-item__product { display: block; width: 100%; padding: 0; border: 0; }
-            .wc-block-cart-item__product, .wc-block-cart-item__wrap {
+
+            .wc-block-cart-item__product {
+                display: block;
+                width: 100%;
+                padding: 0;
+                border: 0;
+            }
+
+            .wc-block-cart-item__product,
+            .wc-block-cart-item__wrap {
                 border-radius: 0 0 1.25rem 1.25rem;
                 background: var(--surface-brand);
             }
+
             .wc-block-cart-item__wrap {
                 display: grid;
                 grid-template-columns: 1fr auto;
@@ -1059,6 +2026,7 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
                 min-height: 10.75rem;
                 padding: 1rem 0.5rem;
             }
+
             .wc-block-components-product-name {
                 grid-row: 1;
                 grid-column: 1;
@@ -1068,8 +2036,12 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
                 font-size: 1.5rem;
                 line-height: 1.25;
                 text-decoration: none;
-                &:hover { text-decoration: underline; }
+
+                &:hover {
+                    text-decoration: underline;
+                }
             }
+
             .wc-block-cart-item__prices {
                 grid-row: 1;
                 grid-column: 2;
@@ -1077,6 +2049,7 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
                 color: var(--text-brand);
                 font-size: 1rem;
             }
+
             .wc-block-components-product-metadata {
                 grid-row: 2;
                 grid-column: 1 / 3;
@@ -1084,6 +2057,7 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
                 color: var(--text-brand);
                 font-size: 0.875rem;
             }
+
             .wc-block-cart-item__quantity {
                 grid-row: 3;
                 grid-column: 1 / 3;
@@ -1093,6 +2067,7 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
                 gap: 0.5rem;
                 padding: 0;
             }
+
             .wc-block-components-quantity-selector {
                 width: 16.8125rem;
                 height: 3.3125rem;
@@ -1102,6 +2077,7 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
                 border-radius: 0.625rem;
                 background: var(--text-brand);
             }
+
             .wc-block-components-quantity-selector__input {
                 width: 100%;
                 min-width: 0;
@@ -1112,6 +2088,7 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
                 font: inherit;
                 font-size: 1.25rem;
             }
+
             .wc-block-components-quantity-selector__button {
                 flex: none;
                 width: 2.375rem;
@@ -1123,8 +2100,13 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
                 background: var(--action-primary);
                 color: var(--white);
                 font-size: 1.5rem;
-                &:hover { background: var(--white); color: var(--black); }
+
+                &:hover {
+                    background: var(--white);
+                    color: var(--black);
+                }
             }
+
             .wc-block-cart-item__remove-link {
                 display: inline-flex;
                 align-items: center;
@@ -1139,9 +2121,22 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
                 background: var(--action-primary);
                 color: var(--white);
                 text-decoration: none;
-                svg { display: block; flex: none; width: 1.5rem; height: 1.5rem; margin: 0; fill: currentColor; }
-                &:hover { background: var(--white); color: var(--black); }
+
+                svg {
+                    display: block;
+                    flex: none;
+                    width: 1.5rem;
+                    height: 1.5rem;
+                    margin: 0;
+                    fill: currentColor;
+                }
+
+                &:hover {
+                    background: var(--white);
+                    color: var(--black);
+                }
             }
+
             .wc-block-cart-item__total {
                 display: block;
                 width: 100%;
@@ -1153,7 +2148,12 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
                 text-align: right;
             }
         }
-        .wc-block-components-totals-discount__coupon-list { margin: 0.75rem 0 0; padding: 0; }
+
+        .wc-block-components-totals-discount__coupon-list {
+            margin: 0.75rem 0 0;
+            padding: 0;
+        }
+
         .wc-block-components-chip {
             display: inline-flex;
             align-items: center;
@@ -1165,7 +2165,13 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
             border-radius: 0.625rem;
             background: var(--white);
             color: var(--text-brand);
-            .wc-block-components-chip__text { min-width: 0; padding: 0; overflow-wrap: anywhere; }
+
+            .wc-block-components-chip__text {
+                min-width: 0;
+                padding: 0;
+                overflow-wrap: anywhere;
+            }
+
             .wc-block-components-chip__remove {
                 position: static;
                 display: inline-flex;
@@ -1183,10 +2189,22 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
                 background: var(--action-primary);
                 color: var(--white);
                 opacity: 1;
-                svg { display: block; width: 1.25rem; height: 1.25rem; margin: 0; fill: currentColor; }
-                &:hover { background: var(--white); color: var(--black); }
+
+                svg {
+                    display: block;
+                    width: 1.25rem;
+                    height: 1.25rem;
+                    margin: 0;
+                    fill: currentColor;
+                }
+
+                &:hover {
+                    background: var(--white);
+                    color: var(--black);
+                }
             }
         }
+
         .wc-block-cart__totals-title {
             display: block;
             margin: 0 0 1.5rem;
@@ -1197,6 +2215,7 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
             font-weight: 400;
             text-transform: none;
         }
+
         .wc-block-cart__submit-container {
             display: flex;
             width: 100%;
@@ -1204,10 +2223,19 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
             padding: 0;
             background: var(--surface-soft);
         }
-        .wc-block-cart__submit-button { display: flex; width: 100%; margin: 0; }
-        @media (max-width: 75rem) and (min-width: 43.8125rem) {
-            table.wc-block-cart-items tbody { grid-template-columns: repeat(2, 1fr); }
+
+        .wc-block-cart__submit-button {
+            display: flex;
+            width: 100%;
+            margin: 0;
         }
+
+        @media (max-width: 75rem) and (min-width: 43.8125rem) {
+            table.wc-block-cart-items tbody {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
         .wc-block-cart {
             flex-direction: column;
             margin: 0;
@@ -1216,7 +2244,14 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
             align-items: start;
             gap: 2rem 2.5rem;
         }
-        .wc-block-cart__main { width: 100%; padding: 0; grid-column: 1 / 3; grid-row: 1; }
+
+        .wc-block-cart__main {
+            width: 100%;
+            padding: 0;
+            grid-column: 1 / 3;
+            grid-row: 1;
+        }
+
         .wc-block-cart__sidebar {
             width: 26.25rem;
             max-width: 100%;
@@ -1228,12 +2263,24 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
             grid-row: 2;
             margin: 0;
         }
+
         .sae-cart-coupon {
             grid-column: 1;
             grid-row: 2;
             min-width: 0;
-            & .sae-cart-coupon__label { display: block; margin-bottom: 1rem; color: var(--text-brand); }
-            & .sae-cart-coupon__form { display: flex; gap: 0.75rem; margin: 0; }
+
+            & .sae-cart-coupon__label {
+                display: block;
+                margin-bottom: 1rem;
+                color: var(--text-brand);
+            }
+
+            & .sae-cart-coupon__form {
+                display: flex;
+                gap: 0.75rem;
+                margin: 0;
+            }
+
             .sae-cart-coupon__message {
                 margin: 0.75rem 0 0;
                 color: var(--stock-available);
@@ -1241,7 +2288,11 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
                 line-height: 1.5;
                 overflow-wrap: anywhere;
             }
-            .sae-cart-coupon__message--error { color: var(--stock-empty); }
+
+            .sae-cart-coupon__message--error {
+                color: var(--stock-empty);
+            }
+
             & .sae-cart-coupon__input {
                 flex: 1;
                 min-width: 0;
@@ -1252,6 +2303,7 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
                 background: var(--white);
                 color: var(--text-brand);
             }
+
             & .sae-cart-coupon__button {
                 padding: 0.75rem 1.5rem;
                 border: 0.0625rem solid var(--action-primary);
@@ -1259,9 +2311,14 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
                 background: var(--action-primary);
                 color: var(--white);
                 font-weight: 400;
-                &:hover { background: var(--white); color: var(--black); }
+
+                &:hover {
+                    background: var(--white);
+                    color: var(--black);
+                }
             }
         }
+
         @media (max-width: 43.75rem) {
             table.wc-block-cart-items tbody {
                 grid-template-columns: 1fr;
@@ -1271,15 +2328,43 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
                 margin-left: auto;
                 margin-right: auto;
             }
-            .wc-block-cart__sidebar { width: 100%; padding: 1.25rem; }
-            .wc-block-cart { grid-template-columns: 1fr; }
-            .wc-block-cart__main, .sae-cart-coupon, .wc-block-cart__sidebar { grid-column: 1; grid-row: auto; }
-            .sae-cart-coupon__form { flex-direction: column; }
+
+            .wc-block-cart__sidebar {
+                width: 100%;
+                padding: 1.25rem;
+            }
+
+            .wc-block-cart {
+                grid-template-columns: 1fr;
+            }
+
+            .wc-block-cart__main,
+            .sae-cart-coupon,
+            .wc-block-cart__sidebar {
+                grid-column: 1;
+                grid-row: auto;
+            }
+
+            .sae-cart-coupon__form {
+                flex-direction: column;
+            }
         }
-        .wp-block-woocommerce-cart-order-summary-subtotal-block, .sae-cart-shipping + .wc-block-components-totals-wrapper { display: none; }
+
+        .wp-block-woocommerce-cart-order-summary-subtotal-block,
+        .sae-cart-shipping+.wc-block-components-totals-wrapper {
+            display: none;
+        }
+
         .sae-cart-shipping {
             padding: 1.5rem 0;
-            & .sae-cart-shipping__title { margin: 0 0 1.25rem; font-family: var(--font-primary); font-size: 1rem; font-weight: 400; }
+
+            & .sae-cart-shipping__title {
+                margin: 0 0 1.25rem;
+                font-family: var(--font-primary);
+                font-size: 1rem;
+                font-weight: 400;
+            }
+
             & .sae-cart-shipping__choices {
                 display: flex;
                 flex-direction: column;
@@ -1289,6 +2374,7 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
                 border: 0;
                 background: none;
             }
+
             & .sae-cart-shipping__option {
                 display: flex;
                 align-items: center;
@@ -1301,6 +2387,7 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
                 color: var(--text-brand);
                 cursor: pointer;
             }
+
             & .sae-cart-shipping__radio {
                 flex: none;
                 width: 1.25rem;
@@ -1308,10 +2395,15 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
                 margin: 0;
                 accent-color: var(--action-primary);
             }
-            & .sae-cart-shipping__text { font-size: 1rem; }
+
+            & .sae-cart-shipping__text {
+                font-size: 1rem;
+            }
+
             border-top: 0;
             padding-top: 0;
         }
+
         .sae-cart-shipping__subtotal {
             display: flex;
             justify-content: space-between;
@@ -1321,10 +2413,14 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
             border-bottom: 0.0625rem solid var(--surface-brand);
             color: var(--text-brand);
         }
+
         @media (max-width: 75rem) {
-            .sae-cart-coupon__form { flex-direction: column; }
+            .sae-cart-coupon__form {
+                flex-direction: column;
+            }
         }
     }
+
     .sae301.sae-flow--checkout {
         .wc-block-components-sidebar-layout {
             display: grid;
@@ -1333,23 +2429,44 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
             gap: 2.5rem;
             margin: 0;
         }
-        .wc-block-checkout__main, .wc-block-checkout__sidebar { width: 100%; min-width: 0; padding: 0; }
+
+        .wc-block-checkout__main,
+        .wc-block-checkout__sidebar {
+            width: 100%;
+            min-width: 0;
+            padding: 0;
+        }
+
         .wc-block-components-checkout-step {
             margin: 0 0 1.5rem;
             padding: 0 0 1.5rem;
             border: 0;
             border-bottom: 0.0625rem solid var(--surface-brand);
         }
-        .wc-block-components-checkout-step__title, .wc-block-components-checkout-order-summary__title-text {
+
+        .wc-block-components-checkout-step__title,
+        .wc-block-components-checkout-order-summary__title-text {
             color: var(--text-brand);
             font-family: var(--font-title);
             font-weight: 400;
         }
-        .wp-block-woocommerce-checkout-order-summary-block { border: 0; }
-        .wc-block-components-order-summary { margin: 0; padding: 0; }
-        @media (max-width: 75rem) and (min-width: 43.8125rem) {
-            .wc-block-components-sidebar-layout { grid-template-columns: 1fr 22rem; gap: 1.5rem; }
+
+        .wp-block-woocommerce-checkout-order-summary-block {
+            border: 0;
         }
+
+        .wc-block-components-order-summary {
+            margin: 0;
+            padding: 0;
+        }
+
+        @media (max-width: 75rem) and (min-width: 43.8125rem) {
+            .wc-block-components-sidebar-layout {
+                grid-template-columns: 1fr 22rem;
+                gap: 1.5rem;
+            }
+        }
+
         .wc-block-checkout__form {
             display: grid;
             grid-template-columns: 1fr 1fr 0.5rem 1fr 1fr;
@@ -1357,7 +2474,9 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
             gap: 1.5rem 0.75rem;
             margin: 0;
         }
-        .wc-block-checkout__contact-fields, .wc-block-checkout__shipping-fields,
+
+        .wc-block-checkout__contact-fields,
+        .wc-block-checkout__shipping-fields,
         .wc-block-checkout__contact-fields .wc-block-components-checkout-step__content,
         .wc-block-checkout__shipping-fields .wc-block-components-checkout-step__content,
         .wc-block-checkout__contact-fields .wc-block-components-address-form,
@@ -1366,24 +2485,81 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
         .wc-block-checkout__shipping-fields .wc-block-components-address-form {
             display: contents;
         }
-        .wc-block-checkout__contact-fields .wc-block-components-checkout-step__heading-container { grid-column: 1 / 3; grid-row: 1; }
-        .wc-block-checkout__shipping-fields .wc-block-components-checkout-step__heading-container { grid-column: 4 / 6; grid-row: 1; }
-        .wc-block-components-checkout-step__heading { margin-bottom: 1.25rem; margin: 0; }
-        .wc-block-components-checkout-step__title { font-size: 1.5rem; line-height: 1.3; }
-        .wc-block-checkout__shipping-fields .wc-block-components-address-card-wrapper { display: none; }
-        .wc-block-components-address-form__first_name { grid-column: 1; grid-row: 2; }
-        .wc-block-components-address-form__last_name { grid-column: 2; grid-row: 2; }
-        .wc-block-components-address-form__email { grid-column: 1 / 3; grid-row: 3; }
-        .wc-block-components-address-form__phone { grid-column: 1 / 3; grid-row: 4; }
-        .wc-block-components-address-form__country { grid-column: 4 / 6; grid-row: 2; }
-        .wc-block-components-address-form__address_1 { grid-column: 4 / 6; grid-row: 3; }
-        .wc-block-components-address-form__address_2, .wc-block-components-address-form__address_2-toggle {
+
+        .wc-block-checkout__contact-fields .wc-block-components-checkout-step__heading-container {
+            grid-column: 1 / 3;
+            grid-row: 1;
+        }
+
+        .wc-block-checkout__shipping-fields .wc-block-components-checkout-step__heading-container {
+            grid-column: 4 / 6;
+            grid-row: 1;
+        }
+
+        .wc-block-components-checkout-step__heading {
+            margin-bottom: 1.25rem;
+            margin: 0;
+        }
+
+        .wc-block-components-checkout-step__title {
+            font-size: 1.5rem;
+            line-height: 1.3;
+        }
+
+        .wc-block-checkout__shipping-fields .wc-block-components-address-card-wrapper {
+            display: none;
+        }
+
+        .wc-block-components-address-form__first_name {
+            grid-column: 1;
+            grid-row: 2;
+        }
+
+        .wc-block-components-address-form__last_name {
+            grid-column: 2;
+            grid-row: 2;
+        }
+
+        .wc-block-components-address-form__email {
+            grid-column: 1 / 3;
+            grid-row: 3;
+        }
+
+        .wc-block-components-address-form__phone {
+            grid-column: 1 / 3;
+            grid-row: 4;
+        }
+
+        .wc-block-components-address-form__country {
+            grid-column: 4 / 6;
+            grid-row: 2;
+        }
+
+        .wc-block-components-address-form__address_1 {
+            grid-column: 4 / 6;
+            grid-row: 3;
+        }
+
+        .wc-block-components-address-form__address_2,
+        .wc-block-components-address-form__address_2-toggle {
             grid-column: 4 / 6;
             grid-row: 4;
         }
-        .wc-block-components-address-form__postcode { grid-column: 4; grid-row: 5; }
-        .wc-block-components-address-form__city { grid-column: 5; grid-row: 5; }
-        .wc-block-components-address-form__state { grid-column: 4 / 6; }
+
+        .wc-block-components-address-form__postcode {
+            grid-column: 4;
+            grid-row: 5;
+        }
+
+        .wc-block-components-address-form__city {
+            grid-column: 5;
+            grid-row: 5;
+        }
+
+        .wc-block-components-address-form__state {
+            grid-column: 4 / 6;
+        }
+
         .wc-block-components-address-form__address_2-toggle {
             align-self: end;
             padding: 0.75rem;
@@ -1393,13 +2569,17 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
             color: var(--text-brand);
             font-size: 0.875rem;
         }
-        .wc-block-components-text-input, .wc-block-components-address-form__country {
+
+        .wc-block-components-text-input,
+        .wc-block-components-address-form__country {
             display: flex;
             flex-direction: column;
             width: 100%;
             margin: 0;
         }
-        .wc-block-components-text-input label, .wc-blocks-components-select__label {
+
+        .wc-block-components-text-input label,
+        .wc-blocks-components-select__label {
             position: static;
             order: -1;
             display: block;
@@ -1411,6 +2591,7 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
             font-size: 0.875rem;
             line-height: 1.5;
         }
+
         .wc-block-components-text-input input,
         .wc-blocks-components-select .wc-blocks-components-select__select {
             height: 3rem;
@@ -1424,46 +2605,94 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
             font-size: 0.75rem;
             line-height: 1.5;
         }
-        .wc-blocks-components-select__container { display: flex; flex-direction: column; height: auto; }
-        .wc-block-checkout__form > div:first-child { display: contents; }
-        .wc-block-components-notices:empty, .wc-block-components-notices__snackbar:empty,
+
+        .wc-blocks-components-select__container {
+            display: flex;
+            flex-direction: column;
+            height: auto;
+        }
+
+        .wc-block-checkout__form>div:first-child {
+            display: contents;
+        }
+
+        .wc-block-components-notices:empty,
+        .wc-block-components-notices__snackbar:empty,
         .wp-block-woocommerce-checkout-shipping-method-block:empty,
         .wp-block-woocommerce-checkout-pickup-options-block:empty {
             display: none;
         }
-        .wc-block-components-notices, .wc-block-components-notices__snackbar,
-        .wc-block-checkout__shipping-fields .wc-block-components-checkbox, .wc-block-checkout__shipping-option,
-        .wc-block-checkout__billing-fields, .wc-block-checkout__payment-method,
-        .wc-block-checkout__order-notes, .wc-block-checkout__terms {
+
+        .wc-block-components-notices,
+        .wc-block-components-notices__snackbar,
+        .wc-block-checkout__shipping-fields .wc-block-components-checkbox,
+        .wc-block-checkout__shipping-option,
+        .wc-block-checkout__billing-fields,
+        .wc-block-checkout__payment-method,
+        .wc-block-checkout__order-notes,
+        .wc-block-checkout__terms {
             grid-column: 1 / -1;
         }
-        .wc-block-checkout__shipping-option, .wc-block-checkout__payment-method {
+
+        .wc-block-checkout__shipping-option,
+        .wc-block-checkout__payment-method {
             margin: 0;
             padding: 1.5rem 0 0;
             border: 0;
             border-top: 0.0625rem solid var(--surface-brand);
-            .wc-block-components-checkout-step__heading { margin-bottom: 1.75rem; }
-            .wc-block-components-radio-control { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-            .wc-block-components-radio-control__option, .wc-block-components-radio-control-accordion-option {
+
+            .wc-block-components-checkout-step__heading {
+                margin-bottom: 1.75rem;
+            }
+
+            .wc-block-components-radio-control {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 1rem;
+            }
+
+            .wc-block-components-radio-control__option,
+            .wc-block-components-radio-control-accordion-option {
                 min-width: 0;
                 margin: 0;
                 border: 0.0625rem solid var(--surface-brand);
                 border-radius: 0.625rem;
             }
-            .wc-block-components-radio-control__option { min-height: 4.625rem; padding: 1rem 0.75rem 1rem 2.75rem; }
-            .wc-block-components-radio-control-accordion-option .wc-block-components-radio-control__option { border: 0; }
-            .wc-block-components-radio-control-accordion-content { padding: 0 1rem 1rem; font-size: 0.875rem; }
+
+            .wc-block-components-radio-control__option {
+                min-height: 4.625rem;
+                padding: 1rem 0.75rem 1rem 2.75rem;
+            }
+
+            .wc-block-components-radio-control-accordion-option .wc-block-components-radio-control__option {
+                border: 0;
+            }
+
+            .wc-block-components-radio-control-accordion-content {
+                padding: 0 1rem 1rem;
+                font-size: 0.875rem;
+            }
+
             .wc-block-components-radio-control__option-checked,
             .wc-block-components-radio-control-accordion-option--checked-option-highlighted {
                 border-color: var(--action-primary);
                 background: var(--surface-soft);
             }
-            .wc-block-components-radio-control__label, .wc-block-components-radio-control__secondary-label {
+
+            .wc-block-components-radio-control__label,
+            .wc-block-components-radio-control__secondary-label {
                 font-size: 0.875rem;
                 font-weight: 400;
             }
         }
-        .wc-block-checkout__order-notes { margin: 0; padding: 1.5rem 0 0; border: 0; border-top: 0.0625rem solid var(--surface-brand); }
+
+        .wc-block-checkout__order-notes {
+            margin: 0;
+            padding: 1.5rem 0 0;
+            border: 0;
+            border-top: 0.0625rem solid var(--surface-brand);
+        }
+
         .wc-block-checkout__terms {
             padding-top: 1.5rem;
             border-color: var(--surface-brand);
@@ -1473,6 +2702,7 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
             border: 0;
             font-size: 0.75rem;
         }
+
         .wc-block-checkout__sidebar {
             position: static;
             border: 0;
@@ -1480,8 +2710,16 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
             padding: 1.75rem;
             border-radius: 1rem;
         }
-        .wc-block-components-checkout-order-summary__title-text { font-size: 1.5rem; line-height: 1.3; }
-        .wc-block-components-order-summary-item__description { padding: 0; }
+
+        .wc-block-components-checkout-order-summary__title-text {
+            font-size: 1.5rem;
+            line-height: 1.3;
+        }
+
+        .wc-block-components-order-summary-item__description {
+            padding: 0;
+        }
+
         .wc-block-components-product-name {
             color: var(--text-brand);
             font-family: var(--font-primary);
@@ -1490,13 +2728,27 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
             font-size: 1rem;
             line-height: 1.5;
         }
-        .wc-block-components-order-summary-item__individual-prices, .wc-block-components-product-metadata,
+
+        .wc-block-components-order-summary-item__individual-prices,
+        .wc-block-components-product-metadata,
         .wp-block-woocommerce-checkout-order-summary-coupon-form-block {
             display: none;
         }
-        .wc-block-components-totals-wrapper { padding: 1.5rem 0; }
-        .wc-block-components-totals-footer-item { padding-top: 0.5rem; }
-        .wc-block-checkout__actions { margin-top: 1.5rem; margin: 0.5rem 0 0; padding: 0; }
+
+        .wc-block-components-totals-wrapper {
+            padding: 1.5rem 0;
+        }
+
+        .wc-block-components-totals-footer-item {
+            padding-top: 0.5rem;
+        }
+
+        .wc-block-checkout__actions {
+            margin-top: 1.5rem;
+            margin: 0.5rem 0 0;
+            padding: 0;
+        }
+
         .wc-block-components-checkout-place-order-button {
             width: 100%;
             min-height: 3.125rem;
@@ -1505,24 +2757,43 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
             color: var(--white);
             font-size: 1rem;
             font-weight: 400;
-            &:hover { background: var(--white); color: var(--black); }
+
+            &:hover {
+                background: var(--white);
+                color: var(--black);
+            }
         }
+
         @media (max-width: 75rem) {
-            .wc-block-components-sidebar-layout { grid-template-columns: 1fr; }
-            .wc-block-checkout__sidebar { display: block; width: 100%; max-width: 26.25rem; margin-left: auto; }
+            .wc-block-components-sidebar-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .wc-block-checkout__sidebar {
+                display: block;
+                width: 100%;
+                max-width: 26.25rem;
+                margin-left: auto;
+            }
         }
+
         .wc-block-checkout__shipping-fields .wc-block-components-address-form-wrapper {
             visibility: visible;
             opacity: 1;
             height: auto;
             overflow: visible;
         }
-        .wc-block-checkout__form > .wc-block-checkout__actions { display: none; }
+
+        .wc-block-checkout__form>.wc-block-checkout__actions {
+            display: none;
+        }
+
         .wp-block-woocommerce-checkout-order-summary-discount-block,
         .wp-block-woocommerce-checkout-order-summary-fee-block {
             padding: 0;
             border: 0;
         }
+
         .sae-checkout__summary-title {
             margin: 0 0 1.5rem;
             color: var(--text-brand);
@@ -1531,15 +2802,33 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
             font-weight: 400;
             line-height: 1.3;
         }
-        .wc-block-components-checkout-order-summary__title { margin: 0 0 1.5rem; padding: 0; display: none; }
-        .wc-block-checkout { padding: 0; margin: 0; }
-        .hentry { margin-bottom: 0; }
-        .wc-block-components-checkout-step__heading-container { margin: 0; padding: 0; }
+
+        .wc-block-components-checkout-order-summary__title {
+            margin: 0 0 1.5rem;
+            padding: 0;
+            display: none;
+        }
+
+        .wc-block-checkout {
+            padding: 0;
+            margin: 0;
+        }
+
+        .hentry {
+            margin-bottom: 0;
+        }
+
+        .wc-block-components-checkout-step__heading-container {
+            margin: 0;
+            padding: 0;
+        }
+
         .wc-block-checkout__form .wc-block-components-text-input input,
         .wc-block-checkout__form .wc-block-components-text-input.is-active input {
             padding: 0.75rem;
             box-shadow: none;
         }
+
         .wc-block-components-order-summary-item {
             align-items: center;
             gap: 0.75rem;
@@ -1547,13 +2836,22 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
             position: relative;
             padding-right: 1.75rem;
         }
+
         .wc-block-components-order-summary-item__image {
             width: 3.5rem;
             height: 3.5rem;
             margin: 0;
-            img { width: 3.5rem; height: 3.5rem; object-fit: cover; border-radius: 0.5rem; }
+
+            img {
+                width: 3.5rem;
+                height: 3.5rem;
+                object-fit: cover;
+                border-radius: 0.5rem;
+            }
+
             position: static;
         }
+
         .wc-block-components-order-summary-item__quantity {
             position: absolute;
             top: 1rem;
@@ -1568,40 +2866,118 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
             box-shadow: none;
             font-size: 1rem;
         }
-        .wc-block-components-order-summary-item__total-price { display: none; }
+
+        .wc-block-components-order-summary-item__total-price {
+            display: none;
+        }
+
         @media (max-width: 43.75rem) {
-            .wc-block-components-sidebar-layout { grid-template-columns: 1fr; gap: 2rem; }
-            .wc-block-checkout__contact-fields, .wc-block-checkout__shipping-fields,
+            .wc-block-components-sidebar-layout {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .wc-block-checkout__contact-fields,
+            .wc-block-checkout__shipping-fields,
             .wc-block-checkout__billing-fields {
                 padding: 1rem;
                 border: 0.0625rem solid var(--surface-brand);
                 border-radius: 0.625rem;
                 background: var(--surface-soft);
             }
-            .wc-block-components-checkout-step__heading-content h2 { color: var(--text-brand); font-size: 1.5rem; font-weight: 400; }
-            .wc-block-checkout__form { display: flex; flex-direction: column; gap: 1.5rem; }
-            .wc-block-checkout__form > *, .wc-block-checkout__shipping-option, .wc-block-checkout__payment-method { width: 100%; }
-            .wc-block-checkout__contact-fields .wc-block-components-checkout-step__heading-container { order: 1; }
-            .wc-block-components-address-form__first_name { order: 2; }
-            .wc-block-components-address-form__last_name { order: 3; }
-            .wc-block-components-address-form__email { order: 4; }
-            .wc-block-components-address-form__phone { order: 5; }
-            .wc-block-checkout__shipping-fields .wc-block-components-checkout-step__heading-container { order: 6; }
-            .wc-block-components-address-form__country { order: 7; }
-            .wc-block-components-address-form__address_1 { order: 8; }
-            .wc-block-components-address-form__address_2, .wc-block-components-address-form__address_2-toggle { order: 9; }
-            .wc-block-components-address-form__postcode { order: 10; }
-            .wc-block-components-address-form__city { order: 11; }
-            .wc-block-checkout__shipping-fields .wc-block-components-checkbox { order: 12; }
-            .wc-block-checkout__billing-fields { order: 13; }
-            .wc-block-checkout__shipping-option { order: 14; }
-            .wc-block-checkout__payment-method { order: 15; }
-            .wc-block-checkout__order-notes { order: 16; }
-            .wc-block-checkout__terms { order: 17; }
+
+            .wc-block-components-checkout-step__heading-content h2 {
+                color: var(--text-brand);
+                font-size: 1.5rem;
+                font-weight: 400;
+            }
+
+            .wc-block-checkout__form {
+                display: flex;
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .wc-block-checkout__form>*,
+            .wc-block-checkout__shipping-option,
+            .wc-block-checkout__payment-method {
+                width: 100%;
+            }
+
+            .wc-block-checkout__contact-fields .wc-block-components-checkout-step__heading-container {
+                order: 1;
+            }
+
+            .wc-block-components-address-form__first_name {
+                order: 2;
+            }
+
+            .wc-block-components-address-form__last_name {
+                order: 3;
+            }
+
+            .wc-block-components-address-form__email {
+                order: 4;
+            }
+
+            .wc-block-components-address-form__phone {
+                order: 5;
+            }
+
+            .wc-block-checkout__shipping-fields .wc-block-components-checkout-step__heading-container {
+                order: 6;
+            }
+
+            .wc-block-components-address-form__country {
+                order: 7;
+            }
+
+            .wc-block-components-address-form__address_1 {
+                order: 8;
+            }
+
+            .wc-block-components-address-form__address_2,
+            .wc-block-components-address-form__address_2-toggle {
+                order: 9;
+            }
+
+            .wc-block-components-address-form__postcode {
+                order: 10;
+            }
+
+            .wc-block-components-address-form__city {
+                order: 11;
+            }
+
+            .wc-block-checkout__shipping-fields .wc-block-components-checkbox {
+                order: 12;
+            }
+
+            .wc-block-checkout__billing-fields {
+                order: 13;
+            }
+
+            .wc-block-checkout__shipping-option {
+                order: 14;
+            }
+
+            .wc-block-checkout__payment-method {
+                order: 15;
+            }
+
+            .wc-block-checkout__order-notes {
+                order: 16;
+            }
+
+            .wc-block-checkout__terms {
+                order: 17;
+            }
+
             .wc-block-checkout__shipping-option .wc-block-components-radio-control,
             .wc-block-checkout__payment-method .wc-block-components-radio-control {
                 grid-template-columns: 1fr;
             }
+
             .checkout-order-summary-block-fill-wrapper {
                 border: 0;
                 border-radius: 1rem;
@@ -1612,30 +2988,67 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
                 padding: 1.25rem;
                 background: var(--surface-soft);
             }
-            .wc-block-checkout__sidebar { display: block; max-width: 100%; padding: 1.25rem; }
+
+            .wc-block-checkout__sidebar {
+                display: block;
+                max-width: 100%;
+                padding: 1.25rem;
+            }
         }
-        .wc-block-components-order-summary-item__quantity span { color: var(--text-brand); }
-        .wc-block-components-checkout-order-summary__content { padding: 0; border: 0; display: block; }
+
+        .wc-block-components-order-summary-item__quantity span {
+            color: var(--text-brand);
+        }
+
+        .wc-block-components-checkout-order-summary__content {
+            padding: 0;
+            border: 0;
+            display: block;
+        }
     }
+
     .sae301.sae-receipt-page {
-        .site-content { padding-top: 2rem; }
-        .site-main { margin: 0; padding-bottom: 4rem; }
-        .hentry, .entry-content { margin: 0; }
-        .site-footer { background: var(--surface-brand); }
+        .site-content {
+            padding-top: 2rem;
+        }
+
+        .site-main {
+            margin: 0;
+            padding-bottom: 4rem;
+        }
+
+        .hentry,
+        .entry-content {
+            margin: 0;
+        }
+
+        .site-footer {
+            background: var(--surface-brand);
+        }
+
         .sae-receipt {
             color: var(--text-brand);
             font-family: var(--font-primary);
             font-size: 1rem;
             line-height: 1.5;
+
             & .sae-receipt__breadcrumb {
                 display: flex;
                 flex-wrap: wrap;
                 gap: 0.75rem;
                 margin-bottom: 2rem;
                 font-size: 0.875rem;
-                a { color: var(--text-brand); text-decoration: none; }
+
+                a {
+                    color: var(--text-brand);
+                    text-decoration: none;
+                }
             }
-            & .sae-receipt__header { margin-bottom: 2rem; }
+
+            & .sae-receipt__header {
+                margin-bottom: 2rem;
+            }
+
             & .sae-receipt__title {
                 margin: 0 0 0.75rem;
                 color: var(--action-primary);
@@ -1643,7 +3056,14 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
                 font-size: 2rem;
                 line-height: 1.3;
             }
-            & .sae-receipt__notice { display: flex; align-items: center; gap: 0.5rem; margin: 0; }
+
+            & .sae-receipt__notice {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                margin: 0;
+            }
+
             & .sae-receipt__check {
                 display: flex;
                 align-items: center;
@@ -1655,7 +3075,12 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
                 background: var(--surface-soft);
                 color: var(--action-primary);
             }
-            & .sae-receipt__check, & .sae-receipt__overview { border: 0.0625rem solid var(--surface-brand); }
+
+            & .sae-receipt__check,
+            & .sae-receipt__overview {
+                border: 0.0625rem solid var(--surface-brand);
+            }
+
             & .sae-receipt__overview {
                 display: grid;
                 grid-template-columns: repeat(4, 1fr);
@@ -1664,13 +3089,36 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
                 padding: 1.5rem;
                 border-radius: 1rem;
             }
+
             & .sae-receipt__fact {
                 min-width: 0;
-                dt { margin: 0 0 0.5rem; color: var(--text-brand); font-size: 0.875rem; font-weight: 400; }
-                dd { margin: 0; overflow-wrap: anywhere; }
+
+                dt {
+                    margin: 0 0 0.5rem;
+                    color: var(--text-brand);
+                    font-size: 0.875rem;
+                    font-weight: 400;
+                }
+
+                dd {
+                    margin: 0;
+                    overflow-wrap: anywhere;
+                }
             }
-            & .sae-receipt__layout { display: grid; grid-template-columns: 33.75rem 1fr; align-items: start; gap: 2.5rem; }
-            & .sae-receipt__summary { padding: 1.75rem; border-radius: 1rem; background: var(--surface-soft); }
+
+            & .sae-receipt__layout {
+                display: grid;
+                grid-template-columns: 33.75rem 1fr;
+                align-items: start;
+                gap: 2.5rem;
+            }
+
+            & .sae-receipt__summary {
+                padding: 1.75rem;
+                border-radius: 1rem;
+                background: var(--surface-soft);
+            }
+
             & .sae-receipt__heading {
                 margin: 0 0 1.5rem;
                 color: var(--text-brand);
@@ -1679,6 +3127,7 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
                 font-weight: 400;
                 line-height: 1.3;
             }
+
             & .sae-receipt__products {
                 display: flex;
                 flex-direction: column;
@@ -1687,7 +3136,14 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
                 padding: 0;
                 list-style: none;
             }
-            & .sae-receipt__product { display: grid; grid-template-columns: 3.5rem 1fr auto; align-items: center; gap: 0.75rem; }
+
+            & .sae-receipt__product {
+                display: grid;
+                grid-template-columns: 3.5rem 1fr auto;
+                align-items: center;
+                gap: 0.75rem;
+            }
+
             & .sae-receipt__image {
                 display: block;
                 width: 3.5rem;
@@ -1696,19 +3152,36 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
                 border-radius: 0.5rem;
                 object-fit: cover;
             }
-            & .sae-receipt__product-name { margin: 0 0 0.25rem; }
-            & .sae-receipt__product-unit { margin: 0; }
+
+            & .sae-receipt__product-name {
+                margin: 0 0 0.25rem;
+            }
+
+            & .sae-receipt__product-unit {
+                margin: 0;
+            }
+
             & .sae-receipt__product-info {
                 min-width: 0;
+
                 .wc-item-meta {
                     margin: 0.25rem 0 0;
                     padding: 0;
                     list-style: none;
                     font-size: 0.75rem;
-                    p { display: inline; margin: 0; }
+
+                    p {
+                        display: inline;
+                        margin: 0;
+                    }
                 }
             }
-            & .sae-receipt__product-total { align-self: end; white-space: nowrap; }
+
+            & .sae-receipt__product-total {
+                align-self: end;
+                white-space: nowrap;
+            }
+
             & .sae-receipt__totals {
                 display: flex;
                 flex-direction: column;
@@ -1718,14 +3191,26 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
                 border-top: 0.0625rem solid var(--surface-brand);
                 border-bottom: 0.0625rem solid var(--surface-brand);
             }
+
             & .sae-receipt__total-row {
                 display: flex;
                 justify-content: space-between;
                 gap: 1rem;
-                dt { font-weight: 400; }
-                dt, dd { margin: 0; }
-                dd { text-align: right; }
+
+                dt {
+                    font-weight: 400;
+                }
+
+                dt,
+                dd {
+                    margin: 0;
+                }
+
+                dd {
+                    text-align: right;
+                }
             }
+
             & .sae-receipt__grand-total {
                 display: flex;
                 align-items: center;
@@ -1733,11 +3218,27 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
                 gap: 1rem;
                 margin-top: 1.5rem;
                 font-size: 1.25rem;
-                .amount { font-size: 2rem; }
+
+                .amount {
+                    font-size: 2rem;
+                }
             }
-            & .sae-receipt__customer { min-width: 0; }
-            & .sae-receipt__contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem 2rem; margin: 0; }
-            & .sae-receipt__email { grid-column: 1 / 3; }
+
+            & .sae-receipt__customer {
+                min-width: 0;
+            }
+
+            & .sae-receipt__contact-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 1.25rem 2rem;
+                margin: 0;
+            }
+
+            & .sae-receipt__email {
+                grid-column: 1 / 3;
+            }
+
             & .sae-receipt__addresses {
                 display: grid;
                 grid-template-columns: 1fr 1fr;
@@ -1747,27 +3248,50 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
                 border-top: 0.0625rem solid var(--surface-brand);
                 border-bottom: 0.0625rem solid var(--surface-brand);
             }
+
             & .sae-receipt__address {
                 min-width: 0;
-                address { margin: 0; font-style: normal; }
+
+                address {
+                    margin: 0;
+                    font-style: normal;
+                }
             }
-            & .sae-receipt__phone { display: inline-block; margin-top: 1.25rem; color: var(--text-brand); text-decoration: none; }
+
+            & .sae-receipt__phone {
+                display: inline-block;
+                margin-top: 1.25rem;
+                color: var(--text-brand);
+                text-decoration: none;
+            }
+
             & .sae-receipt__instructions {
                 margin-bottom: 1.5rem;
                 border: 0.0625rem solid var(--surface-brand);
                 border-radius: 0.625rem;
-                summary { padding: 0.75rem 1rem; cursor: pointer; }
+
+                summary {
+                    padding: 0.75rem 1rem;
+                    cursor: pointer;
+                }
             }
+
             & .sae-receipt__instructions-content {
                 padding: 1rem;
                 overflow-wrap: anywhere;
-                h2, h3 { font-size: 1.25rem; }
+
+                h2,
+                h3 {
+                    font-size: 1.25rem;
+                }
+
                 ul.order_details {
                     margin: 0;
                     padding: 0;
                     border: 0;
                     background: none;
                     list-style: none;
+
                     li {
                         float: none;
                         width: 100%;
@@ -1777,6 +3301,7 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
                     }
                 }
             }
+
             & .sae-receipt__button {
                 display: block;
                 width: 100%;
@@ -1787,31 +3312,78 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
                 color: var(--white);
                 text-align: center;
                 text-decoration: none;
-                &:hover { background: var(--white); color: var(--black); }
+
+                &:hover {
+                    background: var(--white);
+                    color: var(--black);
+                }
             }
         }
+
         @media (max-width: 75rem) {
-            .sae-receipt .sae-receipt__layout { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+            .sae-receipt .sae-receipt__layout {
+                grid-template-columns: 1fr 1fr;
+                gap: 1.5rem;
+            }
         }
+
         @media (max-width: 43.75rem) {
             .sae-receipt {
-                & .sae-receipt__overview { grid-template-columns: 1fr 1fr; gap: 1.25rem; padding: 1.25rem; }
-                & .sae-receipt__layout { grid-template-columns: 1fr; gap: 2rem; }
-                & .sae-receipt__summary { padding: 1.25rem; }
-                & .sae-receipt__product { grid-template-columns: 3.5rem 1fr; }
-                & .sae-receipt__product-total { grid-column: 2; }
-                & .sae-receipt__addresses { grid-template-columns: 1fr; }
+                & .sae-receipt__overview {
+                    grid-template-columns: 1fr 1fr;
+                    gap: 1.25rem;
+                    padding: 1.25rem;
+                }
+
+                & .sae-receipt__layout {
+                    grid-template-columns: 1fr;
+                    gap: 2rem;
+                }
+
+                & .sae-receipt__summary {
+                    padding: 1.25rem;
+                }
+
+                & .sae-receipt__product {
+                    grid-template-columns: 3.5rem 1fr;
+                }
+
+                & .sae-receipt__product-total {
+                    grid-column: 2;
+                }
+
+                & .sae-receipt__addresses {
+                    grid-template-columns: 1fr;
+                }
+
                 & .sae-receipt__grand-total {
                     font-size: 1rem;
-                    .amount { font-size: 1.5rem; }
+
+                    .amount {
+                        font-size: 1.5rem;
+                    }
                 }
             }
         }
     }
+
     .sae301.woocommerce-account.logged-in {
-        .site-main { margin: 0; padding-bottom: 3.75rem; }
-        .hentry { margin-bottom: 0; }
-        .entry-title { margin-bottom: 2rem; color: var(--text-brand); font-family: var(--font-title); font-size: 2rem; }
+        .site-main {
+            margin: 0;
+            padding-bottom: 3.75rem;
+        }
+
+        .hentry {
+            margin-bottom: 0;
+        }
+
+        .entry-title {
+            margin-bottom: 2rem;
+            color: var(--text-brand);
+            font-family: var(--font-title);
+            font-size: 2rem;
+        }
+
         .woocommerce-MyAccount-navigation {
             width: 23%;
             margin: 0;
@@ -1820,6 +3392,7 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
             border-radius: 1.25rem;
             background: var(--surface-soft);
             font-family: var(--font-primary);
+
             ul {
                 display: flex;
                 flex-direction: column;
@@ -1829,9 +3402,11 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
                 border: 0;
                 list-style: none;
             }
+
             .woocommerce-MyAccount-navigation-link {
                 margin: 0;
                 border: 0;
+
                 a {
                     display: block;
                     padding: 0.875rem 1rem;
@@ -1839,15 +3414,25 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
                     color: var(--text-brand);
                     font-size: 1rem;
                     text-decoration: none;
-                    &:hover { background: var(--white); color: var(--black); }
+
+                    &:hover {
+                        background: var(--white);
+                        color: var(--black);
+                    }
                 }
+
                 &.is-active a {
                     background: var(--action-primary);
                     color: var(--white);
-                    &:hover { background: var(--white); color: var(--black); }
+
+                    &:hover {
+                        background: var(--white);
+                        color: var(--black);
+                    }
                 }
             }
         }
+
         .woocommerce-MyAccount-content {
             width: 73%;
             min-width: 0;
@@ -1861,19 +3446,33 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
             font-family: var(--font-primary);
             font-size: 1rem;
             line-height: 1.6;
-            h2, h3 {
+
+            h2,
+            h3 {
                 color: var(--text-brand);
                 font-family: var(--font-title);
                 font-size: 1.5rem;
                 font-weight: 400;
                 line-height: 1.4;
             }
-            h2, h3, p { margin: 0 0 1.25rem; }
+
+            h2,
+            h3,
+            p {
+                margin: 0 0 1.25rem;
+            }
+
             a {
                 color: var(--text-brand);
-                &:hover { color: var(--action-primary); }
+
+                &:hover {
+                    color: var(--action-primary);
+                }
             }
-            .button, button, .woocommerce-Address-title .edit {
+
+            .button,
+            button,
+            .woocommerce-Address-title .edit {
                 display: inline-block;
                 padding: 0.75rem 1.25rem;
                 border: 0.0625rem solid var(--action-primary);
@@ -1885,9 +3484,18 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
                 font-weight: 400;
                 line-height: 1.5;
                 text-decoration: none;
-                &:hover { border-color: var(--action-primary); background: var(--white); color: var(--black); text-decoration: none; }
+
+                &:hover {
+                    border-color: var(--action-primary);
+                    background: var(--white);
+                    color: var(--black);
+                    text-decoration: none;
+                }
             }
-            .input-text, select, textarea {
+
+            .input-text,
+            select,
+            textarea {
                 width: 100%;
                 min-height: 3rem;
                 padding: 0.75rem 0.875rem;
@@ -1898,11 +3506,27 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
                 box-shadow: none;
                 font-family: var(--font-primary);
                 font-size: 1rem;
-                &:focus { border-color: var(--action-primary); }
+
+                &:focus {
+                    border-color: var(--action-primary);
+                }
             }
-            label { display: block; margin-bottom: 0.5rem; color: var(--text-brand); font-size: 0.875rem; }
-            .form-row { margin-bottom: 1.25rem; }
-            .password-input { width: 100%; }
+
+            label {
+                display: block;
+                margin-bottom: 0.5rem;
+                color: var(--text-brand);
+                font-size: 0.875rem;
+            }
+
+            .form-row {
+                margin-bottom: 1.25rem;
+            }
+
+            .password-input {
+                width: 100%;
+            }
+
             fieldset {
                 margin: 1.5rem 0;
                 padding: 1.5rem;
@@ -1910,7 +3534,14 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
                 border-radius: 0.625rem;
                 background: var(--surface-soft);
             }
-            legend { padding: 0 0.5rem; color: var(--text-brand); font-family: var(--font-title); font-size: 1.25rem; }
+
+            legend {
+                padding: 0 0.5rem;
+                color: var(--text-brand);
+                font-family: var(--font-title);
+                font-size: 1.25rem;
+            }
+
             table {
                 width: 100%;
                 margin: 0 0 1.5rem;
@@ -1919,22 +3550,41 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
                 color: var(--text-brand);
                 font-family: var(--font-primary);
                 font-size: 0.875rem;
-                th, td {
+
+                th,
+                td {
                     padding: 0.875rem 0.75rem;
                     border-bottom: 0.0625rem solid var(--surface-brand);
                     color: var(--text-brand);
                     vertical-align: middle;
                 }
-                th { background: var(--surface-soft); font-weight: 500; }
-                td { background: var(--white); }
-                .button { margin: 0.25rem; padding: 0.5rem 0.75rem; font-size: 0.875rem; white-space: nowrap; }
+
+                th {
+                    background: var(--surface-soft);
+                    font-weight: 500;
+                }
+
+                td {
+                    background: var(--white);
+                }
+
+                .button {
+                    margin: 0.25rem;
+                    padding: 0.5rem 0.75rem;
+                    font-size: 0.875rem;
+                    white-space: nowrap;
+                }
             }
-            .woocommerce-Addresses, .woocommerce-customer-details .addresses {
+
+            .woocommerce-Addresses,
+            .woocommerce-customer-details .addresses {
                 display: grid;
                 grid-template-columns: 1fr 1fr;
                 gap: 1.5rem;
                 margin: 1.5rem 0;
-                .woocommerce-Address, .woocommerce-column {
+
+                .woocommerce-Address,
+                .woocommerce-column {
                     float: none;
                     width: 100%;
                     min-width: 0;
@@ -1945,45 +3595,119 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
                     background: var(--surface-soft);
                 }
             }
+
             .woocommerce-Address-title {
                 margin-bottom: 1rem;
-                h2, h3 { font-size: 1.25rem; }
-                h2, h3, .edit { float: none; margin-bottom: 0.75rem; }
-                .edit { font-size: 0.875rem; }
+
+                h2,
+                h3 {
+                    font-size: 1.25rem;
+                }
+
+                h2,
+                h3,
+                .edit {
+                    float: none;
+                    margin-bottom: 0.75rem;
+                }
+
+                .edit {
+                    font-size: 0.875rem;
+                }
             }
-            address { margin: 0; color: var(--text-brand); font-style: normal; }
-            .woocommerce-info, .woocommerce-message, .woocommerce-error {
+
+            address {
+                margin: 0;
+                color: var(--text-brand);
+                font-style: normal;
+            }
+
+            .woocommerce-info,
+            .woocommerce-message,
+            .woocommerce-error {
                 margin: 0 0 1.5rem;
                 padding: 1rem 1.25rem;
                 border: 0.0625rem solid var(--surface-brand);
                 border-radius: 0.625rem;
                 background: var(--surface-soft);
                 color: var(--text-brand);
-                .button { float: none; margin: 0 0.75rem 0.5rem 0; }
+
+                .button {
+                    float: none;
+                    margin: 0 0.75rem 0.5rem 0;
+                }
             }
-            .woocommerce-error { border-color: var(--stock-empty); }
-            .woocommerce-order-details, .woocommerce-customer-details { margin-bottom: 1.5rem; }
+
+            .woocommerce-error {
+                border-color: var(--stock-empty);
+            }
+
+            .woocommerce-order-details,
+            .woocommerce-customer-details {
+                margin-bottom: 1.5rem;
+            }
         }
+
         @media (max-width: 60rem) {
-            .woocommerce-MyAccount-navigation, .woocommerce-MyAccount-content { float: none; width: 100%; }
-            .woocommerce-MyAccount-navigation { margin-bottom: 1.5rem; }
-            .woocommerce-MyAccount-content { padding: 1.25rem; overflow-x: auto; }
+
+            .woocommerce-MyAccount-navigation,
+            .woocommerce-MyAccount-content {
+                float: none;
+                width: 100%;
+            }
+
+            .woocommerce-MyAccount-navigation {
+                margin-bottom: 1.5rem;
+            }
+
+            .woocommerce-MyAccount-content {
+                padding: 1.25rem;
+                overflow-x: auto;
+            }
         }
+
         @media (max-width: 43.75rem) {
             .woocommerce-MyAccount-content {
-                .woocommerce-Addresses, .woocommerce-customer-details .addresses { grid-template-columns: 1fr; }
-                .form-row-first, .form-row-last { float: none; width: 100%; }
-                fieldset { padding: 1rem; }
+
+                .woocommerce-Addresses,
+                .woocommerce-customer-details .addresses {
+                    grid-template-columns: 1fr;
+                }
+
+                .form-row-first,
+                .form-row-last {
+                    float: none;
+                    width: 100%;
+                }
+
+                fieldset {
+                    padding: 1rem;
+                }
             }
         }
+
         .woocommerce-MyAccount-content {
-            .woocommerce-info, .woocommerce-message, .woocommerce-error { padding-left: 3.5rem; }
+
+            .woocommerce-info,
+            .woocommerce-message,
+            .woocommerce-error {
+                padding-left: 3.5rem;
+            }
         }
     }
+
     .sae301 {
-        .sae-footer__logo, .woocommerce-product-gallery__trigger { color: var(--text-body); }
+
+        .sae-footer__logo,
+        .woocommerce-product-gallery__trigger {
+            color: var(--text-body);
+        }
     }
-    .sae301.woocommerce-account .entry-header { margin-bottom: 0; }
+
+    .sae301.woocommerce-account .entry-header {
+        margin-bottom: 0;
+    }
+
     .sae301.sae-flow--cart .wc-block-grid__product-add-to-cart .wp-block-button__link {
         all: revert-layer;
         max-width: 100%;
@@ -1992,14 +3716,38 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 }
 
 @layer components {
-    .sae301.post-type-archive-membre, .sae301.single-membre {
-        .site-content { padding: 0; background: var(--surface-soft); }
-        .site-content > .col-full { max-width: 79.75rem; margin: 0 auto; }
+
+    .sae301.post-type-archive-membre,
+    .sae301.single-membre {
+        .site-content {
+            padding: 0;
+            background: var(--surface-soft);
+        }
+
+        .site-content>.col-full {
+            max-width: 79.75rem;
+            margin: 0 auto;
+        }
     }
+
     .sae301 {
-        .sae-team { padding: 4rem 0 6.5rem; color: var(--text-brand); }
-        .sae-team__title { margin: 0 0 4rem; text-align: center; }
-        .sae-team__list { display: flex; flex-wrap: wrap; justify-content: center; gap: 5rem 8.75rem; }
+        .sae-team {
+            padding: 4rem 0 6.5rem;
+            color: var(--text-brand);
+        }
+
+        .sae-team__title {
+            margin: 0 0 4rem;
+            text-align: center;
+        }
+
+        .sae-team__list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 5rem 8.75rem;
+        }
+
         .sae-team__card {
             display: grid;
             grid-template-columns: 12.5rem 1fr;
@@ -2011,13 +3759,49 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
             border-radius: 0.625rem;
             background: var(--surface-brand);
         }
-        .sae-team__portrait { display: block; min-width: 0; }
-        .sae-team__image { display: block; width: 100%; height: 100%; min-height: 18.5rem; margin: 0; border-radius: 0; object-fit: cover; }
-        .sae-team__content { display: flex; flex-direction: column; align-items: start; padding: 1rem 0.5rem 0.75rem 0; }
-        .sae-team__name { margin: 0 0 0.25rem; font-size: 2rem; line-height: 1.25; }
-        .sae-team__role { margin: 0 0 1.5rem; color: var(--action-primary); font-size: 0.875rem; }
-        .sae-team__description { margin: 0 0 1.5rem; font-size: 1rem; line-height: 1.4; }
-        .sae-team__button, .sae-member__button {
+
+        .sae-team__portrait {
+            display: block;
+            min-width: 0;
+        }
+
+        .sae-team__image {
+            display: block;
+            width: 100%;
+            height: 100%;
+            min-height: 18.5rem;
+            margin: 0;
+            border-radius: 0;
+            object-fit: cover;
+        }
+
+        .sae-team__content {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            padding: 1rem 0.5rem 0.75rem 0;
+        }
+
+        .sae-team__name {
+            margin: 0 0 0.25rem;
+            font-size: 2rem;
+            line-height: 1.25;
+        }
+
+        .sae-team__role {
+            margin: 0 0 1.5rem;
+            color: var(--action-primary);
+            font-size: 0.875rem;
+        }
+
+        .sae-team__description {
+            margin: 0 0 1.5rem;
+            font-size: 1rem;
+            line-height: 1.4;
+        }
+
+        .sae-team__button,
+        .sae-member__button {
             display: inline-block;
             border: 0.0625rem solid var(--action-primary);
             border-radius: 0.625rem;
@@ -2025,72 +3809,240 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
             color: var(--white);
             font-family: var(--font-primary);
             text-decoration: none;
-            &:hover { background: var(--white); color: var(--black); text-decoration: none; }
+
+            &:hover {
+                background: var(--white);
+                color: var(--black);
+                text-decoration: none;
+            }
         }
-        .sae-team__button { margin-top: auto; padding: 0.5rem 1rem; font-size: 0.875rem; }
-        .sae-member { padding: 6.5rem 0; color: var(--text-brand); }
-        .sae-member__profile { display: grid; grid-template-columns: 37.25% 1fr; gap: 1.5625rem; margin: 0; }
-        .sae-member__portrait { min-width: 0; }
-        .sae-member__image { display: block; width: 100%; height: 44.125rem; margin: 0; border-radius: 0; object-fit: cover; }
-        .sae-team__image[src*="responsable-salle"], .sae-member__image[src*="responsable-salle"] { object-position: 25% center; }
-        .sae-member__details { display: flex; flex-direction: column; align-items: start; min-width: 0; }
-        .sae-member__name { margin: 0 0 0.5rem; font-size: 2.5rem; line-height: 1.35; }
-        .sae-member__role { margin: 0 0 3rem; color: var(--action-primary); font-size: 1.25rem; line-height: 1.4; }
+
+        .sae-team__button {
+            margin-top: auto;
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem;
+        }
+
+        .sae-member {
+            padding: 6.5rem 0;
+            color: var(--text-brand);
+        }
+
+        .sae-member__profile {
+            display: grid;
+            grid-template-columns: 37.25% 1fr;
+            gap: 1.5625rem;
+            margin: 0;
+        }
+
+        .sae-member__portrait {
+            min-width: 0;
+        }
+
+        .sae-member__image {
+            display: block;
+            width: 100%;
+            height: 44.125rem;
+            margin: 0;
+            border-radius: 0;
+            object-fit: cover;
+        }
+
+        .sae-team__image[src*="responsable-salle"],
+        .sae-member__image[src*="responsable-salle"] {
+            object-position: 25% center;
+        }
+
+        .sae-member__details {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            min-width: 0;
+        }
+
+        .sae-member__name {
+            margin: 0 0 0.5rem;
+            font-size: 2.5rem;
+            line-height: 1.35;
+        }
+
+        .sae-member__role {
+            margin: 0 0 3rem;
+            color: var(--action-primary);
+            font-size: 1.25rem;
+            line-height: 1.4;
+        }
+
         .sae-member__description {
             color: var(--text-brand);
             font-size: 1.25rem;
             line-height: 1.4;
-            p { margin: 0 0 2.5rem; }
+
+            p {
+                margin: 0 0 2.5rem;
+            }
         }
-        .sae-member__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.5rem; margin-top: auto; }
-        .sae-member__button { padding: 1rem 0.875rem; font-size: 1.25rem; }
-        .sae-member__back { color: var(--text-brand); font-size: 0.875rem; }
+
+        .sae-member__actions {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 1rem 1.5rem;
+            margin-top: auto;
+        }
+
+        .sae-member__button {
+            padding: 1rem 0.875rem;
+            font-size: 1.25rem;
+        }
+
+        .sae-member__back {
+            color: var(--text-brand);
+            font-size: 0.875rem;
+        }
     }
+
     @media (max-width: 82.25rem) {
-        .sae301.post-type-archive-membre, .sae301.single-membre {
-            .site-content > .col-full { margin: 0 1.25rem; }
+
+        .sae301.post-type-archive-membre,
+        .sae301.single-membre {
+            .site-content>.col-full {
+                margin: 0 1.25rem;
+            }
         }
+
         .sae301 {
-            .sae-team__list { gap: 3rem; }
-            .sae-team__card { width: calc(50% - 1.5rem); grid-template-columns: 40% 1fr; }
-            .sae-team__name { font-size: 1.5rem; }
-            .sae-member__description { font-size: 1.25rem; }
+            .sae-team__list {
+                gap: 3rem;
+            }
+
+            .sae-team__card {
+                width: calc(50% - 1.5rem);
+                grid-template-columns: 40% 1fr;
+            }
+
+            .sae-team__name {
+                font-size: 1.5rem;
+            }
+
+            .sae-member__description {
+                font-size: 1.25rem;
+            }
         }
     }
+
     @media (max-width: 60rem) {
         .sae301 {
-            .sae-team__card { width: 33rem; }
-            .sae-member__profile { grid-template-columns: 40% 1fr; gap: 1.5rem; }
-            .sae-member__image { height: 36rem; }
-            .sae-member__name { font-size: 2rem; }
-            .sae-member__role { margin-bottom: 2rem; font-size: 1.25rem; }
-            .sae-member__description p { margin-bottom: 1.5rem; }
-            .sae-member__button { font-size: 1rem; }
+            .sae-team__card {
+                width: 33rem;
+            }
+
+            .sae-member__profile {
+                grid-template-columns: 40% 1fr;
+                gap: 1.5rem;
+            }
+
+            .sae-member__image {
+                height: 36rem;
+            }
+
+            .sae-member__name {
+                font-size: 2rem;
+            }
+
+            .sae-member__role {
+                margin-bottom: 2rem;
+                font-size: 1.25rem;
+            }
+
+            .sae-member__description p {
+                margin-bottom: 1.5rem;
+            }
+
+            .sae-member__button {
+                font-size: 1rem;
+            }
         }
     }
+
     @media (max-width: 43.75rem) {
         .sae301 {
-            .sae-team, .sae-member { padding: 2.5rem 0; }
-            .sae-team__title { margin-bottom: 2.5rem; font-size: 2rem; }
-            .sae-team__card { grid-template-columns: 40% 1fr; min-height: 18rem; }
-            .sae-team__image { min-height: 17rem; }
-            .sae-team__name { font-size: 1.125rem; }
-            .sae-team__role { margin-bottom: 1rem; font-size: 0.75rem; }
-            .sae-team__description { font-size: 0.875rem; }
-            .sae-team__content { padding-top: 0.5rem; }
-            .sae-member__profile { grid-template-columns: 1fr; gap: 1.5rem; }
-            .sae-member__image { height: 28rem; }
-            .sae-member__description { font-size: 1rem; }
-            .sae-member__actions { flex-direction: column; align-items: start; }
+
+            .sae-team,
+            .sae-member {
+                padding: 2.5rem 0;
+            }
+
+            .sae-team__title {
+                margin-bottom: 2.5rem;
+                font-size: 2rem;
+            }
+
+            .sae-team__card {
+                grid-template-columns: 40% 1fr;
+                min-height: 18rem;
+            }
+
+            .sae-team__image {
+                min-height: 17rem;
+            }
+
+            .sae-team__name {
+                font-size: 1.125rem;
+            }
+
+            .sae-team__role {
+                margin-bottom: 1rem;
+                font-size: 0.75rem;
+            }
+
+            .sae-team__description {
+                font-size: 0.875rem;
+            }
+
+            .sae-team__content {
+                padding-top: 0.5rem;
+            }
+
+            .sae-member__profile {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .sae-member__image {
+                height: 28rem;
+            }
+
+            .sae-member__description {
+                font-size: 1rem;
+            }
+
+            .sae-member__actions {
+                flex-direction: column;
+                align-items: start;
+            }
         }
     }
 }
 
 @layer components {
     .sae301 {
-        .sae-gammes { margin: 0 0 2.5rem; }
-        .sae-gammes__title { margin: 0 0 0.75rem; color: var(--text-brand); font-size: 1.25rem; }
-        .sae-gammes__links { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+        .sae-gammes {
+            margin: 0 0 2.5rem;
+        }
+
+        .sae-gammes__title {
+            margin: 0 0 0.75rem;
+            color: var(--text-brand);
+            font-size: 1.25rem;
+        }
+
+        .sae-gammes__links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
         .sae-gammes__link {
             padding: 0.625rem 1rem;
             border: 0.0625rem solid var(--text-brand);
@@ -2098,11 +4050,21 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
             background: var(--surface-soft);
             color: var(--text-brand);
             text-decoration: none;
-            &[aria-current="page"], &:hover { border-color: var(--action-primary); background: var(--action-primary); color: var(--white); }
+
+            &[aria-current="page"],
+            &:hover {
+                border-color: var(--action-primary);
+                background: var(--action-primary);
+                color: var(--white);
+            }
         }
     }
+
     @media (max-width: 43.75rem) {
-        .sae301.tax-gamme .sae-catalogue__grid { display: grid; grid-template-columns: 1fr; }
+        .sae301.tax-gamme .sae-catalogue__grid {
+            display: grid;
+            grid-template-columns: 1fr;
+        }
     }
 }
 
@@ -2110,7 +4072,15 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
     .sae301 .sae-recommendations {
         clear: both;
         margin-top: 5.5rem;
-        .sae-recommendations__title { margin: 0 0 4rem; color: var(--text-brand); font-size: 2rem; line-height: 1.25; text-align: center; }
+
+        .sae-recommendations__title {
+            margin: 0 0 4rem;
+            color: var(--text-brand);
+            font-size: 2rem;
+            line-height: 1.25;
+            text-align: center;
+        }
+
         .sae-recommendations__grid {
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 20.9375rem));
@@ -2120,14 +4090,35 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
             padding: 0;
             list-style: none;
         }
-        .sae-card__content { gap: 1.5rem; min-height: 10.75rem; padding: 0.625rem 0.5rem 0.875rem; }
-        .sae-card__options { align-self: center; width: 16.8125rem; min-height: 3.3125rem; margin: 0; padding: 0.625rem; font-size: 1.25rem; }
+
+        .sae-card__content {
+            gap: 1.5rem;
+            min-height: 10.75rem;
+            padding: 0.625rem 0.5rem 0.875rem;
+        }
+
+        .sae-card__options {
+            align-self: center;
+            width: 16.8125rem;
+            min-height: 3.3125rem;
+            margin: 0;
+            padding: 0.625rem;
+            font-size: 1.25rem;
+        }
     }
+
     @media (max-width: 53rem) {
         .sae301 .sae-recommendations {
             margin-top: 2.5rem;
-            .sae-recommendations__title { margin-bottom: 2rem; }
-            .sae-recommendations__grid { grid-template-columns: minmax(0, 20.9375rem); gap: 2rem; }
+
+            .sae-recommendations__title {
+                margin-bottom: 2rem;
+            }
+
+            .sae-recommendations__grid {
+                grid-template-columns: minmax(0, 20.9375rem);
+                gap: 2rem;
+            }
         }
     }
 }
@@ -2140,59 +4131,313 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
         color: var(--text-brand);
         font-size: 0.875rem;
         line-height: 1.4;
-        .sae-reviews__header { margin-bottom: 1.5rem; text-align: center; }
-        .sae-reviews__header h2 { margin: 0 0 0.375rem; color: var(--text-brand); font-size: 2rem; }
-        .sae-reviews__header p { margin: 0; }
-        #reviews { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: center; gap: 2.5rem; margin: 0; }
-        #comments, #review_form_wrapper { min-width: 0; }
-        .woocommerce-Reviews-title, #reply-title { display: block; margin: 0 0 0.75rem; color: var(--text-brand); font-family: var(--font-title); font-size: 1.25rem; font-weight: 400; line-height: 1.4; }
-        #comments .commentlist { display: grid; gap: 0.75rem; margin: 0; padding: 0; list-style: none; }
-        #comments .commentlist > li { margin: 0; padding: 0.75rem; border: 0.0625rem solid var(--surface-brand); border-radius: 0.625rem; background: var(--surface-soft); }
-        #comments .comment_container { display: flex; align-items: center; min-height: 9.25rem; }
-        #comments .avatar { display: none; }
-        #comments .comment-text { position: relative; float: none; width: 100%; margin: 0; padding: 0; border: 0; color: var(--text-brand); }
-        .sae-review__meta { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 0.375rem; margin: 0 0 0.375rem; }
-        .sae-review__author { grid-column: 1 / 3; min-height: 1.75rem; padding-right: 7rem; font-size: 1rem; overflow-wrap: anywhere; }
-        .sae-review__verified { grid-column: 1; grid-row: 2; }
-        #comments .sae-review__date { grid-column: 2; grid-row: 2; color: var(--text-muted); font-size: 0.875rem; opacity: 1; }
-        #comments .description { margin: 0; font-size: 0.875rem; overflow-wrap: anywhere; }
-        #comments .description p { margin: 0 0 0.375rem; }
-        #comments .description p:last-child { margin-bottom: 0; }
-        #comments .star-rating { position: absolute; top: 0; right: 0; float: none; margin: 0; color: var(--action-primary); font-size: 1.25rem; }
-        #comments .star-rating::before { color: var(--surface-brand); }
-        #comments .star-rating span::before { color: var(--action-primary); }
-        #respond { margin: 0; padding: 0; background: transparent; }
-        .sae-reviews__help, .comment-notes, .comment-form-cookies-consent { color: var(--text-muted); }
-        .sae-reviews__help { margin: 0 0 0.75rem; }
-        .comment-notes { margin-bottom: 0.75rem; font-size: 0.75rem; }
-        #commentform { margin: 0; }
-        #commentform p { margin-bottom: 0.75rem; }
-        #commentform label { display: block; margin-bottom: 0.375rem; font-weight: 400; }
-        #commentform .required { color: var(--text-brand); }
-        #commentform .comment-form-rating { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem; }
-        #commentform .comment-form-rating label, #commentform p.stars { margin: 0; }
-        #commentform p.stars a { width: 1.75rem; height: 1.75rem; color: var(--action-primary); font-size: 1.5rem; }
-        #commentform p.stars a::before { content: "☆"; width: 100%; color: var(--action-primary); font-family: var(--font-primary); font-size: 1.5rem; font-weight: 400; opacity: 1; }
-        #commentform p.stars.selected a::before, #commentform p.stars:hover a::before { content: "★"; }
-        #commentform p.stars.selected a.active ~ a::before, #commentform p.stars a:hover ~ a::before { content: "☆"; }
-        #commentform textarea, #commentform input[type="text"], #commentform input[type="email"] { width: 100%; padding: 0.625rem 0.75rem; border-color: var(--surface-brand); background: var(--white); color: var(--text-brand); font-size: 0.875rem; box-shadow: none; }
-        #commentform textarea { display: block; height: 8.0625rem; min-height: 8.0625rem; resize: vertical; }
-        #commentform textarea::placeholder { color: var(--text-muted); }
-        #commentform .comment-form-cookies-consent { display: flex; clear: both; width: 100%; align-items: start; gap: 0.5rem; font-size: 0.75rem; }
-        #commentform .comment-form-cookies-consent input { flex: none; margin-top: 0.125rem; }
-        #commentform .form-submit { clear: both; margin: 0; }
-        #commentform #submit { width: 12.5rem; min-height: 2.75rem; padding: 0.625rem; border-color: var(--action-primary); background: var(--action-primary); color: var(--white); font-size: 1rem; font-weight: 400; }
-        #commentform #submit:hover { background: var(--white); color: var(--black); }
-        #reviews > .clear { display: none; }
-        .woocommerce-verification-required, .woocommerce-noreviews { margin: 0; padding: 0.75rem; border: 0.0625rem solid var(--surface-brand); border-radius: 0.625rem; background: var(--surface-soft); color: var(--text-brand); }
+
+        .sae-reviews__header {
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .sae-reviews__header h2 {
+            margin: 0 0 0.375rem;
+            color: var(--text-brand);
+            font-size: 2rem;
+        }
+
+        .sae-reviews__header p {
+            margin: 0;
+        }
+
+        #reviews {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            align-items: center;
+            gap: 2.5rem;
+            margin: 0;
+        }
+
+        #comments,
+        #review_form_wrapper {
+            min-width: 0;
+        }
+
+        .woocommerce-Reviews-title,
+        #reply-title {
+            display: block;
+            margin: 0 0 0.75rem;
+            color: var(--text-brand);
+            font-family: var(--font-title);
+            font-size: 1.25rem;
+            font-weight: 400;
+            line-height: 1.4;
+        }
+
+        #comments .commentlist {
+            display: grid;
+            gap: 0.75rem;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #comments .commentlist>li {
+            margin: 0;
+            padding: 0.75rem;
+            border: 0.0625rem solid var(--surface-brand);
+            border-radius: 0.625rem;
+            background: var(--surface-soft);
+        }
+
+        #comments .comment_container {
+            display: flex;
+            align-items: center;
+            min-height: 9.25rem;
+        }
+
+        #comments .avatar {
+            display: none;
+        }
+
+        #comments .comment-text {
+            position: relative;
+            float: none;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            border: 0;
+            color: var(--text-brand);
+        }
+
+        .sae-review__meta {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            gap: 0.375rem;
+            margin: 0 0 0.375rem;
+        }
+
+        .sae-review__author {
+            grid-column: 1 / 3;
+            min-height: 1.75rem;
+            padding-right: 7rem;
+            font-size: 1rem;
+            overflow-wrap: anywhere;
+        }
+
+        .sae-review__verified {
+            grid-column: 1;
+            grid-row: 2;
+        }
+
+        #comments .sae-review__date {
+            grid-column: 2;
+            grid-row: 2;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            opacity: 1;
+        }
+
+        #comments .description {
+            margin: 0;
+            font-size: 0.875rem;
+            overflow-wrap: anywhere;
+        }
+
+        #comments .description p {
+            margin: 0 0 0.375rem;
+        }
+
+        #comments .description p:last-child {
+            margin-bottom: 0;
+        }
+
+        #comments .star-rating {
+            position: absolute;
+            top: 0;
+            right: 0;
+            float: none;
+            width: 6.25rem;
+            height: 1.25rem;
+            margin: 0;
+            background: url("assets/icons/star-outline.svg") repeat-x left top / 1.25rem 1.25rem;
+        }
+
+        #comments .star-rating::before,
+        #comments .star-rating span::before {
+            content: none;
+        }
+
+        #comments .star-rating span {
+            height: 100%;
+            padding: 0;
+            background: url("assets/icons/star-filled.svg") repeat-x left top / 1.25rem 1.25rem;
+            text-indent: -9999px;
+        }
+
+        #respond {
+            margin: 0;
+            padding: 0;
+            background: transparent;
+        }
+
+        .sae-reviews__help,
+        .comment-notes,
+        .comment-form-cookies-consent {
+            color: var(--text-muted);
+        }
+
+        .sae-reviews__help {
+            margin: 0 0 0.75rem;
+        }
+
+        .comment-notes {
+            margin-bottom: 0.75rem;
+            font-size: 0.75rem;
+        }
+
+        #commentform {
+            margin: 0;
+        }
+
+        #commentform p {
+            margin-bottom: 0.75rem;
+        }
+
+        #commentform label {
+            display: block;
+            margin-bottom: 0.375rem;
+            font-weight: 400;
+        }
+
+        #commentform .required {
+            color: var(--text-brand);
+        }
+
+        #commentform .comment-form-rating {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        #commentform .comment-form-rating label,
+        #commentform p.stars {
+            margin: 0;
+        }
+
+        #commentform p.stars a {
+            width: 1.75rem;
+            height: 1.75rem;
+            background: url("assets/icons/star-outline.svg") no-repeat center / 1.5rem 1.5rem;
+        }
+
+        #commentform p.stars a::before {
+            content: none;
+        }
+
+        #commentform p.stars.selected a,
+        #commentform p.stars:hover a {
+            background-image: url("assets/icons/star-filled.svg");
+        }
+
+        #commentform p.stars.selected:not(:hover) a.active~a,
+        #commentform p.stars a:hover~a {
+            background-image: url("assets/icons/star-outline.svg");
+        }
+
+        #commentform textarea,
+        #commentform input[type="text"],
+        #commentform input[type="email"] {
+            width: 100%;
+            padding: 0.625rem 0.75rem;
+            border-color: var(--surface-brand);
+            background: var(--white);
+            color: var(--text-brand);
+            font-size: 0.875rem;
+            box-shadow: none;
+        }
+
+        #commentform textarea {
+            display: block;
+            height: 8.0625rem;
+            min-height: 8.0625rem;
+            resize: vertical;
+        }
+
+        #commentform textarea::placeholder {
+            color: var(--text-muted);
+        }
+
+        #commentform .comment-form-cookies-consent {
+            display: flex;
+            clear: both;
+            width: 100%;
+            align-items: start;
+            gap: 0.5rem;
+            font-size: 0.75rem;
+        }
+
+        #commentform .comment-form-cookies-consent input {
+            flex: none;
+            margin-top: 0.125rem;
+        }
+
+        #commentform .form-submit {
+            clear: both;
+            margin: 0;
+        }
+
+        #commentform #submit {
+            width: 12.5rem;
+            min-height: 2.75rem;
+            padding: 0.625rem;
+            border-color: var(--action-primary);
+            background: var(--action-primary);
+            color: var(--white);
+            font-size: 1rem;
+            font-weight: 400;
+        }
+
+        #commentform #submit:hover {
+            background: var(--white);
+            color: var(--black);
+        }
+
+        #reviews>.clear {
+            display: none;
+        }
+
+        .woocommerce-verification-required,
+        .woocommerce-noreviews {
+            margin: 0;
+            padding: 0.75rem;
+            border: 0.0625rem solid var(--surface-brand);
+            border-radius: 0.625rem;
+            background: var(--surface-soft);
+            color: var(--text-brand);
+        }
     }
+
     @media (max-width: 43.75rem) {
         .sae301 .sae-reviews {
             margin-top: 2.5rem;
-            .sae-reviews__header h2 { font-size: 1.5rem; }
-            #reviews { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
-            #commentform textarea { height: 4.5rem; min-height: 4.5rem; }
-            #commentform #submit { width: 100%; }
+
+            .sae-reviews__header h2 {
+                font-size: 1.5rem;
+            }
+
+            #reviews {
+                grid-template-columns: minmax(0, 1fr);
+                gap: 1.5rem;
+            }
+
+            #commentform textarea {
+                height: 4.5rem;
+                min-height: 4.5rem;
+            }
+
+            #commentform #submit {
+                width: 100%;
+            }
         }
     }
 }
