@@ -1,10 +1,10 @@
 /* Je synchronise les boutons de mes cartes avec le vrai panier WooCommerce. */
 (() => {
     'use strict';
-    const catalogue = document.querySelector('.sae-catalogue');
+    const catalogue = document.querySelector('.sae_catalogue');
     if (!catalogue || typeof sae301Catalogue === 'undefined') return;
-    const controls = [...catalogue.querySelectorAll('.sae-quantity')];
-    const feedback = catalogue.querySelector('.sae-catalogue__feedback');
+    const controls = [...catalogue.querySelectorAll('.sae_quantite')];
+    const feedback = catalogue.querySelector('.sae_catalogue__feedback');
     let busy = false;
 
     function refreshControls(counts) {
@@ -26,10 +26,10 @@
         const card = button.closest('[data-product-id]');
         busy = true;
         card.setAttribute('aria-busy', 'true');
-        card.querySelector('.sae-quantity').classList.add('sae-quantity--loading');
+        card.querySelector('.sae_quantite').classList.add('sae_quantite--loading');
         refreshControls();
         feedback.textContent = '';
-        feedback.classList.remove('sae-catalogue__feedback--visible');
+        feedback.classList.remove('sae_catalogue__feedback--visible');
         try {
             const response = await fetch(sae301Catalogue.endpoint, {
                 method: 'POST', credentials: 'same-origin',
@@ -46,16 +46,16 @@
                 $(document.body).trigger('wc_fragment_refresh');
             }
             const count = result.data.counts[card.dataset.productId] || 0;
-            feedback.textContent = `${card.querySelector('.sae-card__title').textContent.trim()} : ${count} dans le panier.`;
+            feedback.textContent = `${card.querySelector('.sae_carte__title').textContent.trim()} : ${count} dans le panier.`;
             feedback.classList.add('screen-reader-text');
         } catch (error) {
             feedback.classList.remove('screen-reader-text');
-            feedback.classList.add('sae-catalogue__feedback--visible');
+            feedback.classList.add('sae_catalogue__feedback--visible');
             feedback.textContent = error.message || sae301Catalogue.error;
         } finally {
             busy = false;
             card.removeAttribute('aria-busy');
-            card.querySelector('.sae-quantity').classList.remove('sae-quantity--loading');
+            card.querySelector('.sae_quantite').classList.remove('sae_quantite--loading');
             refreshControls();
         }
     });

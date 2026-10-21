@@ -37,26 +37,26 @@
             });
         }
 
-        return element('section', {className: 'sae-cart-coupon'},
-            element('label', {className: 'sae-cart-coupon__label', htmlFor: 'sae-coupon'}, 'Vous avez un code promo ?'),
-            element('form', {className: 'sae-cart-coupon__form', onSubmit: apply},
+        return element('section', {className: 'sae_code_promo'},
+            element('label', {className: 'sae_code_promo__label', htmlFor: 'sae_coupon'}, 'Vous avez un code promo ?'),
+            element('form', {className: 'sae_code_promo__form', onSubmit: apply},
                 element('input', {
-                    className: 'sae-cart-coupon__input', id: 'sae-coupon',
+                    className: 'sae_code_promo__input sae_champ', id: 'sae_coupon',
                     type: 'text', value: code, placeholder: 'Code promo', disabled: cart.busy,
-                    'aria-describedby': 'sae-coupon-message', 'aria-invalid': hasError,
+                    'aria-describedby': 'sae_coupon_message', 'aria-invalid': hasError,
                     onChange: function (event) { setCode(event.target.value); }
                 }),
                 element('button', {
-                    className: 'sae-cart-coupon__button', type: 'submit',
+                    className: 'sae_code_promo__button sae_bouton sae_bouton--orange', type: 'submit',
                     disabled: cart.busy || !code.trim()
                 }, cart.busy ? 'Application…' : 'Appliquer le code promo')
             ),
             element('p', {
-                className: 'sae-cart-coupon__message' + (hasError ? ' sae-cart-coupon__message--error' : ''),
-                id: 'sae-coupon-message', role: hasError ? 'alert' : 'status',
+                className: 'sae_code_promo__message' + (hasError ? ' sae_code_promo__message--error' : ''),
+                id: 'sae_coupon_message', role: hasError ? 'alert' : 'status',
                 'aria-live': 'polite', 'aria-atomic': true, hidden: !message
             }, message),
-            element('a', {className: 'sae-flow__back', href: sae301Cart.shopUrl}, '← Continuer mes achats')
+            element('a', {className: 'sae_parcours__back', href: sae301Cart.shopUrl}, '← Continuer mes achats')
         );
     }
 
@@ -74,24 +74,24 @@
         }
 
         const subtotal = (Number(data.totals.total_items) + Number(data.totals.total_items_tax)) / Math.pow(10, data.totals.currency_minor_unit);
-        return element('section', {className: 'sae-cart-shipping'},
-            element('div', {className: 'sae-cart-shipping__subtotal'},
+        return element('section', {className: 'sae_livraison'},
+            element('div', {className: 'sae_livraison__subtotal'},
                 element('span', null, 'Sous-total'),
                 element('span', null, subtotal.toLocaleString('fr-FR', {style: 'currency', currency: data.totals.currency_code}))
             ),
-            element('h3', {className: 'sae-cart-shipping__title'}, 'Mode d’expédition'),
+            element('h3', {className: 'sae_livraison__title'}, 'Mode d’expédition'),
             data.packages.length ? data.packages.map(function (pack) {
-                return element('fieldset', {className: 'sae-cart-shipping__choices', key: pack.package_id},
+                return element('fieldset', {className: 'sae_livraison__choices', key: pack.package_id},
                     element('legend', {className: 'screen-reader-text'}, 'Choisir le mode d’expédition'),
                     pack.shipping_rates.map(function (rate) {
                         const price = Number(rate.price) / Math.pow(10, rate.currency_minor_unit);
                         const label = decode(rate.name) + ' — ' + (price === 0 ? 'gratuit' : price.toLocaleString('fr-FR', {
                             style: 'currency', currency: rate.currency_code
                         }));
-                        return element('label', {className: 'sae-cart-shipping__option', key: rate.rate_id},
+                        return element('label', {className: 'sae_livraison__option', key: rate.rate_id},
                             element('input', {
-                                className: 'sae-cart-shipping__radio', type: 'radio',
-                                name: 'sae-shipping-' + pack.package_id, value: rate.rate_id,
+                                className: 'sae_livraison__radio', type: 'radio',
+                                name: 'sae_shipping-' + pack.package_id, value: rate.rate_id,
                                 checked: rate.selected, disabled: data.busy,
                                 onChange: function () {
                                     wp.data.dispatch(store).selectShippingRate(rate.rate_id, pack.package_id).catch(function (error) {
@@ -99,7 +99,7 @@
                                     });
                                 }
                             }),
-                            element('span', {className: 'sae-cart-shipping__text'}, label)
+                            element('span', {className: 'sae_livraison__text'}, label)
                         );
                     })
                 );

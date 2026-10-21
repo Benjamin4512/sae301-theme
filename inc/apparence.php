@@ -47,9 +47,9 @@ function sae301_brand_cart() {
     }
     $count = WC()->cart ? WC()->cart->get_cart_contents_count() : 0;
     ?>
-    <a class="sae-cart-link" href="<?php echo esc_url( wc_get_cart_url() ); ?>" aria-label="<?php echo esc_attr( 'Mon panier : ' . $count . ' article(s)' ); ?>">
+    <a class="sae_panier_lien" href="<?php echo esc_url( wc_get_cart_url() ); ?>" aria-label="<?php echo esc_attr( 'Mon panier : ' . $count . ' article(s)' ); ?>">
         <span>Mon Panier</span>
-        <span class="sae-cart-link__badge"><span class="sae-cart-link__count"><?php echo esc_html( $count ); ?></span><img class="sae-cart-link__icon" src="<?php echo esc_url( get_stylesheet_directory_uri() . '/assets/icons/bag.svg' ); ?>" width="18" height="24" alt=""></span>
+        <span class="sae_panier_lien__badge"><span class="sae_panier_lien__count"><?php echo esc_html( $count ); ?></span><img class="sae_panier_lien__icon" src="<?php echo esc_url( get_stylesheet_directory_uri() . '/assets/icons/bag.svg' ); ?>" width="18" height="24" alt=""></span>
     </a>
     <?php
 }
@@ -57,7 +57,7 @@ function sae301_brand_cart() {
 function sae301_brand_cart_fragment( $fragments ) {
     ob_start();
     sae301_brand_cart();
-    $fragments['a.sae-cart-link'] = ob_get_clean();
+    $fragments['a.sae_panier_lien'] = ob_get_clean();
     return $fragments;
 }
 add_filter( 'woocommerce_add_to_cart_fragments', 'sae301_brand_cart_fragment' );

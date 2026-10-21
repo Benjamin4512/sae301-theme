@@ -14,24 +14,24 @@ $membres = new WP_Query( array(
     'order'         => 'ASC',
 ) );
 ?>
-<main id="main" class="sae-team">
-    <h1 class="sae-team__title">Notre équipe</h1>
-    <div class="sae-team__list">
+<main id="main" class="sae_equipe">
+    <h1 class="sae_equipe__title">Notre équipe</h1>
+    <div class="sae_equipe__list">
         <?php while ( $membres->have_posts() ) : $membres->the_post();
             $identite = explode( ' – ', html_entity_decode( get_the_title(), ENT_QUOTES, 'UTF-8' ), 2 );
             $presentation = $presentations[ $identite[1] ?? '' ] ?? get_the_excerpt();
         ?>
-            <article class="sae-team__card">
-                <a class="sae-team__portrait" href="<?php the_permalink(); ?>" aria-label="<?php echo esc_attr( 'Voir le profil de ' . $identite[0] ); ?>">
-                    <?php the_post_thumbnail( 'large', array( 'class' => 'sae-team__image', 'alt' => $identite[0] ) ); ?>
+            <article class="sae_equipe__card">
+                <a class="sae_equipe__portrait" href="<?php the_permalink(); ?>" aria-label="<?php echo esc_attr( 'Voir le profil de ' . $identite[0] ); ?>">
+                    <?php the_post_thumbnail( 'large', array( 'class' => 'sae_equipe__image', 'alt' => $identite[0] ) ); ?>
                 </a>
-                <div class="sae-team__content">
-                    <h2 class="sae-team__name"><?php echo esc_html( $identite[0] ); ?></h2>
+                <div class="sae_equipe__content">
+                    <h2 class="sae_equipe__name"><?php echo esc_html( $identite[0] ); ?></h2>
                     <?php if ( ! empty( $identite[1] ) ) : ?>
-                        <p class="sae-team__role"><?php echo esc_html( $identite[1] ); ?></p>
+                        <p class="sae_equipe__role"><?php echo esc_html( $identite[1] ); ?></p>
                     <?php endif; ?>
-                    <p class="sae-team__description"><?php echo esc_html( $presentation ); ?></p>
-                    <a class="sae-team__button" href="<?php the_permalink(); ?>">Voir plus<span class="screen-reader-text"> : <?php echo esc_html( $identite[0] ); ?></span></a>
+                    <p class="sae_equipe__description"><?php echo esc_html( $presentation ); ?></p>
+                    <a class="sae_equipe__button sae_bouton sae_bouton--orange" href="<?php the_permalink(); ?>">Voir plus<span class="screen-reader-text"> : <?php echo esc_html( $identite[0] ); ?></span></a>
                 </div>
             </article>
         <?php endwhile; wp_reset_postdata(); ?>

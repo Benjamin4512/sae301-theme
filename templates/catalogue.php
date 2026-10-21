@@ -37,33 +37,33 @@ uasort( $groups, static function ( $left, $right ) use ( $ranks ) {
     return ( $ranks[ sanitize_title( $left['name'] ) ] ?? 10 ) <=> ( $ranks[ sanitize_title( $right['name'] ) ] ?? 10 );
 } );
 ?>
-<div class="sae-catalogue">
-    <div class="sae-catalogue__intro">
-        <h1 class="sae-catalogue__title"><?php echo is_front_page() || is_shop() ? 'Nos Plats à Emporter' : esc_html( is_tax( 'gamme' ) ? 'Gamme ' . single_term_title( '', false ) : woocommerce_page_title( false ) ); ?></h1>
+<div class="sae_catalogue">
+    <div class="sae_catalogue__intro">
+        <h1 class="sae_catalogue__title"><?php echo is_front_page() || is_shop() ? 'Nos Plats à Emporter' : esc_html( is_tax( 'gamme' ) ? 'Gamme ' . single_term_title( '', false ) : woocommerce_page_title( false ) ); ?></h1>
         <?php sae301_brand_cart(); ?>
     </div>
     <?php get_template_part( 'templates/gammes' ); ?>
     <?php woocommerce_output_all_notices(); ?>
-    <p class="sae-catalogue__feedback" role="status" aria-live="polite" aria-atomic="true"></p>
+    <p class="sae_catalogue__feedback" role="status" aria-live="polite" aria-atomic="true"></p>
     <?php if ( ! $groups ) : ?>
         <?php do_action( 'woocommerce_no_products_found' ); ?>
     <?php endif; ?>
     <?php $section_index = 0; ?>
     <?php foreach ( $groups as $group_id => $group ) :
-        $section_class = 'sae-catalogue__section';
-        $category_class = 'sae-catalogue__category';
+        $section_class = 'sae_catalogue__section';
+        $category_class = 'sae_catalogue__category';
         if ( $section_index > 0 ) {
-            $section_class .= ' sae-catalogue__section--following';
-            $category_class .= ' sae-catalogue__category--following';
+            $section_class .= ' sae_catalogue__section--following';
+            $category_class .= ' sae_catalogue__category--following';
         }
         if ( $section_index > 1 ) {
-            $section_class .= ' sae-catalogue__section--spaced';
+            $section_class .= ' sae_catalogue__section--spaced';
         }
         ++$section_index;
         ?>
-        <section class="<?php echo esc_attr( $section_class ); ?>" aria-labelledby="sae-category-<?php echo esc_attr( $group_id ); ?>">
-            <h2 class="<?php echo esc_attr( $category_class ); ?>" id="sae-category-<?php echo esc_attr( $group_id ); ?>"><?php echo esc_html( is_tax( 'gamme' ) ? 'Les produits de cette gamme' : 'Nos ' . $group['name'] ); ?></h2>
-            <ul class="sae-catalogue__grid" role="list" tabindex="0" aria-label="<?php echo esc_attr( is_tax( 'gamme' ) ? 'Produits de la gamme ' . $group['name'] : 'Produits : ' . $group['name'] . '. Sur petit écran, faire défiler horizontalement pour voir les autres produits.' ); ?>">
+        <section class="<?php echo esc_attr( $section_class ); ?>" aria-labelledby="sae_category-<?php echo esc_attr( $group_id ); ?>">
+            <h2 class="<?php echo esc_attr( $category_class ); ?>" id="sae_category-<?php echo esc_attr( $group_id ); ?>"><?php echo esc_html( is_tax( 'gamme' ) ? 'Les produits de cette gamme' : 'Nos ' . $group['name'] ); ?></h2>
+            <ul class="sae_catalogue__grid" role="list" aria-label="<?php echo esc_attr( is_tax( 'gamme' ) ? 'Produits de la gamme ' . $group['name'] : 'Produits : ' . $group['name'] . '. Sur petit écran, faire défiler horizontalement pour voir les autres produits.' ); ?>">
                 <?php foreach ( $group['items'] as $product_index => $catalogue_product ) :
                     $id       = $catalogue_product->get_id();
                     $name     = $catalogue_product->get_name();
@@ -72,28 +72,28 @@ uasort( $groups, static function ( $left, $right ) use ( $ranks ) {
                     $is_dish  = is_tax( 'gamme' ) ? has_term( array( 'plat', 'plats' ), 'product_cat', $id ) : in_array( sanitize_title( $group['name'] ), array( 'plat', 'plats' ), true );
                     $can_add  = $catalogue_product->is_type( 'simple' ) && $catalogue_product->is_purchasable() && $catalogue_product->is_in_stock();
                     ?>
-                    <li class="sae-card<?php echo $is_dish ? ' sae-card--dish' : ''; ?>" data-product-id="<?php echo esc_attr( $id ); ?>">
-                        <a class="sae-card__image-link" href="<?php echo esc_url( $url ); ?>" aria-label="<?php echo esc_attr( $name ); ?>">
-                            <?php echo $catalogue_product->get_image( 'full', array( 'class' => 'sae-card__image' ) ); // Je garde l'image originale, sans recadrage carre impose par WooCommerce. ?>
+                    <li class="sae_carte<?php echo $is_dish ? ' sae_carte--dish' : ''; ?>" data-product-id="<?php echo esc_attr( $id ); ?>">
+                        <a class="sae_carte__image_link" href="<?php echo esc_url( $url ); ?>" aria-label="<?php echo esc_attr( $name ); ?>">
+                            <?php echo $catalogue_product->get_image( 'full', array( 'class' => 'sae_carte__image' ) ); // Je garde l'image originale, sans recadrage carre impose par WooCommerce. ?>
                         </a>
-                        <div class="sae-card__content">
-                            <div class="sae-card__text">
-                                <div class="sae-card__heading">
-                                    <h3 class="sae-card__title<?php echo $is_dish && 0 === $product_index ? ' sae-card__title--compact' : ''; ?>"><a class="sae-card__link" href="<?php echo esc_url( $url ); ?>"><?php echo esc_html( $name ); ?></a></h3>
-                                    <div class="sae-card__price"><?php echo wp_kses_post( $catalogue_product->get_price_html() ); ?></div>
+                        <div class="sae_carte__content">
+                            <div class="sae_carte__text">
+                                <div class="sae_carte__heading">
+                                    <h3 class="sae_carte__title<?php echo $is_dish && 0 === $product_index ? ' sae_carte__title--compact' : ''; ?>"><a class="sae_carte__link" href="<?php echo esc_url( $url ); ?>"><?php echo esc_html( $name ); ?></a></h3>
+                                    <div class="sae_carte__price"><?php echo wp_kses_post( $catalogue_product->get_price_html() ); ?></div>
                                 </div>
-                                <p class="sae-card__description<?php echo $is_dish && $product_index < 2 ? ' sae-card__description--compact' : ''; ?>"><?php echo esc_html( wp_strip_all_tags( $catalogue_product->get_short_description() ?: $catalogue_product->get_description() ) ); ?></p>
+                                <p class="sae_carte__description<?php echo $is_dish && $product_index < 2 ? ' sae_carte__description--compact' : ''; ?>"><?php echo esc_html( wp_strip_all_tags( $catalogue_product->get_short_description() ?: $catalogue_product->get_description() ) ); ?></p>
                             </div>
                             <?php if ( $catalogue_product->is_type( 'simple' ) ) : ?>
-                                <div class="sae-quantity" role="group" aria-label="<?php echo esc_attr( 'Quantité de ' . $name . ' dans le panier' ); ?>" data-purchasable="<?php echo $can_add ? '1' : '0'; ?>" data-max="<?php echo esc_attr( $catalogue_product->get_max_purchase_quantity() ); ?>">
-                                    <button class="sae-quantity__button sae-quantity__button--minus" type="button" data-delta="-1" aria-label="<?php echo esc_attr( 'Retirer une unité de ' . $name ); ?>" disabled><span class="sae-quantity__symbol" aria-hidden="true">−</span></button>
-                                    <output class="sae-quantity__value" aria-label="Quantité dans le panier"><?php echo esc_html( $quantity ); ?></output>
-                                    <button class="sae-quantity__button" type="button" data-delta="1" aria-label="<?php echo esc_attr( 'Ajouter une unité de ' . $name ); ?>" disabled><span class="sae-quantity__symbol" aria-hidden="true">+</span></button>
+                                <div class="sae_quantite" role="group" aria-label="<?php echo esc_attr( 'Quantité de ' . $name . ' dans le panier' ); ?>" data-purchasable="<?php echo $can_add ? '1' : '0'; ?>" data-max="<?php echo esc_attr( $catalogue_product->get_max_purchase_quantity() ); ?>">
+                                    <button class="sae_quantite__button sae_quantite__button--minus sae_bouton" type="button" data-delta="-1" aria-label="<?php echo esc_attr( 'Retirer une unité de ' . $name ); ?>" disabled><span class="sae_quantite__symbol" aria-hidden="true">−</span></button>
+                                    <output class="sae_quantite__value" aria-label="Quantité dans le panier"><?php echo esc_html( $quantity ); ?></output>
+                                    <button class="sae_quantite__button sae_bouton" type="button" data-delta="1" aria-label="<?php echo esc_attr( 'Ajouter une unité de ' . $name ); ?>" disabled><span class="sae_quantite__symbol" aria-hidden="true">+</span></button>
                                 </div>
-                                <?php if ( ! $can_add ) : ?><p class="sae-card__availability">Indisponible</p><?php endif; ?>
+                                <?php if ( ! $can_add ) : ?><p class="sae_carte__availability">Indisponible</p><?php endif; ?>
                                 <noscript><a href="<?php echo esc_url( $url ); ?>">Choisir la quantité sur la fiche produit</a></noscript>
                             <?php else : ?>
-                                <a class="button sae-card__options" href="<?php echo esc_url( $url ); ?>">Choisir les options</a>
+                                <a class="button sae_carte__options sae_bouton--orange" href="<?php echo esc_url( $url ); ?>">Choisir les options</a>
                             <?php endif; ?>
                         </div>
                     </li>

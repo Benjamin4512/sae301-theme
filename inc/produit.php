@@ -52,7 +52,7 @@ function sae301_product_category() {
         return;
     }
     $category = reset( $categories );
-    echo '<p class="sae-product__category">Nos ' . esc_html( $category->name ) . '</p>';
+    echo '<p class="sae_produit__category">Nos ' . esc_html( $category->name ) . '</p>';
 }
 
 function sae301_product_options_intro() {
@@ -65,31 +65,31 @@ function sae301_product_options_intro() {
         $labels[] = mb_strtolower( wc_attribute_label( $attribute, $product ) );
     }
     ?>
-    <div class="sae-product__options-intro">
-        <h2 class="sae-product__options-title">Personnalisez votre <?php echo has_term( 'boissons', 'product_cat', $product->get_id() ) ? 'boisson' : ( has_term( 'dessert', 'product_cat', $product->get_id() ) || has_term( 'desserts', 'product_cat', $product->get_id() ) ? 'dessert' : 'plat' ); ?></h2>
-        <p class="sae-product__options-help">Choisissez vos options : <?php echo esc_html( implode( ', ', $labels ) ); ?>.</p>
+    <div class="sae_produit__options_intro">
+        <h2 class="sae_produit__options_title">Personnalisez votre <?php echo has_term( 'boissons', 'product_cat', $product->get_id() ) ? 'boisson' : ( has_term( 'dessert', 'product_cat', $product->get_id() ) || has_term( 'desserts', 'product_cat', $product->get_id() ) ? 'dessert' : 'plat' ); ?></h2>
+        <p class="sae_produit__options_help">Choisissez vos options : <?php echo esc_html( implode( ', ', $labels ) ); ?>.</p>
     </div>
     <?php
 }
 
 function sae301_product_quantity_start() {
     ?>
-    <span class="sae-product__quantity-label">Quantité</span>
-    <div class="sae-product__quantity-control">
-        <button class="sae-product__quantity-button" type="button" data-product-step="-1" aria-label="Diminuer la quantité">−</button>
+    <span class="sae_produit__quantity_label">Quantité</span>
+    <div class="sae_produit__quantity_control">
+        <button class="sae_produit__quantity_button sae_bouton" type="button" data-product-step="-1" aria-label="Diminuer la quantité">−</button>
     <?php
 }
 
 function sae301_product_quantity_end() {
     ?>
-        <button class="sae-product__quantity-button" type="button" data-product-step="1" aria-label="Augmenter la quantité">+</button>
+        <button class="sae_produit__quantity_button sae_bouton" type="button" data-product-step="1" aria-label="Augmenter la quantité">+</button>
     </div>
     <?php
 }
 
 function sae301_product_select_class( $args ) {
     if ( is_product() ) {
-        $args['class'] = trim( ( $args['class'] ?? '' ) . ' sae-product__select' );
+        $args['class'] = trim( ( $args['class'] ?? '' ) . ' sae_produit__select' );
     }
     return $args;
 }
@@ -117,24 +117,24 @@ function sae301_product_information() {
         return;
     }
     ?>
-    <div class="sae-product__details">
-        <div class="sae-product-info">
+    <div class="sae_produit__details">
+        <div class="sae_produit_infos">
             <?php if ( $composition ) : ?>
-                <section class="sae-product-info__group">
-                    <h2 class="sae-product-info__title">Composition</h2>
-                    <p class="sae-product-info__text"><?php echo nl2br( esc_html( $composition ) ); ?></p>
+                <section class="sae_produit_infos__group">
+                    <h2 class="sae_produit_infos__title">Composition</h2>
+                    <p class="sae_produit_infos__text"><?php echo nl2br( esc_html( $composition ) ); ?></p>
                 </section>
             <?php endif; ?>
             <?php if ( $nutrition ) : ?>
-                <section class="sae-product-info__group">
-                    <h2 class="sae-product-info__title">Valeurs nutritionnelles</h2>
-                    <p class="sae-product-info__text"><?php echo nl2br( esc_html( str_replace( '|', "\n", $nutrition ) ) ); ?></p>
+                <section class="sae_produit_infos__group">
+                    <h2 class="sae_produit_infos__title">Valeurs nutritionnelles</h2>
+                    <p class="sae_produit_infos__text"><?php echo nl2br( esc_html( str_replace( '|', "\n", $nutrition ) ) ); ?></p>
                 </section>
             <?php endif; ?>
             <?php if ( $allergenes ) : ?>
-                <section class="sae-product-info__group sae-product-info__group--last">
-                    <h2 class="sae-product-info__title">Allergènes</h2>
-                    <p class="sae-product-info__text"><?php echo esc_html( $allergenes ); ?></p>
+                <section class="sae_produit_infos__group sae_produit_infos__group--last">
+                    <h2 class="sae_produit_infos__title">Allergènes</h2>
+                    <p class="sae_produit_infos__text"><?php echo esc_html( $allergenes ); ?></p>
                 </section>
             <?php endif; ?>
         </div>
@@ -194,9 +194,9 @@ function sae301_product_reviews() {
     }
     $count = $product->get_review_count();
     ?>
-    <section class="sae-reviews" aria-labelledby="sae-reviews-title">
-        <header class="sae-reviews__header">
-            <h2 id="sae-reviews-title">Avis clients</h2>
+    <section class="sae_avis" aria-labelledby="sae_reviews_title">
+        <header class="sae_avis__header">
+            <h2 id="sae_reviews_title">Avis clients</h2>
             <p><?php
                 if ( $count && wc_review_ratings_enabled() && $product->get_rating_count() ) {
                     echo esc_html( number_format_i18n( (float) $product->get_average_rating(), 1 ) . '/5 · ' );
@@ -217,7 +217,7 @@ function sae301_review_form( $form ) {
     $form['title_reply'] = 'Donnez votre avis';
     $help = get_option( 'woocommerce_review_rating_verification_required' ) === 'yes'
         ? 'Réservé aux acheteurs certifiés.' : 'Partagez votre expérience avec ce produit.';
-    $form['title_reply_after'] = '</span><p class="sae-reviews__help">' . esc_html( $help ) . '</p>';
+    $form['title_reply_after'] = '</span><p class="sae_avis__help">' . esc_html( $help ) . '</p>';
     $form['label_submit'] = 'Publier mon avis';
     $form['comment_field'] = str_replace(
         array( 'Your review', 'Votre avis', '<textarea id="comment"' ),
@@ -233,12 +233,12 @@ function sae301_review_meta( $comment ) {
         return;
     }
     ?>
-    <p class="sae-review__meta">
-        <span class="sae-review__author"><?php echo esc_html( get_comment_author( $comment ) ); ?></span>
+    <p class="sae_avis_item__meta">
+        <span class="sae_avis_item__author"><?php echo esc_html( get_comment_author( $comment ) ); ?></span>
         <?php if ( get_option( 'woocommerce_review_rating_verification_label' ) === 'yes' && wc_review_is_from_verified_owner( $comment->comment_ID ) ) : ?>
-            <span class="sae-review__verified">Achat vérifié</span>
+            <span class="sae_avis_item__verified">Achat vérifié</span>
         <?php endif; ?>
-        <time class="sae-review__date" datetime="<?php echo esc_attr( get_comment_date( 'c', $comment ) ); ?>"><?php echo esc_html( get_comment_date( 'd/m/Y', $comment ) ); ?></time>
+        <time class="sae_avis_item__date" datetime="<?php echo esc_attr( get_comment_date( 'c', $comment ) ); ?>"><?php echo esc_html( get_comment_date( 'd/m/Y', $comment ) ); ?></time>
     </p>
     <?php
 }

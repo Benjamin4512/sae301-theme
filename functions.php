@@ -72,10 +72,13 @@ require_once get_stylesheet_directory() . '/inc/catalogue.php';
 // Je charge la presentation de mes fiches produit.
 require_once get_stylesheet_directory() . '/inc/produit.php';
 
+// Je charge les frais de préparation administrables dans SCF.
+require_once get_stylesheet_directory() . '/inc/tarification.php';
+
 function sae301_order_classes( $classes ) {
     if ( is_cart() || ( is_checkout() && ! is_order_received_page() ) ) {
-        $classes[] = 'sae-flow';
-        $classes[] = is_cart() ? 'sae-flow--cart' : 'sae-flow--checkout';
+        $classes[] = 'sae_parcours';
+        $classes[] = is_cart() ? 'sae_parcours--cart' : 'sae_parcours--checkout';
     }
     return $classes;
 }
@@ -94,8 +97,8 @@ add_action( 'wp', 'sae301_order_layout', 40 );
 
 function sae301_order_header() {
     ?>
-    <header class="sae-flow__header">
-        <nav class="sae-flow__breadcrumb" aria-label="Fil d’Ariane">
+    <header class="sae_parcours__header">
+        <nav class="sae_parcours__breadcrumb" aria-label="Fil d’Ariane">
             <a href="<?php echo esc_url( home_url( '/' ) ); ?>">Accueil</a>
             <span aria-hidden="true">›</span>
             <?php if ( is_checkout() ) : ?>
@@ -104,8 +107,8 @@ function sae301_order_header() {
             <?php endif; ?>
             <span aria-current="page"><?php echo is_cart() ? 'Panier' : 'Commande'; ?></span>
         </nav>
-        <div class="sae-flow__intro">
-            <h1 class="sae-flow__title"><?php echo is_cart() ? 'Votre panier' : 'Votre commande'; ?></h1>
+        <div class="sae_parcours__intro">
+            <h1 class="sae_parcours__title"><?php echo is_cart() ? 'Votre panier' : 'Votre commande'; ?></h1>
             <?php if ( is_cart() ) { sae301_brand_cart(); } ?>
         </div>
     </header>
@@ -114,7 +117,7 @@ function sae301_order_header() {
 
 function sae301_order_back() {
     if ( is_cart() ) {
-        echo '<a class="sae-flow__back" href="' . esc_url( wc_get_page_permalink( 'shop' ) ) . '">← Continuer mes achats</a>';
+        echo '<a class="sae_parcours__back" href="' . esc_url( wc_get_page_permalink( 'shop' ) ) . '">← Continuer mes achats</a>';
     }
 }
 
@@ -164,12 +167,12 @@ function sae301_cart_blocks( $content ) {
     $shipping = $xpath->query( '//*[@data-block-name="woocommerce/cart-order-summary-shipping-block"]' )->item( 0 );
     if ( $filled && $totals && $coupon ) {
         $coupon->setAttribute( 'data-block-name', 'sae301/cart-coupon' );
-        $coupon->setAttribute( 'class', 'sae-cart-coupon' );
+        $coupon->setAttribute( 'class', 'sae_code_promo' );
         $filled->insertBefore( $coupon, $totals );
     }
     if ( $shipping ) {
         $shipping->setAttribute( 'data-block-name', 'sae301/cart-shipping' );
-        $shipping->setAttribute( 'class', 'sae-cart-shipping' );
+        $shipping->setAttribute( 'class', 'sae_livraison' );
     }
     $result = '';
     foreach ( $document->getElementsByTagName( 'body' )->item( 0 )->childNodes as $node ) {
@@ -194,7 +197,7 @@ function sae301_checkout_layout( $content ) {
     $actions = $xpath->query( '//*[@data-block-name="woocommerce/checkout-actions-block"]' )->item( 0 );
     if ( $totals && $actions ) {
         $title = $document->createElement( 'h2', 'Votre commande' );
-        $title->setAttribute( 'class', 'sae-checkout__summary-title' );
+        $title->setAttribute( 'class', 'sae_commande__summary_title' );
         $totals->insertBefore( $title, $totals->firstChild );
         $totals->appendChild( $actions );
     }
@@ -220,7 +223,7 @@ function sae301_checkout_texts() {
 add_action( 'wp_enqueue_scripts', 'sae301_checkout_texts', 100 );
 function sae301_receipt_classes( $classes ) {
     if ( is_order_received_page() ) {
-        $classes[] = 'sae-receipt-page';
+        $classes[] = 'sae_receipt_page';
     }
     return $classes;
 }

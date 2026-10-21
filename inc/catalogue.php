@@ -15,7 +15,7 @@ add_action( 'wp', 'sae301_catalogue_layout', 20 );
 
 function sae301_catalogue_classes( $classes ) {
     $classes = array_diff( $classes, array( 'right-sidebar', 'left-sidebar' ) );
-    $classes[] = 'sae301--full-width';
+    $classes[] = 'sae301--full_width';
     if ( sae301_catalogue_page() ) {
         $classes[] = 'sae301--catalogue';
     }
