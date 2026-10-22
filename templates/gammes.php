@@ -5,17 +5,17 @@ if ( is_wp_error( $gammes ) || ! $gammes ) {
     return;
 }
 ?>
-<nav class="sae_gammes" aria-label="Parcourir les gammes">
-    <p class="sae_gammes__title">Nos gammes</p>
-    <div class="sae_gammes__links">
-        <a class="sae_gammes__link" href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>"<?php if ( is_shop() ) : ?> aria-current="page"<?php endif; ?>>Tous les produits</a>
+<nav class="gammes" aria-label="Parcourir les gammes">
+    <p class="gammes__title">Nos gammes</p>
+    <div class="gammes__links">
+        <a class="gammes__link<?php echo is_shop() ? ' gammes__link--active' : ''; ?>" href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>"<?php if ( is_shop() ) : ?> aria-current="page"<?php endif; ?>>Tous les produits</a>
         <?php foreach ( $gammes as $gamme ) :
             $url = get_term_link( $gamme );
             if ( is_wp_error( $url ) ) {
                 continue;
             }
         ?>
-            <a class="sae_gammes__link" href="<?php echo esc_url( $url ); ?>"<?php if ( is_tax( 'gamme', $gamme->term_id ) ) : ?> aria-current="page"<?php endif; ?>><?php echo esc_html( $gamme->name ); ?></a>
+            <a class="gammes__link<?php echo is_tax( 'gamme', $gamme->term_id ) ? ' gammes__link--active' : ''; ?>" href="<?php echo esc_url( $url ); ?>"<?php if ( is_tax( 'gamme', $gamme->term_id ) ) : ?> aria-current="page"<?php endif; ?>><?php echo esc_html( $gamme->name ); ?></a>
         <?php endforeach; ?>
     </div>
 </nav>

@@ -1,0 +1,304 @@
+/* BEM : blocs .equipe et .membre.
+   Éléments : .equipe__card, .equipe__image et .membre__portrait.
+   Variante : .membre__image--decale. */
+
+.post-type-archive-membre,
+.single-membre {
+    .site-content {
+        padding: 0;
+        background: var(--surface_soft);
+    }
+
+    .site-content .col-full {
+        max-width: 79.8rem;
+        margin: 0 auto;
+    }
+
+    @media (max-width: 82rem) {
+        .site-content .col-full {
+            margin: 0 var(--espace_5);
+        }
+    }
+}
+
+.equipe {
+    padding: var(--espace_16) 0 6.5rem;
+    color: var(--text_brand);
+
+    .equipe__title {
+        margin: 0 0 var(--espace_16);
+        text-align: center;
+    }
+
+    .equipe__list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 5rem 8.8rem;
+    }
+
+    .equipe__card {
+        display: grid;
+        grid-template-columns: 12.5rem 1fr;
+        gap: var(--espace_2);
+        width: 33rem;
+        max-width: 100%;
+        min-height: 19.5rem;
+        padding: var(--espace_2);
+        border-radius: var(--arrondi_petit);
+        background: var(--surface_brand);
+    }
+
+    .equipe__portrait {
+        display: block;
+        min-width: 0;
+    }
+
+    .equipe__image {
+        display: block;
+        width: 100%;
+        height: 100%;
+        min-height: 18.5rem;
+        margin: 0;
+        object-fit: cover;
+        border-radius: 0;
+    }
+
+    .equipe__content {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        padding: var(--espace_4) var(--espace_2) var(--espace_3) 0;
+    }
+
+    .equipe__name {
+        margin: 0 0 var(--espace_1);
+        font-size: var(--titre_petit);
+        line-height: 1.25;
+    }
+
+    .equipe__role {
+        margin: 0 0 var(--espace_6);
+        color: var(--text_accent);
+        font-size: var(--texte_petit);
+    }
+
+    .equipe__description {
+        margin: 0 0 var(--espace_6);
+        font-size: var(--texte_courant);
+        line-height: 1.4;
+    }
+
+    .equipe__button {
+        display: inline-block;
+        font-family: var(--font_primary);
+        border: 0.1rem solid var(--action_primary);
+        border-radius: var(--arrondi_petit);
+    }
+
+    .equipe__button {
+        margin-top: auto;
+        padding: var(--espace_2) var(--espace_4);
+        font-size: var(--texte_petit);
+    }
+
+    .equipe__image--decale {
+        object-position: 25% center;
+    }
+
+    @media (max-width: 82rem) {
+        .equipe__list {
+            gap: var(--espace_12);
+        }
+
+        .equipe__card {
+            width: calc(50% - 1.5rem);
+            grid-template-columns: 40% 1fr;
+        }
+
+        .equipe__name {
+            font-size: var(--texte_grand);
+        }
+    }
+
+    @media (max-width: 60rem) {
+        .equipe__card {
+            width: 33rem;
+        }
+    }
+
+    @media (width < 44rem) {
+        padding: var(--espace_10) 0;
+
+        .equipe__title {
+            margin-bottom: var(--espace_10);
+            font-size: var(--titre_petit);
+        }
+
+        .equipe__card {
+            grid-template-columns: 40% 1fr;
+            min-height: 18rem;
+        }
+
+        .equipe__image {
+            min-height: 17rem;
+        }
+
+        .equipe__name {
+            font-size: var(--texte_intermediaire);
+        }
+
+        .equipe__role {
+            margin-bottom: var(--espace_4);
+            font-size: var(--texte_tres_petit);
+        }
+
+        .equipe__description {
+            font-size: var(--texte_petit);
+        }
+
+        .equipe__content {
+            padding-top: var(--espace_2);
+        }
+    }
+}
+
+.membre {
+    padding: 6.5rem 0;
+    color: var(--text_brand);
+
+    .membre__button {
+        display: inline-block;
+        font-family: var(--font_primary);
+        border: 0.1rem solid var(--action_primary);
+        border-radius: var(--arrondi_petit);
+    }
+
+    .membre__profile {
+        display: grid;
+        grid-template-columns: 37.25% 1fr;
+        gap: 1.6rem;
+        margin: 0;
+    }
+
+    .membre__portrait {
+        min-width: 0;
+    }
+
+    .membre__image {
+        display: block;
+        width: 100%;
+        height: 44.1rem;
+        margin: 0;
+        object-fit: cover;
+        border-radius: 0;
+    }
+
+    .membre__image--decale {
+        object-position: 25% center;
+    }
+
+    .membre__details {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        min-width: 0;
+    }
+
+    .membre__name {
+        margin: 0 0 var(--espace_2);
+        font-size: clamp(2rem, 1.5rem + 1vw, 2.5rem);
+        line-height: 1.35;
+    }
+
+    .membre__role {
+        margin: 0 0 var(--espace_12);
+        color: var(--text_accent);
+        font-size: var(--texte_moyen);
+        line-height: 1.4;
+    }
+
+    .membre__description {
+        color: var(--text_brand);
+        font-size: var(--texte_moyen);
+        line-height: 1.4;
+    }
+
+    .membre__description p {
+        margin: 0 0 var(--espace_10);
+    }
+
+    .membre__actions {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: var(--espace_4) var(--espace_6);
+        margin-top: auto;
+    }
+
+    .membre__button {
+        padding: var(--espace_4) 0.9rem;
+        font-size: var(--texte_moyen);
+    }
+
+    .membre__back {
+        color: var(--text_brand);
+        font-size: var(--texte_petit);
+    }
+
+    @media (max-width: 82rem) {
+        .membre__description {
+            font-size: var(--texte_moyen);
+        }
+    }
+
+    @media (max-width: 60rem) {
+        .membre__profile {
+            grid-template-columns: 40% 1fr;
+            gap: var(--espace_6);
+        }
+
+        .membre__image {
+            height: 36rem;
+        }
+
+        .membre__name {
+            font-size: clamp(2rem, 1.5rem + 1vw, 2.5rem);
+        }
+
+        .membre__role {
+            margin-bottom: var(--espace_8);
+            font-size: var(--texte_moyen);
+        }
+
+        .membre__description p {
+            margin-bottom: var(--espace_6);
+        }
+
+        .membre__button {
+            font-size: var(--texte_courant);
+        }
+    }
+
+    @media (width < 44rem) {
+        padding: var(--espace_10) 0;
+
+        .membre__profile {
+            grid-template-columns: 1fr;
+            gap: var(--espace_6);
+        }
+
+        .membre__image {
+            height: 28rem;
+        }
+
+        .membre__description {
+            font-size: var(--texte_courant);
+        }
+
+        .membre__actions {
+            flex-direction: column;
+            align-items: start;
+        }
+    }
+}

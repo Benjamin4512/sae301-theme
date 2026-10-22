@@ -1,0 +1,190 @@
+/* BEM : blocs .catalogue et .gammes.
+   Éléments : .catalogue__grid, .catalogue__title et .gammes__link.
+   Variante : .gammes__link--active. */
+
+/* Les colonnes et les cartes restent dans la largeur disponible. */
+
+.site_restaurant--catalogue {
+    .site-content {
+        padding-top: 3.5rem;
+        background: var(--white);
+    }
+
+    .site-main {
+        padding-bottom: 4.5rem;
+        margin: 0;
+    }
+
+    .content-area {
+        margin-bottom: 0;
+    }
+
+    @media (width < 44rem) {
+        .site-content {
+            padding-top: var(--espace_8);
+        }
+
+        .site-main {
+            padding-bottom: 14.5rem;
+        }
+    }
+}
+
+.catalogue {
+    min-width: 0;
+
+    .catalogue__section--following {
+        margin-top: 2.7rem;
+    }
+
+    .catalogue__category {
+        margin: 0 0 1.8rem;
+        padding: 0;
+        color: var(--text_brand);
+        font-family: var(--font_title);
+        font-size: var(--titre_petit);
+        font-weight: 400;
+        line-height: 2.8rem;
+        letter-spacing: normal;
+    }
+
+    .catalogue__feedback {
+        margin: 0;
+        color: var(--text_brand);
+    }
+
+    .catalogue__feedback--visible {
+        margin-bottom: var(--espace_6);
+        padding: var(--espace_3);
+        border: var(--bordure_discrete);
+    }
+
+    .woocommerce-pagination {
+        margin-top: var(--espace_8);
+    }
+
+    .catalogue__intro {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--espace_6);
+        margin-bottom: var(--espace_10);
+    }
+
+    .catalogue__title {
+        margin: 0;
+        color: var(--text_brand);
+        font-family: var(--font_title);
+        font-size: clamp(2rem, 1.5rem + 2vw, 3rem);
+        font-weight: 400;
+        line-height: 1.3;
+    }
+
+    @media (width < 44rem) {
+        .catalogue__grid {
+            display: flex;
+            justify-content: start;
+            gap: var(--espace_5);
+            width: 100%;
+            padding: 0;
+            overflow-x: auto;
+            max-width: var(--largeur_carte);
+            margin: 0 auto;
+        }
+
+        .catalogue__category {
+            max-width: none;
+            margin: 0 0 1.4rem;
+            font-size: var(--titre_petit);
+            text-align: center;
+            line-height: 2.8rem;
+        }
+
+        .catalogue__section--following {
+            margin-top: 4.3rem;
+        }
+
+        .catalogue__intro {
+            flex-direction: column;
+            gap: 4.3rem;
+            margin-bottom: 3.8rem;
+        }
+
+        .catalogue__title {
+            width: 100%;
+            max-width: var(--largeur_carte);
+            margin: 0;
+            text-align: center;
+            font-size: clamp(2rem, 1.5rem + 2vw, 3rem);
+            line-height: 1.3;
+        }
+
+        .catalogue__section--spaced {
+            margin-top: 6.4rem;
+        }
+
+        .catalogue__category--following {
+            margin-bottom: 0.9rem;
+        }
+    }
+
+    @media (max-width: 69rem) and (min-width: 44rem) {
+        .catalogue__title {
+            font-size: clamp(2rem, 1.5rem + 2vw, 3rem);
+            line-height: 1.3;
+        }
+
+        .catalogue__grid {
+            gap: var(--espace_8);
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
+
+    @media (max-width: 23rem) {
+        .catalogue__title {
+            font-size: clamp(2rem, 1.5rem + 2vw, 3rem);
+            line-height: 1.3;
+        }
+    }
+}
+
+.gammes {
+    margin: 0 0 var(--espace_10);
+
+    .gammes__title {
+        margin: 0 0 var(--espace_3);
+        color: var(--text_brand);
+        font-size: var(--texte_moyen);
+    }
+
+    .gammes__links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--espace_3);
+    }
+
+    .gammes__link {
+        padding: 0.6rem var(--espace_4);
+        color: var(--text_brand);
+        text-decoration: none;
+        border: 0.1rem solid var(--text_brand);
+        border-radius: var(--arrondi_petit);
+        background: var(--surface_soft);
+    }
+
+    .gammes__link--active,
+    .gammes__link:hover {
+        color: var(--white);
+        border-color: var(--action_primary);
+        background: var(--action_primary);
+    }
+}
+
+.tax-gamme {
+    @media (width < 44rem) {
+        .catalogue__grid {
+            display: grid;
+            grid-template-columns: 1fr;
+        }
+    }
+}

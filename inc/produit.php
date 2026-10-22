@@ -8,7 +8,7 @@ add_filter( 'pre_option_woocommerce_review_rating_verification_required', functi
 } );
 
 
-function sae301_product_layout() {
+function preparer_fiche_produit() {
     if ( ! is_product() ) {
         return;
     }
@@ -17,45 +17,45 @@ function sae301_product_layout() {
     remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_sharing', 50 );
     remove_action( 'woocommerce_single_product_summary', 'storefront_edit_post_link', 60 );
     remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs', 10 );
-    add_action( 'woocommerce_after_single_product_summary', 'sae301_product_reviews', 10 );
-    add_filter( 'woocommerce_reviews_title', 'sae301_reviews_title' );
-    add_filter( 'woocommerce_product_review_comment_form_args', 'sae301_review_form' );
+    add_action( 'woocommerce_after_single_product_summary', 'afficher_avis_produit', 10 );
+    add_filter( 'woocommerce_reviews_title', 'modifier_titre_avis' );
+    add_filter( 'woocommerce_product_review_comment_form_args', 'preparer_formulaire_avis' );
     remove_action( 'woocommerce_review_before', 'woocommerce_review_display_gravatar', 10 );
     remove_action( 'woocommerce_review_meta', 'woocommerce_review_display_meta', 10 );
-    add_action( 'woocommerce_review_meta', 'sae301_review_meta', 10 );
+    add_action( 'woocommerce_review_meta', 'afficher_auteur_avis', 10 );
     remove_action( 'woocommerce_after_single_product_summary', 'storefront_upsell_display', 15 );
     remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );
-    add_action( 'woocommerce_after_single_product_summary', 'sae301_product_recommendations', 20 );
+    add_action( 'woocommerce_after_single_product_summary', 'afficher_suggestions', 20 );
     remove_action( 'woocommerce_after_single_product_summary', 'storefront_single_product_pagination', 30 );
-    add_action( 'woocommerce_single_product_summary', 'sae301_product_category', 4 );
+    add_action( 'woocommerce_single_product_summary', 'afficher_categorie_produit', 4 );
     remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20 );
     add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 8 );
-    add_action( 'woocommerce_single_product_summary', 'sae301_product_information', 9 );
-    add_action( 'woocommerce_before_add_to_cart_form', 'sae301_product_options_intro' );
-    add_action( 'woocommerce_before_quantity_input_field', 'sae301_product_quantity_start' );
-    add_action( 'woocommerce_after_quantity_input_field', 'sae301_product_quantity_end' );
+    add_action( 'woocommerce_single_product_summary', 'afficher_infos_produit', 9 );
+    add_action( 'woocommerce_before_add_to_cart_form', 'afficher_intro_options' );
+    add_action( 'woocommerce_before_quantity_input_field', 'ouvrir_quantite_produit' );
+    add_action( 'woocommerce_after_quantity_input_field', 'fermer_quantite_produit' );
 }
-add_action( 'wp', 'sae301_product_layout', 30 );
+add_action( 'wp', 'preparer_fiche_produit', 30 );
 
-function sae301_product_body( $classes ) {
+function ajouter_classe_produit( $classes ) {
     if ( is_product() ) {
-        $classes[] = 'sae301--product';
+        $classes[] = 'site_restaurant--product';
     }
     return $classes;
 }
-add_filter( 'body_class', 'sae301_product_body', 40 );
+add_filter( 'body_class', 'ajouter_classe_produit', 40 );
 
-function sae301_product_category() {
+function afficher_categorie_produit() {
     global $product;
     $categories = get_the_terms( $product->get_id(), 'product_cat' );
     if ( empty( $categories ) || is_wp_error( $categories ) ) {
         return;
     }
     $category = reset( $categories );
-    echo '<p class="sae_produit__category">Nos ' . esc_html( $category->name ) . '</p>';
+    echo '<p class="produit__category">Nos ' . esc_html( $category->name ) . '</p>';
 }
 
-function sae301_product_options_intro() {
+function afficher_intro_options() {
     global $product;
     if ( ! $product->is_type( 'variable' ) ) {
         return;
@@ -65,44 +65,44 @@ function sae301_product_options_intro() {
         $labels[] = mb_strtolower( wc_attribute_label( $attribute, $product ) );
     }
     ?>
-    <div class="sae_produit__options_intro">
-        <h2 class="sae_produit__options_title">Personnalisez votre <?php echo has_term( 'boissons', 'product_cat', $product->get_id() ) ? 'boisson' : ( has_term( 'dessert', 'product_cat', $product->get_id() ) || has_term( 'desserts', 'product_cat', $product->get_id() ) ? 'dessert' : 'plat' ); ?></h2>
-        <p class="sae_produit__options_help">Choisissez vos options : <?php echo esc_html( implode( ', ', $labels ) ); ?>.</p>
+    <div class="produit__options_intro">
+        <h2 class="produit__options_title">Personnalisez votre <?php echo has_term( 'boissons', 'product_cat', $product->get_id() ) ? 'boisson' : ( has_term( 'dessert', 'product_cat', $product->get_id() ) || has_term( 'desserts', 'product_cat', $product->get_id() ) ? 'dessert' : 'plat' ); ?></h2>
+        <p class="produit__options_help">Choisissez vos options : <?php echo esc_html( implode( ', ', $labels ) ); ?>.</p>
     </div>
     <?php
 }
 
-function sae301_product_quantity_start() {
+function ouvrir_quantite_produit() {
     ?>
-    <span class="sae_produit__quantity_label">Quantité</span>
-    <div class="sae_produit__quantity_control">
-        <button class="sae_produit__quantity_button sae_bouton" type="button" data-product-step="-1" aria-label="Diminuer la quantité">−</button>
+    <span class="produit__quantity_label">Quantité</span>
+    <div class="produit__quantity_control">
+        <button class="produit__quantity_button bouton" type="button" data-product-step="-1" aria-label="Diminuer la quantité">−</button>
     <?php
 }
 
-function sae301_product_quantity_end() {
+function fermer_quantite_produit() {
     ?>
-        <button class="sae_produit__quantity_button sae_bouton" type="button" data-product-step="1" aria-label="Augmenter la quantité">+</button>
+        <button class="produit__quantity_button bouton" type="button" data-product-step="1" aria-label="Augmenter la quantité">+</button>
     </div>
     <?php
 }
 
-function sae301_product_select_class( $args ) {
+function ajouter_classe_select( $args ) {
     if ( is_product() ) {
-        $args['class'] = trim( ( $args['class'] ?? '' ) . ' sae_produit__select' );
+        $args['class'] = trim( ( $args['class'] ?? '' ) . ' produit__select' );
     }
     return $args;
 }
-add_filter( 'woocommerce_dropdown_variation_attribute_options_args', 'sae301_product_select_class' );
+add_filter( 'woocommerce_dropdown_variation_attribute_options_args', 'ajouter_classe_select' );
 
-function sae301_product_assets() {
+function charger_script_produit() {
     if ( is_product() ) {
-        wp_enqueue_script( 'sae301-produit', get_stylesheet_directory_uri() . '/assets/js/produit.js', array( 'jquery', 'wc-add-to-cart-variation' ), (string) filemtime( __DIR__ . '/../assets/js/produit.js' ), true );
+        wp_enqueue_script( 'restaurant-produit', get_stylesheet_directory_uri() . '/assets/js/produit.js', array( 'jquery', 'wc-add-to-cart-variation' ), (string) filemtime( __DIR__ . '/../assets/js/produit.js' ), true );
     }
 }
-add_action( 'wp_enqueue_scripts', 'sae301_product_assets', 45 );
+add_action( 'wp_enqueue_scripts', 'charger_script_produit', 45 );
 
-function sae301_product_information() {
+function afficher_infos_produit() {
     if ( ! function_exists( 'get_field' ) ) {
         return;
     }
@@ -117,24 +117,24 @@ function sae301_product_information() {
         return;
     }
     ?>
-    <div class="sae_produit__details">
-        <div class="sae_produit_infos">
+    <div class="produit__details">
+        <div class="produit_infos">
             <?php if ( $composition ) : ?>
-                <section class="sae_produit_infos__group">
-                    <h2 class="sae_produit_infos__title">Composition</h2>
-                    <p class="sae_produit_infos__text"><?php echo nl2br( esc_html( $composition ) ); ?></p>
+                <section class="produit_infos__group">
+                    <h2 class="produit_infos__title">Composition</h2>
+                    <p class="produit_infos__text"><?php echo nl2br( esc_html( $composition ) ); ?></p>
                 </section>
             <?php endif; ?>
             <?php if ( $nutrition ) : ?>
-                <section class="sae_produit_infos__group">
-                    <h2 class="sae_produit_infos__title">Valeurs nutritionnelles</h2>
-                    <p class="sae_produit_infos__text"><?php echo nl2br( esc_html( str_replace( '|', "\n", $nutrition ) ) ); ?></p>
+                <section class="produit_infos__group">
+                    <h2 class="produit_infos__title">Valeurs nutritionnelles</h2>
+                    <p class="produit_infos__text"><?php echo nl2br( esc_html( str_replace( '|', "\n", $nutrition ) ) ); ?></p>
                 </section>
             <?php endif; ?>
             <?php if ( $allergenes ) : ?>
-                <section class="sae_produit_infos__group sae_produit_infos__group--last">
-                    <h2 class="sae_produit_infos__title">Allergènes</h2>
-                    <p class="sae_produit_infos__text"><?php echo esc_html( $allergenes ); ?></p>
+                <section class="produit_infos__group produit_infos__group--last">
+                    <h2 class="produit_infos__title">Allergènes</h2>
+                    <p class="produit_infos__text"><?php echo esc_html( $allergenes ); ?></p>
                 </section>
             <?php endif; ?>
         </div>
@@ -143,7 +143,7 @@ function sae301_product_information() {
 }
 
 
-function sae301_product_recommendations() {
+function afficher_suggestions() {
     global $product;
     $suggestions = array();
     $linked_ids = $product->get_cross_sell_ids();
@@ -187,17 +187,17 @@ function sae301_product_recommendations() {
 }
 
 // Présentation des avis : les formulaires et contrôles restent gérés par WooCommerce.
-function sae301_product_reviews() {
+function afficher_avis_produit() {
     global $product;
     if ( ! comments_open() ) {
         return;
     }
     $count = $product->get_review_count();
     ?>
-    <section class="sae_avis" aria-labelledby="sae_reviews_title">
-        <header class="sae_avis__header">
-            <h2 id="sae_reviews_title">Avis clients</h2>
-            <p><?php
+    <section class="avis" aria-labelledby="reviews_title">
+        <header class="avis__entete">
+            <h2 class="avis__titre" id="reviews_title">Avis clients</h2>
+            <p class="avis__resume"><?php
                 if ( $count && wc_review_ratings_enabled() && $product->get_rating_count() ) {
                     echo esc_html( number_format_i18n( (float) $product->get_average_rating(), 1 ) . '/5 · ' );
                 }
@@ -209,36 +209,36 @@ function sae301_product_reviews() {
     <?php
 }
 
-function sae301_reviews_title( $title ) {
+function modifier_titre_avis( $title ) {
     return 'Les derniers avis';
 }
 
-function sae301_review_form( $form ) {
+function preparer_formulaire_avis( $form ) {
     $form['title_reply'] = 'Donnez votre avis';
     $help = get_option( 'woocommerce_review_rating_verification_required' ) === 'yes'
         ? 'Réservé aux acheteurs certifiés.' : 'Partagez votre expérience avec ce produit.';
-    $form['title_reply_after'] = '</span><p class="sae_avis__help">' . esc_html( $help ) . '</p>';
+    $form['title_reply_after'] = '</span><p class="avis__aide">' . esc_html( $help ) . '</p>';
     $form['label_submit'] = 'Publier mon avis';
     $form['comment_field'] = str_replace(
         array( 'Your review', 'Votre avis', '<textarea id="comment"' ),
-        array( 'Votre commentaire', 'Votre commentaire', '<textarea placeholder="Partagez votre expérience…" id="comment"' ),
+        array( 'Votre commentaire', 'Votre commentaire', '<textarea class="champ avis__champ" placeholder="Partagez votre expérience…" id="comment"' ),
         $form['comment_field']
     );
     return $form;
 }
 
-function sae301_review_meta( $comment ) {
+function afficher_auteur_avis( $comment ) {
     if ( '0' === $comment->comment_approved ) {
         echo '<p class="woocommerce-review__awaiting-approval">' . esc_html__( 'Your review is awaiting approval', 'woocommerce' ) . '</p>';
         return;
     }
     ?>
-    <p class="sae_avis_item__meta">
-        <span class="sae_avis_item__author"><?php echo esc_html( get_comment_author( $comment ) ); ?></span>
+    <p class="avis__meta">
+        <span class="avis__auteur"><?php echo esc_html( get_comment_author( $comment ) ); ?></span>
         <?php if ( get_option( 'woocommerce_review_rating_verification_label' ) === 'yes' && wc_review_is_from_verified_owner( $comment->comment_ID ) ) : ?>
-            <span class="sae_avis_item__verified">Achat vérifié</span>
+            <span class="avis__achat_verifie">Achat vérifié</span>
         <?php endif; ?>
-        <time class="sae_avis_item__date" datetime="<?php echo esc_attr( get_comment_date( 'c', $comment ) ); ?>"><?php echo esc_html( get_comment_date( 'd/m/Y', $comment ) ); ?></time>
+        <time class="avis__date" datetime="<?php echo esc_attr( get_comment_date( 'c', $comment ) ); ?>"><?php echo esc_html( get_comment_date( 'd/m/Y', $comment ) ); ?></time>
     </p>
     <?php
 }

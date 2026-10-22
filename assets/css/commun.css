@@ -1,0 +1,61 @@
+/* Boutons et champs partagés. Les variantes et états restent dans leur bloc. */
+
+.button,
+.bouton,
+.show-password-input {
+    max-width: 100%;
+    padding: 0.9rem var(--espace_5);
+    color: var(--text_on_brand);
+    font-family: var(--font_primary);
+    font-size: var(--texte_courant);
+    font-weight: 500;
+    line-height: 1.4;
+    text-align: center;
+    border: 0.1rem solid var(--surface_brand_strong);
+    border-radius: var(--arrondi_petit);
+    background: var(--surface_brand_strong);
+    cursor: pointer;
+
+    &:hover {
+        color: var(--white);
+        text-decoration: none;
+        border-color: var(--action_primary);
+        background: var(--action_primary);
+    }
+}
+
+.bouton {
+    font-weight: 400;
+    line-height: 1.6;
+
+    &.bouton--orange {
+        color: var(--white);
+        text-decoration: none;
+        border-color: var(--action_primary);
+        background: var(--action_primary);
+
+        &:hover {
+            color: var(--black);
+            text-decoration: none;
+            border-color: var(--action_primary);
+            background: var(--white);
+        }
+    }
+}
+
+.input-text,
+.champ {
+    max-width: 100%;
+    padding: var(--espace_3) 0.9rem;
+    color: var(--text_body);
+    font: inherit;
+    border: 0.1rem solid var(--text_muted);
+    border-radius: var(--arrondi_petit);
+    background: var(--background_default);
+}
+
+.champ {
+    &::placeholder {
+        color: var(--text_muted);
+    }
+}

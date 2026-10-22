@@ -2,7 +2,7 @@
 /** Frais de préparation configurables depuis la page d’options Tarification de SCF. */
 defined( 'ABSPATH' ) || exit;
 
-function sae301_frais_preparation( $cart ) {
+function calculer_frais_preparation( $cart ) {
     if ( ( is_admin() && ! wp_doing_ajax() ) || $cart->is_empty() || ! function_exists( 'get_field' ) ) {
         return;
     }
@@ -19,4 +19,4 @@ function sae301_frais_preparation( $cart ) {
         $cart->add_fee( 'Frais de préparation', $montant, false );
     }
 }
-add_action( 'woocommerce_cart_calculate_fees', 'sae301_frais_preparation', 20 );
+add_action( 'woocommerce_cart_calculate_fees', 'calculer_frais_preparation', 20 );

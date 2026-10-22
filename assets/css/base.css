@@ -1,0 +1,70 @@
+/* Éléments communs et accessibilité */
+
+/* Le focus au clavier reste visible sur les surfaces claires et foncées. */
+
+/* Les liens ne reposent pas seulement sur une différence de couleur. */
+
+.site_restaurant {
+    margin: 0;
+    color: var(--text_body);
+    font-family: var(--font_primary);
+    font-size: var(--texte_courant);
+    line-height: 1.6;
+    background: var(--background_default);
+
+    :focus-visible {
+        outline: 0.2rem solid var(--text_brand);
+        outline-offset: 0.2rem;
+        box-shadow: 0 0 0 0.2rem var(--white);
+    }
+}
+
+a {
+    color: var(--text_brand);
+    text-underline-offset: 0.2rem;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.entry-content {
+    a {
+        text-underline-offset: 0.2rem;
+    }
+}
+
+* {
+    box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--text_brand);
+    font-family: var(--font_title);
+    font-weight: 400;
+    line-height: 1.35;
+    letter-spacing: normal;
+}
+
+h1 {
+    font-size: var(--titre_moyen);
+}
+
+h2 {
+    font-size: var(--titre_petit);
+}
+
+h3 {
+    font-size: var(--texte_grand);
+}
+
+h4,
+h5,
+h6 {
+    font-size: var(--texte_moyen);
+}

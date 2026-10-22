@@ -1,8 +1,8 @@
 <?php
-/** Je partage l'identite visuelle du restaurant sur toutes les pages de mon theme. */
+/** Présentation des contenus du restaurant. */
 defined( 'ABSPATH' ) || exit;
 
-function sae301_brand_layout() {
+function preparer_interface_commune() {
     $header_hooks = array(
         0  => array( 'storefront_header_container' ),
         10 => array( 'storefront_social_icons' ),
@@ -27,37 +27,37 @@ function sae301_brand_layout() {
     remove_action( 'storefront_footer', 'storefront_credit', 20 );
     remove_action( 'storefront_footer', 'storefront_handheld_footer_bar', 999 );
     remove_action( 'storefront_after_footer', 'storefront_sticky_single_add_to_cart', 999 );
-    add_action( 'storefront_header', 'sae301_brand_header', 20 );
-    add_action( 'storefront_footer', 'sae301_brand_footer', 20 );
+    add_action( 'storefront_header', 'afficher_header', 20 );
+    add_action( 'storefront_footer', 'afficher_footer', 20 );
 }
-add_action( 'wp', 'sae301_brand_layout', 25 );
+add_action( 'wp', 'preparer_interface_commune', 25 );
 
 
-function sae301_brand_header() {
+function afficher_header() {
     require __DIR__ . '/../templates/brand-header.php';
 }
 
-function sae301_brand_footer() {
+function afficher_footer() {
     require __DIR__ . '/../templates/brand-footer.php';
 }
 
-function sae301_brand_cart() {
+function afficher_lien_panier() {
     if ( ! function_exists( 'WC' ) ) {
         return;
     }
     $count = WC()->cart ? WC()->cart->get_cart_contents_count() : 0;
     ?>
-    <a class="sae_panier_lien" href="<?php echo esc_url( wc_get_cart_url() ); ?>" aria-label="<?php echo esc_attr( 'Mon panier : ' . $count . ' article(s)' ); ?>">
+    <a class="panier_lien" href="<?php echo esc_url( wc_get_cart_url() ); ?>" aria-label="<?php echo esc_attr( 'Mon panier : ' . $count . ' article(s)' ); ?>">
         <span>Mon Panier</span>
-        <span class="sae_panier_lien__badge"><span class="sae_panier_lien__count"><?php echo esc_html( $count ); ?></span><img class="sae_panier_lien__icon" src="<?php echo esc_url( get_stylesheet_directory_uri() . '/assets/icons/bag.svg' ); ?>" width="18" height="24" alt=""></span>
+        <span class="panier_lien__badge"><span class="panier_lien__count"><?php echo esc_html( $count ); ?></span><img class="panier_lien__icon" src="<?php echo esc_url( get_stylesheet_directory_uri() . '/assets/icons/bag.svg' ); ?>" width="18" height="24" alt=""></span>
     </a>
     <?php
 }
 
-function sae301_brand_cart_fragment( $fragments ) {
+function actualiser_lien_panier( $fragments ) {
     ob_start();
-    sae301_brand_cart();
-    $fragments['a.sae_panier_lien'] = ob_get_clean();
+    afficher_lien_panier();
+    $fragments['a.panier_lien'] = ob_get_clean();
     return $fragments;
 }
-add_filter( 'woocommerce_add_to_cart_fragments', 'sae301_brand_cart_fragment' );
+add_filter( 'woocommerce_add_to_cart_fragments', 'actualiser_lien_panier' );

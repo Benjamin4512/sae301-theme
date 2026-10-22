@@ -1,0 +1,56 @@
+/* Structure générale des pages */
+
+.col-full {
+    width: auto;
+    max-width: var(--largeur_contenu);
+    margin: 0 var(--espace_5);
+    padding: 0;
+
+    @media (min-width: 78rem) {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+.site-main {
+    margin-bottom: var(--espace_10);
+}
+
+.entry-header {
+    margin-bottom: var(--espace_6);
+}
+
+.catalogue {
+    max-width: var(--largeur_contenu);
+    margin-left: auto;
+    margin-right: auto;
+
+    .catalogue__grid {
+        display: grid;
+        position: relative;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        justify-content: space-between;
+        gap: var(--espace_10);
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+}
+
+.entry-title {
+    color: var(--text_brand);
+}
+
+.site-content {
+    padding-top: var(--espace_8);
+    background: var(--white);
+}
+
+.site_restaurant--full_width {
+    .content-area {
+        float: none;
+        width: 100%;
+        margin-right: 0;
+        margin-left: 0;
+    }
+}

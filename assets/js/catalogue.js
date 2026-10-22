@@ -1,10 +1,10 @@
 /* Je synchronise les boutons de mes cartes avec le vrai panier WooCommerce. */
 (() => {
     'use strict';
-    const catalogue = document.querySelector('.sae_catalogue');
-    if (!catalogue || typeof sae301Catalogue === 'undefined') return;
-    const controls = [...catalogue.querySelectorAll('.sae_quantite')];
-    const feedback = catalogue.querySelector('.sae_catalogue__feedback');
+    const catalogue = document.querySelector('.catalogue');
+    if (!catalogue || typeof donneesCatalogue === 'undefined') return;
+    const controls = [...catalogue.querySelectorAll('.quantite')];
+    const feedback = catalogue.querySelector('.catalogue__feedback');
     let busy = false;
 
     function refreshControls(counts) {
@@ -26,18 +26,18 @@
         const card = button.closest('[data-product-id]');
         busy = true;
         card.setAttribute('aria-busy', 'true');
-        card.querySelector('.sae_quantite').classList.add('sae_quantite--loading');
+        card.querySelector('.quantite').classList.add('quantite--loading');
         refreshControls();
         feedback.textContent = '';
-        feedback.classList.remove('sae_catalogue__feedback--visible');
+        feedback.classList.remove('catalogue__feedback--visible');
         try {
-            const response = await fetch(sae301Catalogue.endpoint, {
+            const response = await fetch(donneesCatalogue.endpoint, {
                 method: 'POST', credentials: 'same-origin',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'},
-                body: new URLSearchParams({nonce: sae301Catalogue.nonce, product_id: card.dataset.productId, delta: button.dataset.delta})
+                body: new URLSearchParams({nonce: donneesCatalogue.nonce, product_id: card.dataset.productId, delta: button.dataset.delta})
             });
             const result = await response.json();
-            if (!response.ok || !result.success) throw new Error(result.data?.message || sae301Catalogue.error);
+            if (!response.ok || !result.success) throw new Error(result.data?.message || donneesCatalogue.error);
             refreshControls(result.data.counts);
             if (window.jQuery) {
                 const $ = window.jQuery;
@@ -46,16 +46,16 @@
                 $(document.body).trigger('wc_fragment_refresh');
             }
             const count = result.data.counts[card.dataset.productId] || 0;
-            feedback.textContent = `${card.querySelector('.sae_carte__title').textContent.trim()} : ${count} dans le panier.`;
+            feedback.textContent = `${card.querySelector('.carte__titre').textContent.trim()} : ${count} dans le panier.`;
             feedback.classList.add('screen-reader-text');
         } catch (error) {
             feedback.classList.remove('screen-reader-text');
-            feedback.classList.add('sae_catalogue__feedback--visible');
-            feedback.textContent = error.message || sae301Catalogue.error;
+            feedback.classList.add('catalogue__feedback--visible');
+            feedback.textContent = error.message || donneesCatalogue.error;
         } finally {
             busy = false;
             card.removeAttribute('aria-busy');
-            card.querySelector('.sae_quantite').classList.remove('sae_quantite--loading');
+            card.querySelector('.quantite').classList.remove('quantite--loading');
             refreshControls();
         }
     });
