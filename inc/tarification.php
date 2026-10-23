@@ -1,5 +1,5 @@
 <?php
-/** Frais de préparation configurables depuis la page d’options Tarification de SCF. */
+// frais de préparation
 defined( 'ABSPATH' ) || exit;
 
 function calculer_frais_preparation( $cart ) {
@@ -13,7 +13,7 @@ function calculer_frais_preparation( $cart ) {
         return;
     }
 
-    // Montant TTC des produits après remise, hors livraison et hors frais.
+   
     $total_produits = round( $cart->get_cart_contents_total() + $cart->get_cart_contents_tax(), wc_get_price_decimals() );
     if ( $total_produits <= $seuil ) {
         $cart->add_fee( 'Frais de préparation', $montant, false );

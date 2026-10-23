@@ -1,8 +1,28 @@
-/* Je synchronise les boutons de mes cartes avec le vrai panier WooCommerce. */
 (() => {
     'use strict';
     const catalogue = document.querySelector('.catalogue');
     if (!catalogue || typeof donneesCatalogue === 'undefined') return;
+    const panneau = catalogue.querySelector('.filtres__panneau');
+    if (panneau) {
+        const champsPrix = panneau.querySelectorAll('.wc-block-product-filter-price-slider .text input');
+        for (const champ of champsPrix) {
+            champ.addEventListener('input', () => {
+                if (champ.value.trim() !== '') return;
+                const adresse = new URL(window.location.href);
+                const parametre = champ.classList.contains('min') ? 'min_price' : 'max_price';
+                if (!adresse.searchParams.has(parametre)) return;
+                adresse.searchParams.delete(parametre);
+                window.location.assign(adresse.href);
+            });
+        }
+        panneau.addEventListener('toggle', () => {
+            panneau.classList.toggle('filtres__panneau--ouvert', panneau.open);
+        });
+        panneau.querySelector('.filtres__fermer').addEventListener('click', () => {
+            panneau.open = false;
+            panneau.querySelector('.filtres__ouvrir').focus();
+        });
+    }
     const controls = [...catalogue.querySelectorAll('.quantite')];
     const feedback = catalogue.querySelector('.catalogue__feedback');
     let busy = false;

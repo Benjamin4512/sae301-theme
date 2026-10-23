@@ -1,4 +1,5 @@
 <?php
+// différentes gammes : classique, gourmande et signature
 defined( 'ABSPATH' ) || exit;
 $gammes = get_terms( array( 'taxonomy' => 'gamme', 'hide_empty' => false ) );
 if ( is_wp_error( $gammes ) || ! $gammes ) {

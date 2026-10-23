@@ -1,4 +1,3 @@
-/* Je garde les menus et les variations de WooCommerce. */
 jQuery(function ($) {
     function updateSelects() {
         $('.produit__select').each(function () {

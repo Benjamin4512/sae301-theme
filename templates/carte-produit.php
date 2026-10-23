@@ -1,5 +1,5 @@
 <?php
-/** Carte commune au catalogue, aux suggestions et aux nouveautés. */
+// carte produits
 defined( 'ABSPATH' ) || exit;
 $produit = $args['produit'];
 $id = $produit->get_id();

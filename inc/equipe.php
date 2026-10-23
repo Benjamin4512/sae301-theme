@@ -1,5 +1,5 @@
 <?php
-/** Liste des membres et choix de leur plat préféré. */
+// membre de l'équipe
 defined( 'ABSPATH' ) || exit;
 
 function preparer_liste_membres( $requete ) {
@@ -24,7 +24,6 @@ function afficher_champ_plat_prefere( $membre ) {
     }
     wp_nonce_field( 'enregistrer_plat_prefere', 'plat_prefere_nonce' );
     $plat_id = (int) get_post_meta( $membre->ID, 'plat_prefere', true );
-    // Le catalogue est chargé uniquement pour le choix en administration.
     $produits = wc_get_products( array( 'status' => 'publish', 'limit' => -1, 'orderby' => 'title', 'order' => 'ASC' ) );
     ?>
     <p><label for="plat_prefere">Produit lié au bouton « Découvrir » du profil.</label></p>

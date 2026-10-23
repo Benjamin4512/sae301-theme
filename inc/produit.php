@@ -1,8 +1,9 @@
 <?php
+// avis clients
 
 defined( 'ABSPATH' ) || exit;
 
-// Réserver les avis aux clients connectés ayant acheté le produit concerné.
+
 add_filter( 'pre_option_woocommerce_review_rating_verification_required', function () {
     return 'yes';
 } );
@@ -186,7 +187,7 @@ function afficher_suggestions() {
     }
 }
 
-// Présentation des avis : les formulaires et contrôles restent gérés par WooCommerce.
+
 function afficher_avis_produit() {
     global $product;
     if ( ! comments_open() ) {

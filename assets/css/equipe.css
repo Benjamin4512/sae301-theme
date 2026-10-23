@@ -1,6 +1,4 @@
-/* BEM : blocs .equipe et .membre.
-   Éléments : .equipe__card, .equipe__image et .membre__portrait.
-   Variante : .membre__image--decale. */
+/* page des membres de l'équipe */
 
 .post-type-archive-membre,
 .single-membre {
@@ -90,16 +88,7 @@
     }
 
     .equipe__button {
-        display: inline-block;
-        font-family: var(--font_primary);
-        border: 0.1rem solid var(--action_primary);
-        border-radius: var(--arrondi_petit);
-    }
-
-    .equipe__button {
         margin-top: auto;
-        padding: var(--espace_2) var(--espace_4);
-        font-size: var(--texte_petit);
     }
 
     .equipe__image--decale {

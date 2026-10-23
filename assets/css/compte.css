@@ -1,20 +1,6 @@
-/* Compte client WooCommerce */
+/*page connexion et inscription */
 
 .woocommerce-account {
-    .woocommerce-form-login__submit,
-    .woocommerce-form-register__submit {
-        color: var(--white);
-        border-color: var(--action_primary);
-        background: var(--action_primary);
-    }
-
-    .woocommerce-form-login__submit:hover,
-    .woocommerce-form-register__submit:hover {
-        color: var(--black);
-        border-color: var(--action_primary);
-        background: var(--white);
-    }
-
     &.logged-in .site-main {
         margin: 0;
         padding-bottom: 3.8rem;

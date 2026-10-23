@@ -1,4 +1,4 @@
-/* Boutons et champs partagés. Les variantes et états restent dans leur bloc. */
+/* style des boutons */
 
 .button,
 .bouton,
@@ -24,11 +24,18 @@
     }
 }
 
-.bouton {
+
+.bouton,
+.single_add_to_cart_button,
+.woocommerce-form-login__submit,
+.woocommerce-form-register__submit {
     font-weight: 400;
     line-height: 1.6;
 
-    &.bouton--orange {
+    &.bouton--orange,
+    &.single_add_to_cart_button,
+    &.woocommerce-form-login__submit,
+    &.woocommerce-form-register__submit {
         color: var(--white);
         text-decoration: none;
         border-color: var(--action_primary);
@@ -41,12 +48,47 @@
             background: var(--white);
         }
     }
+
+    &.bouton--ajout,
+    &.single_add_to_cart_button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 27.5rem;
+        height: 3.1rem;
+        padding: 0 var(--espace_4);
+        font-size: var(--texte_courant);
+    }
+
+    &.bouton--compte,
+    &.woocommerce-form-login__submit,
+    &.woocommerce-form-register__submit {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 35.5rem;
+        height: 3.5rem;
+        padding: 0 var(--espace_4);
+        font-size: var(--texte_grand);
+        border-radius: 0.5rem;
+    }
+
+    &.bouton--voir_plus {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 10rem;
+        height: 2.3rem;
+        padding: 0 0.5rem;
+        font-size: var(--texte_moyen);
+        border-radius: 0.5rem;
+    }
 }
 
 .input-text,
 .champ {
     max-width: 100%;
-    padding: var(--espace_3) 0.9rem;
+    padding: var(--espace_3);
     color: var(--text_body);
     font: inherit;
     border: 0.1rem solid var(--text_muted);

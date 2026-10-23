@@ -1,7 +1,5 @@
 <?php
-/**
- * Je configure le theme enfant Sae301.
- */
+// config du thème enfant
 
 if ( ! defined( 'ABSPATH' ) ) {
     exit;
@@ -23,7 +21,6 @@ add_filter( 'body_class', 'ajouter_classes_site' );
 
 function charger_styles_theme() {
     wp_dequeue_style( 'storefront-fonts' );
-    // Je charge mon unique feuille de style apres Storefront.
     wp_dequeue_style( 'storefront-child-style' );
     wp_deregister_style( 'storefront-child-style' );
     wp_enqueue_style(
@@ -69,7 +66,6 @@ function classer_styles_integres( $handles ) {
 add_filter( 'print_styles_array', 'classer_styles_integres', 20 );
 
 
-// Chaque fichier regroupe les fonctions d'une partie du site.
 require_once __DIR__ . '/inc/apparence.php';
 require_once __DIR__ . '/inc/catalogue.php';
 require_once __DIR__ . '/inc/produit.php';

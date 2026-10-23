@@ -1,13 +1,12 @@
 <?php
-/** Présentation des contenus du restaurant. */
+// plats du restaurants
 defined( 'ABSPATH' ) || exit;
 
 function est_page_catalogue() {
-    return function_exists( 'is_shop' ) && ( is_shop() || is_product_taxonomy() || is_tax( 'gamme' ) );
+    return function_exists( 'is_shop' ) && ( is_shop() || is_product_taxonomy() || is_tax( 'gamme' ) || ( is_search() && 'product' === get_query_var( 'post_type' ) ) );
 }
 
 function preparer_catalogue() {
-    // Je retire la colonne de widgets sans supprimer ses contenus en administration.
     remove_action( 'storefront_sidebar', 'storefront_get_sidebar', 10 );
     remove_action( 'woocommerce_sidebar', 'woocommerce_get_sidebar', 10 );
 }
@@ -48,7 +47,6 @@ function choisir_template_catalogue( $template ) {
 add_filter( 'template_include', 'choisir_template_catalogue', 99 );
 
 function trier_produits_catalogue( $args ) {
-    // Je garde le tri manuel WooCommerce, puis l'ordre de creation en cas d'egalite.
     if ( est_page_catalogue() && ! isset( $_GET['orderby'] ) && 'menu_order' === get_option( 'woocommerce_default_catalog_orderby', 'menu_order' ) ) {
         $args['orderby'] = 'menu_order ID';
         $args['order']   = 'ASC';
@@ -106,5 +104,75 @@ function modifier_quantite_catalogue() {
 }
 add_action( 'wc_ajax_modifier_quantite_catalogue', 'modifier_quantite_catalogue' );
 
-// Je partage l'en-tete et le pied de page sur toutes mes pages.
 
+
+
+
+function preparer_bloc_filtres( $bloc ) {
+    if ( is_admin() || ! est_page_catalogue() ) {
+        return $bloc;
+    }
+    if ( 'woocommerce/product-filters' === $bloc['blockName'] ) {
+        $bloc['attrs']['overlayMode'] = 'off';
+        foreach ( $bloc['innerBlocks'] as &$enfant ) {
+            $enfant = preparer_bloc_filtres( $enfant );
+            if ( 'core/heading' === $enfant['blockName'] ) {
+                $enfant['innerHTML'] = '';
+                $enfant['innerContent'] = array( '' );
+            }
+        }
+        unset( $enfant );
+    }
+    if ( 'core/search' === $bloc['blockName'] ) {
+        $bloc['attrs']['label'] = 'Rechercher par nom';
+        $bloc['attrs']['placeholder'] = 'Nom du produit';
+        $bloc['attrs']['query']['post_type'] = 'product';
+    
+        foreach ( $_GET as $nom => $valeur ) {
+            if ( is_string( $valeur ) && ( in_array( $nom, array( 'min_price', 'max_price', 'categories' ), true ) || str_starts_with( $nom, 'filter_' ) || str_starts_with( $nom, 'query_type_' ) ) ) {
+                $bloc['attrs']['query'][ $nom ] = sanitize_text_field( wp_unslash( $valeur ) );
+            }
+        }
+    }
+    return $bloc;
+}
+add_filter( 'render_block_data', 'preparer_bloc_filtres' );
+
+add_filter( 'woocommerce_redirect_single_search_result', '__return_false' );
+
+function conserver_page_recherche( $contenu ) {
+    if ( ! est_page_catalogue() ) {
+        return $contenu;
+    }
+    $lien = is_tax() ? get_term_link( get_queried_object() ) : wc_get_page_permalink( 'shop' );
+    $html = new WP_HTML_Tag_Processor( $contenu );
+    if ( ! is_wp_error( $lien ) && $html->next_tag( 'FORM' ) ) {
+        $html->set_attribute( 'action', $lien );
+    }
+    return $html->get_updated_html();
+}
+add_filter( 'render_block_core/search', 'conserver_page_recherche' );
+
+
+function preparer_champs_prix( $contenu ) {
+    if ( ! est_page_catalogue() ) {
+        return $contenu;
+    }
+    $html = new WP_HTML_Tag_Processor( $contenu );
+    while ( $html->next_tag( 'INPUT' ) ) {
+        if ( 'text' !== $html->get_attribute( 'type' ) ) {
+            continue;
+        }
+        $minimum = $html->has_class( 'min' );
+        $parametre = $minimum ? 'min_price' : 'max_price';
+        $valeur = isset( $_GET[ $parametre ] ) && is_string( $_GET[ $parametre ] )
+            ? wc_format_localized_price( wc_format_decimal( wp_unslash( $_GET[ $parametre ] ) ) )
+            : '';
+        $html->set_attribute( 'placeholder', $minimum ? 'Min' : 'Max' );
+        $html->set_attribute( 'inputmode', 'decimal' );
+        $html->set_attribute( 'value', $valeur );
+        $html->remove_attribute( 'data-wp-bind--value' );
+    }
+    return $html->get_updated_html();
+}
+add_filter( 'render_block_woocommerce/product-filter-price-slider', 'preparer_champs_prix' );

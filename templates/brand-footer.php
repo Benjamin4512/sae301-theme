@@ -1,5 +1,5 @@
 <?php
-/** Présentation des contenus du restaurant. */
+// footer
 defined( 'ABSPATH' ) || exit;
 $brand_assets = get_stylesheet_directory_uri() . '/assets';
 $brand_map = 'https://www.google.com/maps/search/?api=1&query=Restaurant+Le+Gaulois+148+rue+de+Bourgogne+45000+Orleans';

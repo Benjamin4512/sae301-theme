@@ -1,5 +1,4 @@
 <?php
-/** Présentation des contenus du restaurant. */
 defined( 'ABSPATH' ) || exit;
 
 function preparer_interface_commune() {
@@ -20,7 +19,7 @@ function preparer_interface_commune() {
             remove_action( 'storefront_header', $callback, $priority );
         }
     }
-    // Je conserve les liens d'evitement et les points d'entree du theme parent.
+  
     remove_action( 'storefront_before_content', 'woocommerce_breadcrumb', 10 );
     remove_action( 'storefront_before_content', 'storefront_header_widget_region', 10 );
     remove_action( 'storefront_footer', 'storefront_footer_widgets', 10 );

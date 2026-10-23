@@ -1,8 +1,6 @@
-/* Valeurs partagées par toutes les pages.
-   Les dimensions en rem suivent la taille de texte du navigateur.
-   Les valeurs sont arrondies à une décimale. */
+
 :root {
-    /* Couleurs de la charte. */
+    /* Tokens Primitves */
     --white: #ffffff;
     --black: #000000;
     --brown: #64360d;
@@ -19,7 +17,7 @@
     --stock_available: #006b36;
     --stock_empty: #b32d2e;
 
-    /* Rôles des couleurs. */
+    /* Tokens Semantics */
     --background_default: var(--white);
     --text_body: var(--neutral_800);
     --text_brand: var(--brown);
@@ -32,7 +30,7 @@
     --action_primary: var(--orange_dark);
     --hero_overlay: rgba(0, 0, 0, 0.6);
 
-    /* Typographie : les textes suivent la taille choisie dans le navigateur. */
+    /* Typo */
     --font_primary: "Noto Sans", sans-serif;
     --font_title: "Metamorphous", serif;
     --font_hero: "Times New Roman", serif;
@@ -46,7 +44,7 @@
     --titre_moyen: 2.5rem;
     --titre_grand: 3rem;
 
-    /* Échelle d'espacement. */
+    /* Padding */
     --espace_1: 0.3rem;
     --espace_2: 0.5rem;
     --espace_3: 0.8rem;
@@ -59,7 +57,7 @@
     --espace_16: 4rem;
     --espace_20: 5rem;
 
-    /* Dimensions et bordures communes. */
+   
     --largeur_contenu: 75rem;
     --largeur_carte: 20.9rem;
     --largeur_resume: 26.3rem;

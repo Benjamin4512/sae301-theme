@@ -1,9 +1,3 @@
-/* Éléments communs et accessibilité */
-
-/* Le focus au clavier reste visible sur les surfaces claires et foncées. */
-
-/* Les liens ne reposent pas seulement sur une différence de couleur. */
-
 .site_restaurant {
     margin: 0;
     color: var(--text_body);

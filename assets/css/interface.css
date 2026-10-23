@@ -1,8 +1,4 @@
-/* BEM : blocs .header, .menu et .footer.
-   Éléments : .header__logo, .menu__link, .footer__contact.
-   Variante : .header--compact. */
-
-/* Variante compacte utilisée par le header commun aux pages. */
+/* header et footer de toutes les pages */
 
 .header {
     position: relative;
@@ -134,7 +130,7 @@
 
         .header__link {
             display: block;
-            padding: var(--espace_2) 0;
+            padding: var(--espace_2);
             color: var(--white);
             font-family: var(--font_primary);
             font-size: var(--texte_moyen);
@@ -309,8 +305,8 @@
         display: block;
         position: relative;
         top: 0.8rem;
-        width: 11.9rem;
-        height: 11.9rem;
+        width: 12rem;
+        height: 12rem;
         margin-left: -0.6rem;
         flex: none;
         margin-right: 5rem;
@@ -318,7 +314,7 @@
 
     .footer__contact {
         flex: none;
-        width: 13.8rem;
+        width: 14rem;
         margin-right: 5rem;
     }
 

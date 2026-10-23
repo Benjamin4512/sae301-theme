@@ -8,18 +8,6 @@ License: GNU General Public License v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 */
 
-/* Storefront et WooCommerce sont chargés dans reset par functions.php.
-   Chaque composant possède ses règles et ses adaptations responsive.
-   Ordre des déclarations : affichage, position, boîte, texte, effets, transitions. */
-
-/* Cette feuille charge les styles rangés dans assets/css/.
-   BEM : .carte est un bloc, .carte__titre est un élément,
-   .carte--nouveaute est une variante du bloc.
-   Les classes natives de WordPress et WooCommerce gardent leur nom. */
-
-/* Les règles sont imbriquées dans leur composant avec son responsive.
-   Les seuils des media queries sont arrondis à l'unité en rem.
-   width < 44rem vise le mobile, min-width: 44rem vise les écrans plus larges. */
 @layer reset, fonts, variables, base, layout, components;
 
 @import url("https://fonts.googleapis.com/css2?family=Metamorphous&family=Noto+Sans:wght@400;500&display=swap") layer(fonts);
@@ -27,11 +15,11 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 @import url("assets/css/base.css") layer(base);
 @import url("assets/css/layout.css") layer(layout);
 
-/* Composants BEM partagés, puis composants propres à chaque partie du site. */
 @import url("./assets/css/commun.css") layer(components);
 @import url("./assets/css/interface.css") layer(components);
 @import url("./assets/css/cartes.css") layer(components);
 @import url("./assets/css/catalogue.css") layer(components);
+@import url("./assets/css/filtres.css") layer(components);
 @import url("./assets/css/produit.css") layer(components);
 @import url("./assets/css/panier.css") layer(components);
 @import url("./assets/css/commande.css") layer(components);

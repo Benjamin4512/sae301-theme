@@ -1,5 +1,4 @@
 <?php
-/** Présentation des contenus du restaurant. */
 defined( 'ABSPATH' ) || exit;
 global $product;
 do_action( 'woocommerce_before_single_product' );

@@ -1,6 +1,4 @@
-/* BEM : blocs .carte, .quantite et .panier_lien.
-   Éléments : .carte__titre, .carte__prix, .carte__bouton.
-   Variantes : .carte--plat, .carte--suggestion et .carte--nouveaute. */
+/* cartes des produits */
 
 .carte {
     display: flex;

@@ -1,5 +1,4 @@
-/* BEM : bloc .accueil et éléments .accueil__titre, .accueil__produits.
-   Les cartes réutilisent le bloc .carte défini dans cartes.css. */
+/* landing page */
 
 .accueil {
     text-align: center;

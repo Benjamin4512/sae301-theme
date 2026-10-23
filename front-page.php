@@ -1,5 +1,5 @@
 <?php
-/** Page d'accueil statique et trois derniers produits du catalogue. */
+// landing page
 defined( 'ABSPATH' ) || exit;
 get_header();
 

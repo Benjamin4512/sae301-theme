@@ -1,4 +1,4 @@
-/* Fiches produit et suggestions */
+/* page d'un seul produit avec le choix des options */
 
 .site_restaurant--product {
     .site-content {
@@ -289,20 +289,7 @@
     .produit__summary .single_add_to_cart_button {
         float: none;
         flex: 1;
-        min-height: 3.1rem;
         margin: 0;
-        padding: var(--espace_3) var(--espace_5);
-        color: var(--white);
-        font: inherit;
-        text-align: center;
-        border: 0.1rem solid var(--action_primary);
-        border-radius: var(--arrondi_petit);
-        background: var(--action_primary);
-    }
-
-    .produit__summary .single_add_to_cart_button:hover {
-        color: var(--black);
-        background: var(--white);
     }
 
     .produit__summary .stock {

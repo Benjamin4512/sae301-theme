@@ -1,5 +1,5 @@
 <?php
-/** Panier, validation et confirmation de commande. */
+// checkout
 defined( 'ABSPATH' ) || exit;
 
 function ajouter_classes_parcours( $classes ) {
@@ -72,7 +72,6 @@ function charger_script_panier() {
 }
 add_action( 'wp_enqueue_scripts', 'charger_script_panier', 60 );
 
-// Le formulaire de code promo est placé avant le récapitulatif.
 function afficher_code_promo_panier( $contenu ) {
     if ( is_cart() ) {
         return '<div data-block-name="restaurant/cart-coupon" class="code_promo"></div>' . $contenu;
@@ -90,7 +89,6 @@ function afficher_livraison_panier( $contenu ) {
     if ( ! is_cart() ) {
         return $contenu;
     }
-    // Je remplace les attributs du bloc avec l'outil HTML de WordPress.
     $html = new WP_HTML_Tag_Processor( $contenu );
     while ( $html->next_tag( 'DIV' ) ) {
         if ( 'woocommerce/cart-order-summary-shipping-block' === $html->get_attribute( 'data-block-name' ) ) {
@@ -103,7 +101,7 @@ function afficher_livraison_panier( $contenu ) {
 }
 add_filter( 'render_block_woocommerce/cart-order-summary-block', 'afficher_livraison_panier' );
 
-// WordPress fournit les blocs sous forme de tableaux avant de produire le HTML.
+
 function preparer_resume_commande( $bloc ) {
     if ( ! is_checkout() || is_order_received_page() || 'woocommerce/checkout-totals-block' !== $bloc['blockName'] ) {
         return $bloc;
@@ -113,13 +111,13 @@ function preparer_resume_commande( $bloc ) {
     $actions = parse_blocks( '<!-- wp:woocommerce/checkout-actions-block --><div class="wp-block-woocommerce-checkout-actions-block"></div><!-- /wp:woocommerce/checkout-actions-block -->' );
     $bloc['innerBlocks'][] = $actions[0];
 
-    // Un emplacement null indique à WordPress où afficher le nouveau bloc.
+
     array_splice( $bloc['innerContent'], -1, 0, array( null ) );
     return $bloc;
 }
 add_filter( 'render_block_data', 'preparer_resume_commande' );
 
-// Le bouton est maintenant dans le résumé : on retire son ancien emplacement.
+
 function retirer_actions_formulaire( $contenu, $bloc, $parent ) {
     if ( is_checkout() && ! is_order_received_page() && $parent
         && 'woocommerce/checkout-actions-block' === $bloc['blockName']
@@ -140,7 +138,7 @@ function traduire_blocs_commande() {
         'before'
     );
 }
-// Les scripts des blocs sont enregistrés pendant l'affichage du contenu.
+
 add_action( 'wp_print_footer_scripts', 'traduire_blocs_commande', 5 );
 function ajouter_classe_confirmation( $classes ) {
     if ( is_order_received_page() ) {

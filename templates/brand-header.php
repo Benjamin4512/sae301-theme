@@ -1,6 +1,6 @@
 <?php
 
-/** Présentation des contenus du restaurant. */
+// header
 defined('ABSPATH') || exit;
 $brand_assets = get_stylesheet_directory_uri() . '/assets';
 $brand_shop   = function_exists('wc_get_page_permalink') ? wc_get_page_permalink('shop') : home_url('/');

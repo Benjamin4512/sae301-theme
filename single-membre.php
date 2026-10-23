@@ -1,4 +1,5 @@
 <?php
+// page d'un membre spécifique
 defined( 'ABSPATH' ) || exit;
 get_header();
 while ( have_posts() ) : the_post();

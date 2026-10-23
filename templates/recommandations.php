@@ -1,4 +1,5 @@
 <?php
+// produits recommandés
 defined( 'ABSPATH' ) || exit;
 $suggestions = $args['products'];
 ?>

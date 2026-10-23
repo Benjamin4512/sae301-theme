@@ -1,5 +1,6 @@
-/* Structure générale des pages */
+/* structure général des pages */
 
+/* la classe col-full est une classe fournie par Storefont, elle sert à limité la largeur du contenu */
 .col-full {
     width: auto;
     max-width: var(--largeur_contenu);
